@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_construction_ac_list" model="ir.ui.view">
+        <field name="name">construction.ac.list</field>
+        <field name="model">construction.ac</field>
+        <field name="arch" type="xml">
+            <list string="Abstract of Cost">
+                <field name="name"/>
+                <field name="material_count" string="Materials"/>
+                <field name="labour_count" string="Labours"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_ac_form" model="ir.ui.view">
+        <field name="name">construction.ac.form</field>
+        <field name="model">construction.ac</field>
+        <field name="arch" type="xml">
+            <form string="Abstract of Cost">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="A/C Name"/></h1>
+                    </div>
+                    <group>
+                        <field name="description"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page string="Materials">
+                            <field name="material_line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="material_id"/>
+                                    <field name="quantity" string="Coeff."/>
+                                    <field name="unit" optional="show"/>
+                                    <field name="rate"/>
+                                    <field name="line_cost" string="Cost" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Labours">
+                            <field name="labour_line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="labour_id"/>
+                                    <field name="quantity" string="Coeff."/>
+                                    <field name="unit" optional="show"/>
+                                    <field name="rate"/>
+                                    <field name="line_cost" string="Cost" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Measurement Types">
+                            <field name="measurement_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name" string="Type"/>
+                                    <field name="parent_id" domain="[('ac_id','=',parent.id)]"/>
+                                    <field name="description"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_construction_ac" model="ir.actions.act_window">
+        <field name="name">Abstract of Cost</field>
+        <field name="res_model">construction.ac</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

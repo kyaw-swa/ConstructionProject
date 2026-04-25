@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Top-level app menu -->
+    <menuitem id="menu_construction_root"
+              name="Construction"
+              sequence="50"/>
+
+    <!-- Estimations -->
+    <menuitem id="menu_construction_estimates"
+              name="Estimations"
+              parent="menu_construction_root"
+              sequence="10"/>
+
+    <menuitem id="menu_project_estimate"
+              name="Project Estimates"
+              parent="menu_construction_estimates"
+              action="action_construction_project_estimate"
+              sequence="10"/>
+
+    <menuitem id="menu_import_boq"
+              name="Import BOQ from Excel"
+              parent="menu_construction_estimates"
+              action="action_import_boq_wizard"
+              sequence="20"/>
+
+    <!-- Configuration -->
+    <menuitem id="menu_construction_config"
+              name="Configuration"
+              parent="menu_construction_root"
+              sequence="90"/>
+
+    <menuitem id="menu_abstract_of_cost"
+              name="Abstract of Cost"
+              parent="menu_construction_config"
+              action="action_construction_ac"
+              sequence="10"/>
+
+    <menuitem id="menu_materials"
+              name="Materials"
+              parent="menu_construction_config"
+              action="action_construction_material"
+              sequence="20"/>
+
+    <menuitem id="menu_labours"
+              name="Labours"
+              parent="menu_construction_config"
+              action="action_construction_labour"
+              sequence="30"/>
+
+    <menuitem id="menu_measurements"
+              name="Measurements"
+              parent="menu_construction_config"
+              action="action_construction_measurement"
+              sequence="40"/>
+
+</odoo>

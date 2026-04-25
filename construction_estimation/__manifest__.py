@@ -1,0 +1,21 @@
+{
+    'name': 'Construction Project Estimation',
+    'version': '19.0.1.0.0',
+    'category': 'Construction',
+    'summary': 'BOQ-based construction project cost estimation',
+    'author': 'Global Connect',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/material_views.xml',
+        'views/labour_views.xml',
+        'views/measurement_views.xml',
+        'views/abstract_of_cost_views.xml',
+        'views/project_estimate_views.xml',
+        'views/import_wizard_views.xml',
+        'views/menus.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

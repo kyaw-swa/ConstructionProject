@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_project_estimate_list" model="ir.ui.view">
+        <field name="name">construction.project.estimate.list</field>
+        <field name="model">construction.project.estimate</field>
+        <field name="arch" type="xml">
+            <list string="Project Estimates" decoration-muted="state=='cancelled'">
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="date"/>
+                <field name="total_cost" sum="Total"/>
+                <field name="state" widget="badge"
+                       decoration-success="state=='confirmed'"
+                       decoration-warning="state=='draft'"
+                       decoration-danger="state=='cancelled'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_project_estimate_form" model="ir.ui.view">
+        <field name="name">construction.project.estimate.form</field>
+        <field name="model">construction.project.estimate</field>
+        <field name="arch" type="xml">
+            <form string="Project Estimate">
+                <header>
+                    <button name="action_confirm" string="Confirm"
+                            type="object" class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_cancel" string="Cancel"
+                            type="object"
+                            invisible="state == 'cancelled'"/>
+                    <button name="action_reset_draft" string="Reset to Draft"
+                            type="object"
+                            invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,cancelled"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Estimate Name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="customer_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="total_cost" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Estimation Lines">
+                            <button name="action_import_boq"
+                                    string="Import BOQ from Excel"
+                                    type="object"
+                                    class="btn-secondary mb-2"/>
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="ac_id"/>
+                                    <field name="measurement_id"
+                                           domain="[('ac_id','=',ac_id)]"
+                                           optional="show"/>
+                                    <field name="quantity"/>
+                                    <field name="unit" optional="show"/>
+                                    <field name="unit_material_cost" readonly="1" optional="show"/>
+                                    <field name="unit_labour_cost" readonly="1" optional="show"/>
+                                    <field name="unit_cost" readonly="1"/>
+                                    <field name="total_cost" readonly="1" sum="Total"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes" placeholder="Internal notes…"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_construction_project_estimate" model="ir.actions.act_window">
+        <field name="name">Project Estimates</field>
+        <field name="res_model">construction.project.estimate</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

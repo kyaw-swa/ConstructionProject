@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_import_boq_wizard_form" model="ir.ui.view">
+        <field name="name">construction.import.boq.wizard.form</field>
+        <field name="model">construction.import.boq.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import BOQ from Excel">
+                <group string="File">
+                    <field name="excel_file" filename="filename" widget="binary"/>
+                    <field name="filename" invisible="1"/>
+                    <field name="estimate_id"/>
+                </group>
+                <group string="Options">
+                    <field name="sheet_name" placeholder="Leave empty for first sheet"/>
+                    <field name="header_rows"/>
+                </group>
+                <group string="Result" invisible="not result_summary">
+                    <field name="result_summary" widget="text" readonly="1" nolabel="1"/>
+                </group>
+                <footer>
+                    <button name="action_import" string="Import" type="object"
+                            class="oe_highlight"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_import_boq_wizard" model="ir.actions.act_window">
+        <field name="name">Import BOQ from Excel</field>
+        <field name="res_model">construction.import.boq.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

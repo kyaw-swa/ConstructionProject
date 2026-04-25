@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_construction_labour_list" model="ir.ui.view">
+        <field name="name">construction.labour.list</field>
+        <field name="model">construction.labour</field>
+        <field name="arch" type="xml">
+            <list string="Labours" editable="bottom">
+                <field name="name"/>
+                <field name="unit"/>
+                <field name="default_rate" string="Default Rate"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_labour_form" model="ir.ui.view">
+        <field name="name">construction.labour.form</field>
+        <field name="model">construction.labour</field>
+        <field name="arch" type="xml">
+            <form string="Labour">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="unit"/>
+                        </group>
+                        <group>
+                            <field name="default_rate"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_construction_labour" model="ir.actions.act_window">
+        <field name="name">Labours</field>
+        <field name="res_model">construction.labour</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>
