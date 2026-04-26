@@ -3,7 +3,7 @@
     'version': '19.0.1.0.0',
     'category': 'Construction',
     'summary': 'BOQ-based construction project cost estimation',
-    'author': 'Global Connect',
+    'author': 'Phoe Ku',
     'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
