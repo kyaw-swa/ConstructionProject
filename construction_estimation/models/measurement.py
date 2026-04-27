@@ -15,9 +15,12 @@ class ConstructionMeasurement(models.Model):
     parent_id = fields.Many2one(
         'construction.measurement', string='Parent Measurement',
         ondelete='set null', index=True,
-        help='Set when this measurement is a sub-item (e.g. RW1 span under RW1)',
     )
     child_ids = fields.One2many(
         'construction.measurement', 'parent_id', string='Sub-Measurements',
     )
     description = fields.Char()
+    measurement_type = fields.Selection(
+        [('sqft', 'Sqft (Area)'), ('cuft', 'Cuft (Volume)')],
+        string='Measurement Type', required=True, default='sqft',
+    )

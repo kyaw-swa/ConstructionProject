@@ -9,7 +9,9 @@
                 <field name="name"/>
                 <field name="customer_id"/>
                 <field name="date"/>
-                <field name="total_cost" sum="Total"/>
+                <field name="total_material_cost" string="Material Cost" sum="Total Mat."/>
+                <field name="total_labour_cost" string="Labour Cost" sum="Total Lab."/>
+                <field name="total_cost" string="Grand Total" sum="Grand Total"/>
                 <field name="state" widget="badge"
                        decoration-success="state=='confirmed'"
                        decoration-warning="state=='draft'"
@@ -47,6 +49,8 @@
                         </group>
                         <group>
                             <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="total_material_cost" readonly="1"/>
+                            <field name="total_labour_cost" readonly="1"/>
                             <field name="total_cost" readonly="1"/>
                         </group>
                     </group>
@@ -59,16 +63,65 @@
                             <field name="line_ids">
                                 <list editable="bottom">
                                     <field name="sequence" widget="handle"/>
-                                    <field name="ac_id"/>
+
+                                    <!-- Work item and measurement context -->
+                                    <field name="ac_id" string="Work Item (A/C)"/>
                                     <field name="measurement_id"
                                            domain="[('ac_id','=',ac_id)]"
                                            optional="show"/>
-                                    <field name="quantity"/>
-                                    <field name="unit" optional="show"/>
-                                    <field name="unit_material_cost" readonly="1" optional="show"/>
-                                    <field name="unit_labour_cost" readonly="1" optional="show"/>
-                                    <field name="unit_cost" readonly="1"/>
-                                    <field name="total_cost" readonly="1" sum="Total"/>
+                                    <field name="measurement_type" readonly="1"
+                                           widget="badge"
+                                           decoration-info="measurement_type=='sqft'"
+                                           decoration-success="measurement_type=='cuft'"
+                                           optional="show"/>
+                                    <field name="uom_id" string="UOM" readonly="1"
+                                           optional="show"/>
+
+                                    <!-- Dimension reference inputs -->
+                                    <field name="length_ft" string="L Ft"
+                                           optional="show"/>
+                                    <field name="length_in" string="L In"
+                                           optional="hide"/>
+                                    <field name="breadth_ft" string="B Ft"
+                                           optional="show"/>
+                                    <field name="breadth_in" string="B In"
+                                           optional="hide"/>
+                                    <field name="height_ft" string="H Ft"
+                                           invisible="measurement_type != 'cuft'"
+                                           optional="show"/>
+                                    <field name="height_in" string="H In"
+                                           invisible="measurement_type != 'cuft'"
+                                           optional="hide"/>
+
+                                    <!-- Calculated reference (read-only) -->
+                                    <field name="area" string="Area (Sqft)"
+                                           readonly="1"
+                                           invisible="measurement_type != 'sqft'"
+                                           optional="show"/>
+                                    <field name="volume" string="Volume (Cuft)"
+                                           readonly="1"
+                                           invisible="measurement_type != 'cuft'"
+                                           optional="show"/>
+                                    <field name="base_qty" string="Base Qty"
+                                           readonly="1" optional="show"/>
+
+                                    <!-- Material: user enters qty, rate auto-filled -->
+                                    <field name="material_qty" string="Mat. Qty"/>
+                                    <field name="material_unit_cost"
+                                           string="Mat. Rate"/>
+                                    <field name="material_total" string="Mat. Total"
+                                           readonly="1"/>
+
+                                    <!-- Labour: user enters qty, rate auto-filled -->
+                                    <field name="labour_qty" string="Lab. Qty"/>
+                                    <field name="labour_unit_cost"
+                                           string="Lab. Rate"/>
+                                    <field name="labour_total" string="Lab. Total"
+                                           readonly="1"/>
+
+                                    <!-- Grand total -->
+                                    <field name="total_cost" string="Line Total"
+                                           readonly="1" sum="Grand Total"/>
                                 </list>
                             </field>
                         </page>

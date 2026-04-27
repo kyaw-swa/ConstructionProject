@@ -10,6 +10,9 @@
                 <field name="name" string="Type"/>
                 <field name="parent_id" string="Parent"/>
                 <field name="description"/>
+                <field name="measurement_type" string="Meas. Type" widget="badge"
+                       decoration-info="measurement_type=='sqft'"
+                       decoration-success="measurement_type=='cuft'"/>
                 <field name="sequence" widget="handle"/>
             </list>
         </field>
@@ -28,6 +31,7 @@
                             <field name="description"/>
                         </group>
                         <group>
+                            <field name="measurement_type" widget="radio"/>
                             <field name="parent_id" domain="[('ac_id','=',ac_id)]"/>
                             <field name="sequence"/>
                         </group>
@@ -36,9 +40,12 @@
                         <page string="Sub-Measurements">
                             <field name="child_ids">
                                 <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
                                     <field name="name"/>
                                     <field name="description"/>
-                                    <field name="sequence" widget="handle"/>
+                                    <field name="measurement_type" widget="badge"
+                                           decoration-info="measurement_type=='sqft'"
+                                           decoration-success="measurement_type=='cuft'"/>
                                 </list>
                             </field>
                         </page>

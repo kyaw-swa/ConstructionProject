@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- ── Material UOMs ─────────────────────────────────────────────────── -->
+    <record id="uom_ton" model="construction.uom">
+        <field name="name">Ton</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_suds" model="construction.uom">
+        <field name="name">Suds</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_bags" model="construction.uom">
+        <field name="name">Bags</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_gal" model="construction.uom">
+        <field name="name">Gal</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_sht" model="construction.uom">
+        <field name="name">Sht</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_cwt" model="construction.uom">
+        <field name="name">Cwt</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_pck" model="construction.uom">
+        <field name="name">Pck</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_viss" model="construction.uom">
+        <field name="name">Viss</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_doz" model="construction.uom">
+        <field name="name">Doz</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_lbs" model="construction.uom">
+        <field name="name">Lbs</field>
+        <field name="uom_type">material</field>
+    </record>
+    <record id="uom_set" model="construction.uom">
+        <field name="name">Set</field>
+        <field name="uom_type">material</field>
+    </record>
+
+    <!-- ── Labour UOMs ───────────────────────────────────────────────────── -->
+    <record id="uom_ls" model="construction.uom">
+        <field name="name">Ls</field>
+        <field name="uom_type">labour</field>
+    </record>
+    <record id="uom_mandays" model="construction.uom">
+        <field name="name">Man-days</field>
+        <field name="uom_type">labour</field>
+    </record>
+
+    <!-- ── Shared UOMs (material and labour) ─────────────────────────────── -->
+    <record id="uom_nos" model="construction.uom">
+        <field name="name">Nos</field>
+        <field name="uom_type">both</field>
+    </record>
+    <record id="uom_rft" model="construction.uom">
+        <field name="name">Rft</field>
+        <field name="uom_type">both</field>
+    </record>
+    <record id="uom_sft" model="construction.uom">
+        <field name="name">Sft</field>
+        <field name="uom_type">both</field>
+    </record>
+    <record id="uom_sqft" model="construction.uom">
+        <field name="name">Sqft</field>
+        <field name="uom_type">both</field>
+    </record>
+    <record id="uom_cuft" model="construction.uom">
+        <field name="name">Cuft</field>
+        <field name="uom_type">both</field>
+    </record>
+
+</odoo>

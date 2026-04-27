@@ -29,18 +29,6 @@ class AbstractOfCost(models.Model):
             rec.material_count = len(rec.material_line_ids)
             rec.labour_count = len(rec.labour_line_ids)
 
-    def get_unit_cost(self):
-        """Return total unit cost = sum of all material + labour line costs."""
-        self.ensure_one()
-        material_cost = sum(
-            line.quantity * line.rate for line in self.material_line_ids
-        )
-        labour_cost = sum(
-            line.quantity * line.rate for line in self.labour_line_ids
-        )
-        return material_cost + labour_cost
-
-
 
 class AcMaterialLine(models.Model):
     _name = 'construction.ac.material'
@@ -55,7 +43,10 @@ class AcMaterialLine(models.Model):
     )
     sequence = fields.Integer(default=10)
     quantity = fields.Float(string='Coefficient', digits=(16, 4), default=1.0)
-    unit = fields.Char(related='material_id.unit', store=True)
+    uom_id = fields.Many2one(
+        'construction.uom', related='material_id.uom_id',
+        string='UOM', store=True,
+    )
     rate = fields.Float(
         digits=(16, 4),
         help='Defaults from material; override per A/C if needed.',
@@ -94,7 +85,10 @@ class AcLabourLine(models.Model):
     )
     sequence = fields.Integer(default=10)
     quantity = fields.Float(string='Coefficient', digits=(16, 4), default=1.0)
-    unit = fields.Char(related='labour_id.unit', store=True)
+    uom_id = fields.Many2one(
+        'construction.uom', related='labour_id.uom_id',
+        string='UOM', store=True,
+    )
     rate = fields.Float(digits=(16, 4))
     line_cost = fields.Float(compute='_compute_line_cost', store=True, digits=(16, 4))
 

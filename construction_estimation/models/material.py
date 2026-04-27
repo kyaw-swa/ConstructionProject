@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ConstructionMaterial(models.Model):
@@ -7,7 +7,10 @@ class ConstructionMaterial(models.Model):
     _order = 'name'
 
     name = fields.Char(required=True, index=True)
-    unit = fields.Char(string='Unit of Measure')
+    uom_id = fields.Many2one(
+        'construction.uom', string='Unit of Measure',
+        domain="[('uom_type', 'in', ['material', 'both'])]",
+    )
     default_rate = fields.Float(digits=(16, 4))
     active = fields.Boolean(default=True)
 

@@ -8,3 +8,4 @@ access_construction_ac_labour_user,construction.ac.labour user,model_constructio
 access_construction_project_estimate_user,construction.project.estimate user,model_construction_project_estimate,base.group_user,1,1,1,1
 access_construction_estimate_line_user,construction.estimate.line user,model_construction_estimate_line,base.group_user,1,1,1,1
 access_construction_import_boq_wizard_user,construction.import.boq.wizard user,model_construction_import_boq_wizard,base.group_user,1,1,1,1
+access_construction_uom_user,construction.uom user,model_construction_uom,base.group_user,1,1,1,1

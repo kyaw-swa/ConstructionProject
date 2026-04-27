@@ -32,8 +32,8 @@
                                 <list editable="bottom">
                                     <field name="sequence" widget="handle"/>
                                     <field name="material_id"/>
+                                    <field name="uom_id" string="UOM" readonly="1"/>
                                     <field name="quantity" string="Coeff."/>
-                                    <field name="unit" optional="show"/>
                                     <field name="rate"/>
                                     <field name="line_cost" string="Cost" readonly="1"/>
                                 </list>
@@ -44,8 +44,8 @@
                                 <list editable="bottom">
                                     <field name="sequence" widget="handle"/>
                                     <field name="labour_id"/>
+                                    <field name="uom_id" string="UOM" readonly="1"/>
                                     <field name="quantity" string="Coeff."/>
-                                    <field name="unit" optional="show"/>
                                     <field name="rate"/>
                                     <field name="line_cost" string="Cost" readonly="1"/>
                                 </list>
@@ -58,6 +58,9 @@
                                     <field name="name" string="Type"/>
                                     <field name="parent_id" domain="[('ac_id','=',parent.id)]"/>
                                     <field name="description"/>
+                                    <field name="measurement_type" widget="badge"
+                                           decoration-info="measurement_type=='sqft'"
+                                           decoration-success="measurement_type=='cuft'"/>
                                 </list>
                             </field>
                         </page>
