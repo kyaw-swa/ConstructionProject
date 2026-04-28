@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_project_estimate" model="ir.actions.report">
+        <field name="name">Project Estimate (BOQ)</field>
+        <field name="model">construction.project.estimate</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">construction_estimation.report_project_estimate_document</field>
+        <field name="report_file">construction_estimation.report_project_estimate_document</field>
+        <field name="binding_model_id" ref="model_construction_project_estimate"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_project_estimate_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Bill of Quantities — <span t-field="doc.name"/></h2>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <strong>Customer:</strong>
+                                <span t-field="doc.customer_id"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>Date:</strong>
+                                <span t-field="doc.date"/>
+                            </div>
+                            <div class="col-3">
+                                <strong>State:</strong>
+                                <span t-field="doc.state"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width:5%;">No.</th>
+                                    <th style="width:40%;">Particular</th>
+                                    <th class="text-end" style="width:10%;">Quantity</th>
+                                    <th class="text-center" style="width:7%;">Unit</th>
+                                    <th class="text-end" style="width:10%;">Rate</th>
+                                    <th class="text-end" style="width:6%;">Per</th>
+                                    <th class="text-end" style="width:12%;">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="idx" t-value="0"/>
+                                <t t-foreach="doc.line_ids" t-as="line">
+                                    <t t-set="idx" t-value="idx + 1"/>
+                                    <tr>
+                                        <td class="text-center">
+                                            <strong t-esc="idx"/>
+                                        </td>
+                                        <td>
+                                            <strong t-field="line.ac_id.name"/>
+                                            <t t-if="line.reference">
+                                                <span class="text-muted">
+                                                    (<t t-esc="line.reference"/>)
+                                                </span>
+                                            </t>
+                                            <t t-if="line.ac_id.description">
+                                                <div class="small text-muted"
+                                                     t-field="line.ac_id.description"/>
+                                            </t>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-esc="'%.2f' % line.base_qty"/>
+                                        </td>
+                                        <td class="text-center"
+                                            t-field="line.uom_id.name"/>
+                                        <td/><td/><td/>
+                                    </tr>
+
+                                    <t t-if="line.material_detail_ids">
+                                        <tr>
+                                            <td/>
+                                            <td colspan="6">
+                                                <em>Materials</em>
+                                            </td>
+                                        </tr>
+                                        <t t-foreach="line.material_detail_ids" t-as="m">
+                                            <tr>
+                                                <td/>
+                                                <td class="ps-4">
+                                                    <span t-field="m.material_id.name"/>
+                                                    <t t-if="m.reference">
+                                                        <span class="text-muted">
+                                                            (<t t-esc="m.reference"/>)
+                                                        </span>
+                                                    </t>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-esc="'%.3f' % m.quantity"/>
+                                                </td>
+                                                <td class="text-center"
+                                                    t-field="m.uom_id.name"/>
+                                                <td class="text-end">
+                                                    <span t-esc="'%.2f' % m.rate"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-esc="'%.2f' % m.per"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-esc="'%.2f' % m.amount"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+
+                                    <t t-if="line.labour_detail_ids">
+                                        <tr>
+                                            <td/>
+                                            <td colspan="6">
+                                                <em>Labours</em>
+                                            </td>
+                                        </tr>
+                                        <t t-foreach="line.labour_detail_ids" t-as="lab">
+                                            <tr>
+                                                <td/>
+                                                <td class="ps-4">
+                                                    <span t-field="lab.labour_id.name"/>
+                                                    <t t-if="lab.reference">
+                                                        <span class="text-muted">
+                                                            (<t t-esc="lab.reference"/>)
+                                                        </span>
+                                                    </t>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-esc="'%.3f' % lab.quantity"/>
+                                                </td>
+                                                <td class="text-center"
+                                                    t-field="lab.uom_id.name"/>
+                                                <td class="text-end">
+                                                    <span t-esc="'%.2f' % lab.rate"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-esc="'%.2f' % lab.per"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-esc="'%.2f' % lab.amount"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+
+                                    <tr>
+                                        <td/>
+                                        <td colspan="5" class="text-end">
+                                            <strong>Subtotal</strong>
+                                        </td>
+                                        <td class="text-end">
+                                            <strong t-esc="'%.2f' % line.total_cost"/>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <tr>
+                                    <td colspan="6" class="text-end">
+                                        <strong>Total Material Cost</strong>
+                                    </td>
+                                    <td class="text-end">
+                                        <strong t-esc="'%.2f' % doc.total_material_cost"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="text-end">
+                                        <strong>Total Labour Cost</strong>
+                                    </td>
+                                    <td class="text-end">
+                                        <strong t-esc="'%.2f' % doc.total_labour_cost"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="text-end">
+                                        <strong>Grand Total</strong>
+                                    </td>
+                                    <td class="text-end">
+                                        <strong t-esc="'%.2f' % doc.total_cost"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <t t-if="doc.notes">
+                            <h4 class="mt-4">Notes</h4>
+                            <p t-field="doc.notes"/>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -15,6 +15,7 @@
         'views/project_estimate_views.xml',
         'views/import_wizard_views.xml',
         'views/menus.xml',
+        'report/project_estimate_report.xml',
     ],
     'installable': True,
     'application': True,

@@ -150,13 +150,13 @@ class ImportBOQWizard(models.TransientModel):
                             Measurement, meas_cache, current_ac, meas_name, stats,
                         )
 
-                    EstimateLine.create({
+                    line = EstimateLine.create({
                         'estimate_id':    self.estimate_id.id,
                         'ac_id':          current_ac.id,
                         'measurement_id': measurement.id if measurement else False,
-                        'quantity':       quantity,
-                        'unit':           current_unit,
+                        'manual_qty':     quantity,
                     })
+                    line._populate_details_from_ac()
                     stats['lines'] += 1
 
                 elif item_no and particular:

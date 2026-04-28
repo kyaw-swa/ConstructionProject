@@ -20,6 +20,97 @@
         </field>
     </record>
 
+    <record id="view_estimate_line_form" model="ir.ui.view">
+        <field name="name">construction.estimate.line.form</field>
+        <field name="model">construction.estimate.line</field>
+        <field name="arch" type="xml">
+            <form string="Estimation Line">
+                <header>
+                    <button name="action_recompute_from_ac"
+                            string="Recompute from A/C"
+                            type="object" class="btn-secondary"
+                            help="Re-copy material and labour rows from the A/C, scaled by the current Base Qty."/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="ac_id"/>
+                            <field name="reference"/>
+                            <field name="measurement_id"
+                                   domain="[('ac_id','=',ac_id)]"/>
+                            <field name="measurement_type" readonly="1"/>
+                            <field name="uom_id"/>
+                        </group>
+                        <group>
+                            <label for="length_ft" string="Length (Ft / In)"/>
+                            <div class="o_row">
+                                <field name="length_ft" nolabel="1"/>
+                                <field name="length_in" nolabel="1"/>
+                            </div>
+                            <label for="breadth_ft" string="Breadth (Ft / In)"/>
+                            <div class="o_row">
+                                <field name="breadth_ft" nolabel="1"/>
+                                <field name="breadth_in" nolabel="1"/>
+                            </div>
+                            <label for="height_ft" string="Height (Ft / In)"
+                                   invisible="measurement_type != 'cuft'"/>
+                            <div class="o_row"
+                                 invisible="measurement_type != 'cuft'">
+                                <field name="height_ft" nolabel="1"/>
+                                <field name="height_in" nolabel="1"/>
+                            </div>
+                            <field name="area" readonly="1"
+                                   invisible="measurement_type != 'sqft'"/>
+                            <field name="volume" readonly="1"
+                                   invisible="measurement_type != 'cuft'"/>
+                            <field name="manual_qty"/>
+                            <field name="base_qty" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Materials">
+                            <field name="material_detail_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="reference" optional="show"/>
+                                    <field name="material_id"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id" readonly="1"/>
+                                    <field name="rate"/>
+                                    <field name="per" optional="hide"/>
+                                    <field name="amount" readonly="1" sum="Total"/>
+                                </list>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="material_total" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Labours">
+                            <field name="labour_detail_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="reference" optional="show"/>
+                                    <field name="labour_id"/>
+                                    <field name="quantity"/>
+                                    <field name="uom_id" readonly="1"/>
+                                    <field name="rate"/>
+                                    <field name="per" optional="hide"/>
+                                    <field name="amount" readonly="1" sum="Total"/>
+                                </list>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="labour_total" readonly="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <group class="oe_subtotal_footer oe_right">
+                        <field name="total_cost" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="view_project_estimate_form" model="ir.ui.view">
         <field name="name">construction.project.estimate.form</field>
         <field name="model">construction.project.estimate</field>
@@ -61,67 +152,16 @@
                                     type="object"
                                     class="btn-secondary mb-2"/>
                             <field name="line_ids">
-                                <list editable="bottom">
+                                <list>
                                     <field name="sequence" widget="handle"/>
-
-                                    <!-- Work item and measurement context -->
+                                    <field name="reference"/>
                                     <field name="ac_id" string="Work Item (A/C)"/>
-                                    <field name="measurement_id"
-                                           domain="[('ac_id','=',ac_id)]"
-                                           optional="show"/>
-                                    <field name="measurement_type" readonly="1"
-                                           widget="badge"
-                                           decoration-info="measurement_type=='sqft'"
-                                           decoration-success="measurement_type=='cuft'"
-                                           optional="show"/>
-                                    <field name="uom_id" string="UOM" readonly="1"
-                                           optional="show"/>
-
-                                    <!-- Dimension reference inputs -->
-                                    <field name="length_ft" string="L Ft"
-                                           optional="show"/>
-                                    <field name="length_in" string="L In"
-                                           optional="hide"/>
-                                    <field name="breadth_ft" string="B Ft"
-                                           optional="show"/>
-                                    <field name="breadth_in" string="B In"
-                                           optional="hide"/>
-                                    <field name="height_ft" string="H Ft"
-                                           invisible="measurement_type != 'cuft'"
-                                           optional="show"/>
-                                    <field name="height_in" string="H In"
-                                           invisible="measurement_type != 'cuft'"
-                                           optional="hide"/>
-
-                                    <!-- Calculated reference (read-only) -->
-                                    <field name="area" string="Area (Sqft)"
-                                           readonly="1"
-                                           invisible="measurement_type != 'sqft'"
-                                           optional="show"/>
-                                    <field name="volume" string="Volume (Cuft)"
-                                           readonly="1"
-                                           invisible="measurement_type != 'cuft'"
-                                           optional="show"/>
-                                    <field name="base_qty" string="Base Qty"
-                                           readonly="1" optional="show"/>
-
-                                    <!-- Material: user enters qty, rate auto-filled -->
-                                    <field name="material_qty" string="Mat. Qty"/>
-                                    <field name="material_unit_cost"
-                                           string="Mat. Rate"/>
-                                    <field name="material_total" string="Mat. Total"
-                                           readonly="1"/>
-
-                                    <!-- Labour: user enters qty, rate auto-filled -->
-                                    <field name="labour_qty" string="Lab. Qty"/>
-                                    <field name="labour_unit_cost"
-                                           string="Lab. Rate"/>
-                                    <field name="labour_total" string="Lab. Total"
-                                           readonly="1"/>
-
-                                    <!-- Grand total -->
-                                    <field name="total_cost" string="Line Total"
-                                           readonly="1" sum="Grand Total"/>
+                                    <field name="measurement_id" optional="show"/>
+                                    <field name="base_qty" string="Qty"/>
+                                    <field name="uom_id" string="Unit"/>
+                                    <field name="material_total" string="Mat. Total" sum="Mat."/>
+                                    <field name="labour_total" string="Lab. Total" sum="Lab."/>
+                                    <field name="total_cost" string="Line Total" sum="Grand Total"/>
                                 </list>
                             </field>
                         </page>
