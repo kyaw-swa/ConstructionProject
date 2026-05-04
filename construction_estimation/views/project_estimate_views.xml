@@ -74,11 +74,19 @@
                                     <field name="sequence" widget="handle"/>
                                     <field name="reference" optional="show"/>
                                     <field name="material_id"/>
-                                    <field name="quantity"/>
+                                    <field name="template_qty" string="Std. Qty" optional="show" readonly="1"/>
+                                    <field name="template_base_qty" string="Tpl. Base" optional="hide" readonly="1"/>
+                                    <field name="suggested_qty" string="Suggested" readonly="1"/>
+                                    <field name="quantity" string="Manual Qty"/>
+                                    <field name="is_manual" string="Override" widget="boolean_toggle"/>
                                     <field name="uom_id" readonly="1"/>
                                     <field name="rate"/>
                                     <field name="per" optional="hide"/>
                                     <field name="amount" readonly="1" sum="Total"/>
+                                    <button name="action_reset_to_suggested"
+                                            type="object" icon="fa-refresh"
+                                            string="Reset to Suggested"
+                                            invisible="not is_manual"/>
                                 </list>
                             </field>
                             <group class="oe_subtotal_footer oe_right">
@@ -91,11 +99,19 @@
                                     <field name="sequence" widget="handle"/>
                                     <field name="reference" optional="show"/>
                                     <field name="labour_id"/>
-                                    <field name="quantity"/>
+                                    <field name="template_qty" string="Std. Qty" optional="show" readonly="1"/>
+                                    <field name="template_base_qty" string="Tpl. Base" optional="hide" readonly="1"/>
+                                    <field name="suggested_qty" string="Suggested" readonly="1"/>
+                                    <field name="quantity" string="Manual Qty"/>
+                                    <field name="is_manual" string="Override" widget="boolean_toggle"/>
                                     <field name="uom_id" readonly="1"/>
                                     <field name="rate"/>
                                     <field name="per" optional="hide"/>
                                     <field name="amount" readonly="1" sum="Total"/>
+                                    <button name="action_reset_to_suggested"
+                                            type="object" icon="fa-refresh"
+                                            string="Reset to Suggested"
+                                            invisible="not is_manual"/>
                                 </list>
                             </field>
                             <group class="oe_subtotal_footer oe_right">

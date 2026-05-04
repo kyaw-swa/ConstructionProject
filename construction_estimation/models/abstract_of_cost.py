@@ -10,6 +10,18 @@ class AbstractOfCost(models.Model):
     description = fields.Text()
     active = fields.Boolean(default=True)
 
+    base_quantity = fields.Float(
+        string='Base Quantity', digits=(16, 4), default=1.0,
+        help='Standard reference quantity for this Work Item, e.g. 1000 (Sqft). '
+             'Each Material/Labour Std. Qty below is the amount required to '
+             'execute one Base Quantity. The Estimation Line uses the ratio '
+             '(Calculated Qty / Base Quantity) to scale these.',
+    )
+    base_uom_id = fields.Many2one(
+        'construction.uom', string='Base UOM',
+        help='UOM the Base Quantity is expressed in (typically Sqft or Cuft).',
+    )
+
     material_line_ids = fields.One2many(
         'construction.ac.material', 'ac_id', string='Material Lines',
     )
@@ -42,7 +54,11 @@ class AcMaterialLine(models.Model):
         'construction.material', required=True, ondelete='restrict',
     )
     sequence = fields.Integer(default=10)
-    quantity = fields.Float(string='Coefficient', digits=(16, 4), default=1.0)
+    quantity = fields.Float(
+        string='Std. Qty', digits=(16, 4), default=1.0,
+        help='Standard quantity required per the A/C Base Quantity '
+             '(e.g. 4 units of this material per 1000 Sqft).',
+    )
     uom_id = fields.Many2one(
         'construction.uom', related='material_id.uom_id',
         string='UOM', store=True,
@@ -84,7 +100,10 @@ class AcLabourLine(models.Model):
         'construction.labour', required=True, ondelete='restrict',
     )
     sequence = fields.Integer(default=10)
-    quantity = fields.Float(string='Coefficient', digits=(16, 4), default=1.0)
+    quantity = fields.Float(
+        string='Std. Qty', digits=(16, 4), default=1.0,
+        help='Standard labour quantity required per the A/C Base Quantity.',
+    )
     uom_id = fields.Many2one(
         'construction.uom', related='labour_id.uom_id',
         string='UOM', store=True,

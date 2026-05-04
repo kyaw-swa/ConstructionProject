@@ -188,19 +188,25 @@ class EstimationLine(models.Model):
 
     # ── A/C → detail copy ────────────────────────────────────────────────────
     def _populate_details_from_ac(self):
-        """Replace material/labour detail rows with the A/C template, scaling
-        each coefficient by the line's current base_qty (1 if unset)."""
+        """Replace material/labour detail rows with the A/C template.
+
+        Each detail row stores the template's Std. Qty and Base Qty so that
+        Suggested Qty can be recomputed live as the line's dimensions change:
+
+            Suggested Qty = (line.base_qty / template_base_qty) * template_qty
+        """
         for line in self:
             line.material_detail_ids = [(5, 0, 0)]
             line.labour_detail_ids = [(5, 0, 0)]
             if not line.ac_id:
                 continue
-            scale = line.base_qty or 1.0
+            template_base = line.ac_id.base_quantity or 1.0
             mat_cmds = [
                 (0, 0, {
                     'sequence': ac_mat.sequence,
                     'material_id': ac_mat.material_id.id,
-                    'quantity': ac_mat.quantity * scale,
+                    'template_qty': ac_mat.quantity,
+                    'template_base_qty': template_base,
                     'rate': ac_mat.rate,
                     'per': 1.0,
                 })
@@ -210,7 +216,8 @@ class EstimationLine(models.Model):
                 (0, 0, {
                     'sequence': ac_lab.sequence,
                     'labour_id': ac_lab.labour_id.id,
-                    'quantity': ac_lab.quantity * scale,
+                    'template_qty': ac_lab.quantity,
+                    'template_base_qty': template_base,
                     'rate': ac_lab.rate,
                     'per': 1.0,
                 })
@@ -278,7 +285,35 @@ class EstimateLineMaterial(models.Model):
     material_id = fields.Many2one(
         'construction.material', required=True, ondelete='restrict',
     )
-    quantity = fields.Float(string='Quantity', digits=(16, 4))
+
+    # ── Ratio inputs copied from the A/C template ────────────────────────────
+    template_qty = fields.Float(
+        string='Std. Qty', digits=(16, 4),
+        help='Standard quantity from the A/C template (per Template Base Qty).',
+    )
+    template_base_qty = fields.Float(
+        string='Template Base', digits=(16, 4), default=1.0,
+        help='Base quantity the Std. Qty is expressed against (e.g. 1000 Sqft).',
+    )
+
+    # ── Ratio output ─────────────────────────────────────────────────────────
+    suggested_qty = fields.Float(
+        string='Suggested Qty',
+        compute='_compute_suggested_qty', store=True, digits=(16, 4),
+        help='Auto-calculated as (Calculated Qty / Template Base) × Std. Qty.',
+    )
+    is_manual = fields.Boolean(
+        string='Manual Override',
+        help='When set, the Quantity below is locked and will not be '
+             'recalculated when the parent dimensions change.',
+    )
+    quantity = fields.Float(
+        string='Manual Qty',
+        compute='_compute_quantity', store=True, readonly=False, digits=(16, 4),
+        help='Quantity used in costing. Defaults to Suggested Qty; edit to '
+             'override (which sets Manual Override).',
+    )
+
     uom_id = fields.Many2one(
         'construction.uom', related='material_id.uom_id',
         string='UOM', store=True, readonly=True,
@@ -293,16 +328,41 @@ class EstimateLineMaterial(models.Model):
         compute='_compute_amount', store=True, digits=(16, 2),
     )
 
+    @api.depends('line_id.base_qty', 'template_qty', 'template_base_qty')
+    def _compute_suggested_qty(self):
+        for d in self:
+            base = d.template_base_qty or 1.0
+            parent_qty = d.line_id.base_qty if d.line_id else 0.0
+            d.suggested_qty = (parent_qty / base) * d.template_qty
+
+    @api.depends('suggested_qty', 'is_manual')
+    def _compute_quantity(self):
+        for d in self:
+            if not d.is_manual:
+                d.quantity = d.suggested_qty
+
     @api.depends('quantity', 'rate', 'per')
     def _compute_amount(self):
         for d in self:
             divisor = d.per or 1.0
             d.amount = (d.quantity * d.rate) / divisor
 
+    @api.onchange('quantity')
+    def _onchange_quantity(self):
+        for d in self:
+            if d.quantity and abs(d.quantity - d.suggested_qty) > 1e-6:
+                d.is_manual = True
+
     @api.onchange('material_id')
     def _onchange_material_id(self):
         if self.material_id and not self.rate:
             self.rate = self.material_id.default_rate
+
+    def action_reset_to_suggested(self):
+        for d in self:
+            d.is_manual = False
+            d.quantity = d.suggested_qty
+        return True
 
 
 class EstimateLineLabour(models.Model):
@@ -319,7 +379,33 @@ class EstimateLineLabour(models.Model):
     labour_id = fields.Many2one(
         'construction.labour', required=True, ondelete='restrict',
     )
-    quantity = fields.Float(string='Quantity', digits=(16, 4))
+
+    template_qty = fields.Float(
+        string='Std. Qty', digits=(16, 4),
+        help='Standard quantity from the A/C template (per Template Base Qty).',
+    )
+    template_base_qty = fields.Float(
+        string='Template Base', digits=(16, 4), default=1.0,
+        help='Base quantity the Std. Qty is expressed against.',
+    )
+
+    suggested_qty = fields.Float(
+        string='Suggested Qty',
+        compute='_compute_suggested_qty', store=True, digits=(16, 4),
+        help='Auto-calculated as (Calculated Qty / Template Base) × Std. Qty.',
+    )
+    is_manual = fields.Boolean(
+        string='Manual Override',
+        help='When set, the Quantity below is locked and will not be '
+             'recalculated when the parent dimensions change.',
+    )
+    quantity = fields.Float(
+        string='Manual Qty',
+        compute='_compute_quantity', store=True, readonly=False, digits=(16, 4),
+        help='Quantity used in costing. Defaults to Suggested Qty; edit to '
+             'override (which sets Manual Override).',
+    )
+
     uom_id = fields.Many2one(
         'construction.uom', related='labour_id.uom_id',
         string='UOM', store=True, readonly=True,
@@ -334,13 +420,38 @@ class EstimateLineLabour(models.Model):
         compute='_compute_amount', store=True, digits=(16, 2),
     )
 
+    @api.depends('line_id.base_qty', 'template_qty', 'template_base_qty')
+    def _compute_suggested_qty(self):
+        for d in self:
+            base = d.template_base_qty or 1.0
+            parent_qty = d.line_id.base_qty if d.line_id else 0.0
+            d.suggested_qty = (parent_qty / base) * d.template_qty
+
+    @api.depends('suggested_qty', 'is_manual')
+    def _compute_quantity(self):
+        for d in self:
+            if not d.is_manual:
+                d.quantity = d.suggested_qty
+
     @api.depends('quantity', 'rate', 'per')
     def _compute_amount(self):
         for d in self:
             divisor = d.per or 1.0
             d.amount = (d.quantity * d.rate) / divisor
 
+    @api.onchange('quantity')
+    def _onchange_quantity(self):
+        for d in self:
+            if d.quantity and abs(d.quantity - d.suggested_qty) > 1e-6:
+                d.is_manual = True
+
     @api.onchange('labour_id')
     def _onchange_labour_id(self):
         if self.labour_id and not self.rate:
             self.rate = self.labour_id.default_rate
+
+    def action_reset_to_suggested(self):
+        for d in self:
+            d.is_manual = False
+            d.quantity = d.suggested_qty
+        return True

@@ -23,29 +23,41 @@
                         <h1><field name="name" placeholder="A/C Name"/></h1>
                     </div>
                     <group>
-                        <field name="description"/>
-                        <field name="active"/>
+                        <group>
+                            <field name="description"/>
+                            <field name="active"/>
+                        </group>
+                        <group string="Standard Ratio">
+                            <field name="base_quantity"/>
+                            <field name="base_uom_id"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Materials">
+                            <div class="text-muted mb-2">
+                                Std. Qty = quantity required per the Base Quantity defined above.
+                            </div>
                             <field name="material_line_ids">
                                 <list editable="bottom">
                                     <field name="sequence" widget="handle"/>
                                     <field name="material_id"/>
                                     <field name="uom_id" string="UOM" readonly="1"/>
-                                    <field name="quantity" string="Coeff."/>
+                                    <field name="quantity" string="Std. Qty"/>
                                     <field name="rate"/>
                                     <field name="line_cost" string="Cost" readonly="1"/>
                                 </list>
                             </field>
                         </page>
                         <page string="Labours">
+                            <div class="text-muted mb-2">
+                                Std. Qty = quantity required per the Base Quantity defined above.
+                            </div>
                             <field name="labour_line_ids">
                                 <list editable="bottom">
                                     <field name="sequence" widget="handle"/>
                                     <field name="labour_id"/>
                                     <field name="uom_id" string="UOM" readonly="1"/>
-                                    <field name="quantity" string="Coeff."/>
+                                    <field name="quantity" string="Std. Qty"/>
                                     <field name="rate"/>
                                     <field name="line_cost" string="Cost" readonly="1"/>
                                 </list>
