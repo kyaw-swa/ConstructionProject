@@ -21,15 +21,16 @@ class AbstractOfCost(models.Model):
         'construction.uom', string='Base UOM',
         help='UOM the Base Quantity is expressed in (typically Sqft or Cuft).',
     )
+    measurement_type = fields.Selection(
+        [('sqft', 'Sqft (Area)'), ('cuft', 'Cuft (Volume)')],
+        string='Measurement Type', default='sqft', required=True,
+    )
 
     material_line_ids = fields.One2many(
         'construction.ac.material', 'ac_id', string='Material Lines',
     )
     labour_line_ids = fields.One2many(
         'construction.ac.labour', 'ac_id', string='Labour Lines',
-    )
-    measurement_ids = fields.One2many(
-        'construction.measurement', 'ac_id', string='Measurement Types',
     )
 
     material_count = fields.Integer(compute='_compute_counts')

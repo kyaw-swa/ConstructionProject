@@ -36,8 +36,6 @@
                         <group>
                             <field name="ac_id"/>
                             <field name="reference"/>
-                            <field name="measurement_id"
-                                   domain="[('ac_id','=',ac_id)]"/>
                             <field name="measurement_type" readonly="1"/>
                             <field name="uom_id"/>
                         </group>
@@ -163,16 +161,15 @@
                     </group>
                     <notebook>
                         <page string="Estimation Lines">
-                            <button name="action_import_boq"
-                                    string="Import BOQ from Excel"
-                                    type="object"
-                                    class="btn-secondary mb-2"/>
                             <field name="line_ids">
                                 <list>
                                     <field name="sequence" widget="handle"/>
                                     <field name="reference"/>
                                     <field name="ac_id" string="Work Item (A/C)"/>
-                                    <field name="measurement_id" optional="show"/>
+                                    <field name="measurement_type" string="Meas. Type" widget="badge"
+                                           decoration-info="measurement_type=='sqft'"
+                                           decoration-success="measurement_type=='cuft'"
+                                           optional="show"/>
                                     <field name="base_qty" string="Qty"/>
                                     <field name="uom_id" string="Unit"/>
                                     <field name="material_total" string="Mat. Total" sum="Mat."/>

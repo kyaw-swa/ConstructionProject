@@ -18,12 +18,6 @@
               action="action_construction_project_estimate"
               sequence="10"/>
 
-    <menuitem id="menu_import_boq"
-              name="Import BOQ from Excel"
-              parent="menu_construction_estimates"
-              action="action_import_boq_wizard"
-              sequence="20"/>
-
     <!-- Configuration -->
     <menuitem id="menu_construction_config"
               name="Configuration"
@@ -47,11 +41,5 @@
               parent="menu_construction_config"
               action="action_construction_labour"
               sequence="30"/>
-
-    <menuitem id="menu_measurements"
-              name="Measurements"
-              parent="menu_construction_config"
-              action="action_construction_measurement"
-              sequence="40"/>
 
 </odoo>

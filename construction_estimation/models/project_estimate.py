@@ -50,16 +50,6 @@ class ProjectEstimate(models.Model):
     def action_reset_draft(self):
         self.state = 'draft'
 
-    def action_import_boq(self):
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Import BOQ from Excel',
-            'res_model': 'construction.import.boq.wizard',
-            'view_mode': 'form',
-            'target': 'new',
-            'context': {'default_estimate_id': self.id},
-        }
-
 
 class EstimationLine(models.Model):
     _name = 'construction.estimate.line'
@@ -81,14 +71,10 @@ class EstimationLine(models.Model):
         string='Ref Code',
         help='BOQ reference shown next to the work item, e.g. P1/Sr1(A).',
     )
-    measurement_id = fields.Many2one(
-        'construction.measurement', string='Measurement Type',
-        ondelete='set null',
-        domain="[('ac_id', '=', ac_id)]",
-    )
     measurement_type = fields.Selection(
-        related='measurement_id.measurement_type',
-        string='Meas. Type', store=True, readonly=True,
+        related='ac_id.measurement_type',
+        string='Measurement Type',
+        store=True, readonly=True,
     )
     uom_id = fields.Many2one(
         'construction.uom', string='UOM',
@@ -146,7 +132,7 @@ class EstimationLine(models.Model):
     )
 
     @api.depends(
-        'measurement_id.measurement_type',
+        'measurement_type',
         'manual_qty',
         'length_ft', 'length_in',
         'breadth_ft', 'breadth_in',
@@ -234,13 +220,7 @@ class EstimationLine(models.Model):
 
     @api.onchange('ac_id')
     def _onchange_ac_id(self):
-        self.measurement_id = False
-        self.uom_id = False
-        self._populate_details_from_ac()
-
-    @api.onchange('measurement_id')
-    def _onchange_measurement_id(self):
-        m_type = self.measurement_id.measurement_type if self.measurement_id else False
+        m_type = self.ac_id.measurement_type if self.ac_id else False
         if m_type == 'sqft':
             self.uom_id = self.env.ref(
                 'construction_estimation.uom_sqft', raise_if_not_found=False,
@@ -251,6 +231,7 @@ class EstimationLine(models.Model):
             )
         else:
             self.uom_id = False
+        self._populate_details_from_ac()
 
     @api.onchange('length_ft', 'length_in', 'breadth_ft', 'breadth_in',
                   'height_ft', 'height_in', 'manual_qty')
@@ -262,10 +243,9 @@ class EstimationLine(models.Model):
             l = line.length_ft + line.length_in / 12.0
             b = line.breadth_ft + line.breadth_in / 12.0
             h = line.height_ft + line.height_in / 12.0
-            m_type = line.measurement_id.measurement_type if line.measurement_id else False
-            if m_type == 'cuft':
+            if line.measurement_type == 'cuft':
                 line.base_qty = l * b * h
-            elif m_type == 'sqft':
+            elif line.measurement_type == 'sqft':
                 line.base_qty = l * b
             else:
                 line.base_qty = 0.0

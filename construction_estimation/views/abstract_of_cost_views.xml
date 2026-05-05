@@ -7,6 +7,9 @@
         <field name="arch" type="xml">
             <list string="Abstract of Cost">
                 <field name="name"/>
+                <field name="measurement_type" widget="badge"
+                       decoration-info="measurement_type=='sqft'"
+                       decoration-success="measurement_type=='cuft'"/>
                 <field name="material_count" string="Materials"/>
                 <field name="labour_count" string="Labours"/>
             </list>
@@ -30,6 +33,7 @@
                         <group string="Standard Ratio">
                             <field name="base_quantity"/>
                             <field name="base_uom_id"/>
+                            <field name="measurement_type" widget="radio"/>
                         </group>
                     </group>
                     <notebook>
@@ -60,19 +64,6 @@
                                     <field name="quantity" string="Std. Qty"/>
                                     <field name="rate"/>
                                     <field name="line_cost" string="Cost" readonly="1"/>
-                                </list>
-                            </field>
-                        </page>
-                        <page string="Measurement Types">
-                            <field name="measurement_ids">
-                                <list editable="bottom">
-                                    <field name="sequence" widget="handle"/>
-                                    <field name="name" string="Type"/>
-                                    <field name="parent_id" domain="[('ac_id','=',parent.id)]"/>
-                                    <field name="description"/>
-                                    <field name="measurement_type" widget="badge"
-                                           decoration-info="measurement_type=='sqft'"
-                                           decoration-success="measurement_type=='cuft'"/>
                                 </list>
                             </field>
                         </page>
