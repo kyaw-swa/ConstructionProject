@@ -72,6 +72,130 @@
                                         <td/><td/><td/>
                                     </tr>
 
+                                    <t t-if="line.use_detailed_measurement and line.section_ids">
+                                        <tr>
+                                            <td/>
+                                            <td colspan="6">
+                                                <em>Detail of Measurement</em>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td/>
+                                            <td colspan="6" class="px-0">
+                                                <table class="table table-sm mb-0"
+                                                       style="font-size: 0.9em;">
+                                                    <thead>
+                                                        <tr class="table-light">
+                                                            <th style="width:18%;">Particular</th>
+                                                            <th class="text-end" style="width:4%;">Nos</th>
+                                                            <th class="text-center" style="width:3%;">×</th>
+                                                            <th class="text-end" style="width:5%;">Mul</th>
+                                                            <th class="text-end" style="width:6%;">L Ft</th>
+                                                            <th class="text-end" style="width:6%;">L In</th>
+                                                            <th class="text-end" style="width:6%;">B Ft</th>
+                                                            <th class="text-end" style="width:6%;">B In</th>
+                                                            <th class="text-end" style="width:6%;">H Ft</th>
+                                                            <th class="text-end" style="width:6%;">H In</th>
+                                                            <th class="text-end" style="width:8%;">Deduction</th>
+                                                            <th class="text-end" style="width:9%;">Content</th>
+                                                            <th class="text-center" style="width:5%;">Unit</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <t t-foreach="line.section_ids" t-as="sec">
+                                                            <tr>
+                                                                <td colspan="13">
+                                                                    <strong t-esc="sec.name"/>
+                                                                </td>
+                                                            </tr>
+                                                            <t t-foreach="sec.subelement_ids" t-as="se">
+                                                                <tr>
+                                                                    <td class="ps-3">
+                                                                        <em t-esc="se.name"/>
+                                                                    </td>
+                                                                    <td colspan="12"/>
+                                                                </tr>
+                                                                <t t-foreach="se.measurement_ids" t-as="m">
+                                                                    <tr>
+                                                                        <td class="ps-5"
+                                                                            t-esc="m.name or ''"/>
+                                                                        <td class="text-end" t-esc="m.nos"/>
+                                                                        <td class="text-center">×</td>
+                                                                        <td class="text-end" t-esc="m.multiplier"/>
+                                                                        <td class="text-end">
+                                                                            <span t-esc="'%g' % m.length_ft"/>
+                                                                        </td>
+                                                                        <td class="text-end">
+                                                                            <span t-esc="'%g' % m.length_in"/>
+                                                                        </td>
+                                                                        <td class="text-end">
+                                                                            <span t-esc="'%g' % m.breadth_ft"/>
+                                                                        </td>
+                                                                        <td class="text-end">
+                                                                            <span t-esc="'%g' % m.breadth_in"/>
+                                                                        </td>
+                                                                        <td class="text-end">
+                                                                            <t t-if="line.measurement_type == 'cuft'">
+                                                                                <span t-esc="'%g' % m.height_ft"/>
+                                                                            </t>
+                                                                        </td>
+                                                                        <td class="text-end">
+                                                                            <t t-if="line.measurement_type == 'cuft'">
+                                                                                <span t-esc="'%g' % m.height_in"/>
+                                                                            </t>
+                                                                        </td>
+                                                                        <td class="text-end">
+                                                                            <t t-if="m.deduction">
+                                                                                <span t-esc="'%.2f' % m.deduction"/>
+                                                                            </t>
+                                                                        </td>
+                                                                        <td class="text-end">
+                                                                            <span t-esc="'%.2f' % m.content"/>
+                                                                        </td>
+                                                                        <td class="text-center"
+                                                                            t-esc="m.uom_label"/>
+                                                                    </tr>
+                                                                </t>
+                                                                <tr>
+                                                                    <td class="ps-5 text-end" colspan="11">
+                                                                        <em>Sub-element subtotal</em>
+                                                                    </td>
+                                                                    <td class="text-end">
+                                                                        <em t-esc="'%.2f' % se.subtotal"/>
+                                                                    </td>
+                                                                    <td/>
+                                                                </tr>
+                                                            </t>
+                                                            <tr class="table-light">
+                                                                <td class="ps-3 text-end" colspan="11">
+                                                                    <strong>Section subtotal</strong>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <strong t-esc="'%.2f' % sec.subtotal"/>
+                                                                </td>
+                                                                <td/>
+                                                            </tr>
+                                                        </t>
+                                                        <tr>
+                                                            <td class="text-end" colspan="11">
+                                                                <strong>Total</strong>
+                                                            </td>
+                                                            <td class="text-end">
+                                                                <strong t-esc="'%.2f' % line.base_qty"/>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <strong>
+                                                                    <t t-if="line.measurement_type == 'cuft'">Cft</t>
+                                                                    <t t-if="line.measurement_type == 'sqft'">Sft</t>
+                                                                </strong>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </t>
+
                                     <t t-if="line.material_detail_ids">
                                         <tr>
                                             <td/>

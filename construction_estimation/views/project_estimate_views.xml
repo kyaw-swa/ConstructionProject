@@ -30,6 +30,11 @@
                             string="Recompute from A/C"
                             type="object" class="btn-secondary"
                             help="Re-copy material and labour rows from the A/C, scaled by the current Base Qty."/>
+                    <button name="action_copy_sections_from_line"
+                            string="Copy Structure from Another Line"
+                            type="object" class="btn-secondary"
+                            invisible="not use_detailed_measurement"
+                            help="Clone the Section/Sub-element skeleton (names only) from another line in this estimate."/>
                 </header>
                 <sheet>
                     <group>
@@ -38,6 +43,7 @@
                             <field name="reference"/>
                             <field name="measurement_type" readonly="1"/>
                             <field name="uom_id"/>
+                            <field name="use_detailed_measurement" widget="boolean_toggle"/>
                         </group>
                         <group>
                             <label for="length_ft" string="Length (Ft / In)"/>
@@ -61,11 +67,71 @@
                                    invisible="measurement_type != 'sqft'"/>
                             <field name="volume" readonly="1"
                                    invisible="measurement_type != 'cuft'"/>
-                            <field name="manual_qty"/>
+                            <field name="manual_qty"
+                                   invisible="use_detailed_measurement"/>
+                            <field name="detailed_total" readonly="1"
+                                   invisible="not use_detailed_measurement"/>
                             <field name="base_qty" readonly="1"/>
                         </group>
                     </group>
                     <notebook>
+                        <page string="Detailed Measurement"
+                              invisible="not use_detailed_measurement">
+                            <field name="section_ids">
+                                <list string="Sections">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="subtotal" readonly="1" sum="Total"/>
+                                </list>
+                                <form string="Section">
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="subtotal" readonly="1"/>
+                                        </group>
+                                        <field name="subelement_ids">
+                                            <list string="Sub-elements">
+                                                <field name="sequence" widget="handle"/>
+                                                <field name="name"/>
+                                                <field name="subtotal" readonly="1" sum="Total"/>
+                                            </list>
+                                            <form string="Sub-element">
+                                                <sheet>
+                                                    <group>
+                                                        <field name="name"/>
+                                                        <field name="measurement_type" invisible="1"/>
+                                                        <field name="subtotal" readonly="1"/>
+                                                    </group>
+                                                    <field name="measurement_ids">
+                                                        <list string="Measurements" editable="bottom">
+                                                            <field name="sequence" widget="handle"/>
+                                                            <field name="measurement_type" column_invisible="1"/>
+                                                            <field name="name" string="Particular"/>
+                                                            <field name="nos"/>
+                                                            <field name="multiplier" string="×"/>
+                                                            <field name="length_ft" string="L Ft"/>
+                                                            <field name="length_in" string="L In"/>
+                                                            <field name="breadth_ft" string="B Ft"/>
+                                                            <field name="breadth_in" string="B In"/>
+                                                            <field name="height_ft" string="H Ft"
+                                                                   column_invisible="parent.measurement_type == 'sqft'"/>
+                                                            <field name="height_in" string="H In"
+                                                                   column_invisible="parent.measurement_type == 'sqft'"/>
+                                                            <field name="deduction"/>
+                                                            <field name="content" readonly="1" sum="Total"/>
+                                                            <field name="uom_label" string="Unit"/>
+                                                        </list>
+                                                    </field>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </sheet>
+                                </form>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right">
+                                <field name="detailed_total" readonly="1"/>
+                            </group>
+                        </page>
                         <page string="Materials">
                             <field name="material_detail_ids">
                                 <list editable="bottom">
@@ -192,6 +258,35 @@
         <field name="name">Project Estimates</field>
         <field name="res_model">construction.project.estimate</field>
         <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_estimate_line_copy_wizard_form" model="ir.ui.view">
+        <field name="name">construction.estimate.line.copy.wizard.form</field>
+        <field name="model">construction.estimate.line.copy.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Copy Detailed-Measurement Structure">
+                <sheet>
+                    <group>
+                        <field name="target_line_id" readonly="1"/>
+                        <field name="target_estimate_id" readonly="1"/>
+                        <field name="source_line_id"
+                               options="{'no_create': True, 'no_open': True}"/>
+                        <field name="replace_existing" widget="boolean_toggle"/>
+                    </group>
+                    <p class="text-muted">
+                        Only the section and sub-element <em>names</em> are copied.
+                        Measurement rows are intentionally left blank — the surveyor
+                        fills them in for the new work item.
+                    </p>
+                </sheet>
+                <footer>
+                    <button name="action_copy" string="Copy"
+                            type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
     </record>
 
 </odoo>

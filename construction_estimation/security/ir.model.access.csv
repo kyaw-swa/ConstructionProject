@@ -8,4 +8,8 @@ access_construction_project_estimate_user,construction.project.estimate user,mod
 access_construction_estimate_line_user,construction.estimate.line user,model_construction_estimate_line,base.group_user,1,1,1,1
 access_construction_estimate_line_material_user,construction.estimate.line.material user,model_construction_estimate_line_material,base.group_user,1,1,1,1
 access_construction_estimate_line_labour_user,construction.estimate.line.labour user,model_construction_estimate_line_labour,base.group_user,1,1,1,1
+access_construction_estimate_line_section_user,construction.estimate.line.section user,model_construction_estimate_line_section,base.group_user,1,1,1,1
+access_construction_estimate_line_subelement_user,construction.estimate.line.subelement user,model_construction_estimate_line_subelement,base.group_user,1,1,1,1
+access_construction_estimate_line_measurement_user,construction.estimate.line.measurement user,model_construction_estimate_line_measurement,base.group_user,1,1,1,1
+access_construction_estimate_line_copy_wizard_user,construction.estimate.line.copy.wizard user,model_construction_estimate_line_copy_wizard,base.group_user,1,1,1,1
 access_construction_uom_user,construction.uom user,model_construction_uom,base.group_user,1,1,1,1

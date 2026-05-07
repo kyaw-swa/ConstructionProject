@@ -62,6 +62,49 @@ An Odoo 19 module for BOQ-based (Bill of Quantities) cost estimation of construc
 7. **Manual override** on any detail row: editing *Manual Qty* flips `is_manual=True` so the row stops auto-recalculating when dimensions change. *Reset to Suggested* clears the override.
 8. **Confirm** the estimate and print *Project Estimate (BOQ)* PDF from the print menu.
 
+### 2.1 Detailed Measurement (Detail of Measurement sheet)
+
+For real-world work items (Hard Core Filling, Brick Work, RCC) a single L×B×H rectangle isn't enough — the line is the sum of many measured rows grouped by named sections and sub-elements. Toggle **Use Detailed Measurement** on the line and a *Detailed Measurement* notebook page appears with three nested levels:
+
+```
+Estimation Line  (Hard Core Filling Work, Cuft)
+└── Section            "For Footing", "For Retaining Wall", …
+    └── Sub-element    "F1", "F2", "RW1", …
+        └── Measurement row
+              (Particular, Nos × ×, L Ft/In, B Ft/In, H Ft/In, Deduction, Content)
+```
+
+Per-row formula (`measurement_type=cuft`):
+
+```
+Content = round( Nos × × × (L_ft + L_in/12) × (B_ft + B_in/12) × (H_ft + H_in/12) − Deduction, 2 )
+```
+
+For `sqft` items, the H columns are hidden and the H factor is dropped. Subtotals roll up automatically: row Content → Sub-element subtotal → Section subtotal → line **Detailed Total** → line **Base Qty**. Material/labour rows continue to scale off Base Qty, so the entire BOQ updates as you fill in measurements.
+
+The *Copy Structure from Another Line* button on the line clones the section/sub-element skeleton (names only) from another detailed line in the same estimate — useful because Earth Excavation, Hard Core Filling, and Lean Concrete typically share the same Footing+Retaining-Wall layout.
+
+#### Acceptance walk-through
+
+Reproduce the *Hard Core Filling Work* example end-to-end:
+
+1. **A/C** — name `Hard Core Filling Work`, base quantity `1000`, base UOM `Cft`, measurement type `cuft`. Add one material line (`6"x9" Stone`, Std. Qty `10` Suds) and one labour line (`Workers`, Std. Qty `10` Nos).
+2. **Project Estimate** — create a new estimate, add a line, pick that A/C, and toggle **Use Detailed Measurement**.
+3. **Sections** — add `For Footing` and `For Retaining Wall`.
+4. Under *For Footing*:
+   - Sub-element `F1` → row (Nos `1`, × `15`, L `4'9"`, B `4'9"`, H `0'9"`) → Content `253.83`.
+   - Sub-element `F2` → row (Nos `1`, × `37`, L `5'9"`, B `5'9"`, H `0'9"`) → Content `917.48`.
+5. Under *For Retaining Wall*:
+   - Sub-element `RW1` →
+     - `140'-0" Span` (Nos `1`, × `1`, L `73'6"`, B `2'6"`, H `0'3"`) → `45.94`.
+     - `6'-0" Span` (Nos `1`, × `7`, L `0'9"`, B `2'6"`, H `0'3"`) → `3.28`.
+   - Sub-element `RW2` →
+     - `140'-0" Span` (Nos `1`, × `2`, L `59'6"`, B `2'6"`, H `0'3"`) → `74.38`.
+     - `24'-0" Span` (Nos `1`, × `7`, L `12'6"`, B `2'6"`, H `0'3"`) → `54.69`.
+6. **Verify** — Detailed Total = Base Qty = **1349.60** Cft (±0.05). The `6"x9" Stone` material row auto-scales to `(1349.60 / 1000) × 10 = 13.496` Suds. Print the BOQ PDF and confirm the section → sub-element → measurement breakdown is rendered with subtotals at each level.
+
+Lines without the toggle keep the original single-rectangle UI and report layout — the feature is opt-in per line.
+
 ---
 
 ## 3. Code flow & architecture

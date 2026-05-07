@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 
 class ProjectEstimate(models.Model):
@@ -93,6 +94,25 @@ class EstimationLine(models.Model):
         help='If set, overrides the computed area/volume as the base quantity.',
     )
 
+    # ── Detailed measurement (Detail of Measurement sheet) ────────────────────
+    use_detailed_measurement = fields.Boolean(
+        string='Use Detailed Measurement',
+        help='When enabled, Base Qty is the sum of all measurement rows '
+             'across Sections → Sub-elements → Measurement rows, like a '
+             'traditional Detail of Measurement sheet. The single-rectangle '
+             'L/B/H above becomes informational only.',
+    )
+    section_ids = fields.One2many(
+        'construction.estimate.line.section', 'line_id',
+        string='Sections',
+    )
+    detailed_total = fields.Float(
+        string='Detailed Total',
+        compute='_compute_detailed_total', store=True, digits=(16, 4),
+        help='Sum of all Section subtotals (which roll up Sub-element and '
+             'Measurement-row totals).',
+    )
+
     # ── Calculated reference quantities (read-only) ───────────────────────────
     area = fields.Float(
         string='Area (Sqft)',
@@ -131,12 +151,19 @@ class EstimationLine(models.Model):
         compute='_compute_totals', store=True, digits=(16, 2),
     )
 
+    @api.depends('section_ids.subtotal')
+    def _compute_detailed_total(self):
+        for line in self:
+            line.detailed_total = sum(line.section_ids.mapped('subtotal'))
+
     @api.depends(
         'measurement_type',
         'manual_qty',
         'length_ft', 'length_in',
         'breadth_ft', 'breadth_in',
         'height_ft', 'height_in',
+        'use_detailed_measurement',
+        'detailed_total',
     )
     def _compute_dimensions(self):
         for line in self:
@@ -153,7 +180,11 @@ class EstimationLine(models.Model):
                 line.area = 0.0
                 line.volume = 0.0
 
-            if line.manual_qty:
+            if line.use_detailed_measurement:
+                # Rollup from Sections → Sub-elements → Measurements wins;
+                # area/volume above are kept computed but informational.
+                line.base_qty = line.detailed_total
+            elif line.manual_qty:
                 line.base_qty = line.manual_qty
             elif line.measurement_type == 'cuft':
                 line.base_qty = line.volume
@@ -218,6 +249,20 @@ class EstimationLine(models.Model):
         self._populate_details_from_ac()
         return True
 
+    def action_copy_sections_from_line(self):
+        """Open the copy-structure wizard pre-targeted at this line."""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Copy Structure From Another Line',
+            'res_model': 'construction.estimate.line.copy.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_target_line_id': self.id,
+            },
+        }
+
     @api.onchange('ac_id')
     def _onchange_ac_id(self):
         m_type = self.ac_id.measurement_type if self.ac_id else False
@@ -234,9 +279,13 @@ class EstimationLine(models.Model):
         self._populate_details_from_ac()
 
     @api.onchange('length_ft', 'length_in', 'breadth_ft', 'breadth_in',
-                  'height_ft', 'height_in', 'manual_qty')
+                  'height_ft', 'height_in', 'manual_qty',
+                  'use_detailed_measurement', 'detailed_total')
     def _onchange_dimensions(self):
         for line in self:
+            if line.use_detailed_measurement:
+                line.base_qty = line.detailed_total
+                continue
             if line.manual_qty:
                 line.base_qty = line.manual_qty
                 continue
@@ -435,3 +484,234 @@ class EstimateLineLabour(models.Model):
             d.is_manual = False
             d.quantity = d.suggested_qty
         return True
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  Detailed Measurement: Section → Sub-element → Measurement row
+#  Models a traditional Quantity-Surveyor "Detail of Measurement" sheet.
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+class EstimateLineSection(models.Model):
+    _name = 'construction.estimate.line.section'
+    _description = 'Estimation Line — Detailed Measurement Section'
+    _order = 'line_id, sequence, id'
+
+    line_id = fields.Many2one(
+        'construction.estimate.line', required=True,
+        ondelete='cascade', index=True,
+    )
+    sequence = fields.Integer(default=10)
+    name = fields.Char(
+        string='Section', required=True,
+        help='Free-text group label, e.g. "For Footing", "18\" Thk Wall / In Footing".',
+    )
+    subelement_ids = fields.One2many(
+        'construction.estimate.line.subelement', 'section_id',
+        string='Sub-elements',
+    )
+    subtotal = fields.Float(
+        string='Subtotal',
+        compute='_compute_subtotal', store=True, digits=(16, 2),
+    )
+
+    @api.depends('subelement_ids.subtotal')
+    def _compute_subtotal(self):
+        for s in self:
+            s.subtotal = sum(s.subelement_ids.mapped('subtotal'))
+
+
+class EstimateLineSubelement(models.Model):
+    _name = 'construction.estimate.line.subelement'
+    _description = 'Estimation Line — Detailed Measurement Sub-element'
+    _order = 'section_id, sequence, id'
+
+    section_id = fields.Many2one(
+        'construction.estimate.line.section', required=True,
+        ondelete='cascade', index=True,
+    )
+    line_id = fields.Many2one(
+        'construction.estimate.line',
+        related='section_id.line_id', store=True, index=True, readonly=True,
+    )
+    measurement_type = fields.Selection(
+        related='line_id.measurement_type', store=True, readonly=True,
+    )
+    sequence = fields.Integer(default=10)
+    name = fields.Char(
+        string='Sub-element', required=True,
+        help='Free-text element label, e.g. "F1", "RW2", "FB3 (12x18)".',
+    )
+    measurement_ids = fields.One2many(
+        'construction.estimate.line.measurement', 'subelement_id',
+        string='Measurements',
+    )
+    subtotal = fields.Float(
+        string='Subtotal',
+        compute='_compute_subtotal', store=True, digits=(16, 2),
+        help='Sum of measurement-row Content (deduction is already netted out '
+             'of each row\'s Content).',
+    )
+
+    @api.depends('measurement_ids.content')
+    def _compute_subtotal(self):
+        for se in self:
+            se.subtotal = sum(se.measurement_ids.mapped('content'))
+
+
+class EstimateLineMeasurement(models.Model):
+    _name = 'construction.estimate.line.measurement'
+    _description = 'Estimation Line — Detailed Measurement Row'
+    _order = 'subelement_id, sequence, id'
+
+    subelement_id = fields.Many2one(
+        'construction.estimate.line.subelement', required=True,
+        ondelete='cascade', index=True,
+    )
+    line_id = fields.Many2one(
+        'construction.estimate.line',
+        related='subelement_id.line_id', store=True, index=True, readonly=True,
+    )
+    measurement_type = fields.Selection(
+        related='line_id.measurement_type', store=True, readonly=True,
+    )
+    uom_label = fields.Char(
+        string='Unit',
+        compute='_compute_uom_label',
+    )
+
+    sequence = fields.Integer(default=10)
+    name = fields.Char(
+        string='Particular',
+        help='Optional row label, e.g. "140\'-0\" Span". Blank is fine.',
+    )
+
+    nos = fields.Integer(string='Nos', default=1)
+    multiplier = fields.Integer(string='×', default=1)
+
+    length_ft = fields.Float(string='L Ft', digits=(16, 4))
+    length_in = fields.Float(string='L In', digits=(16, 4))
+    breadth_ft = fields.Float(string='B Ft', digits=(16, 4))
+    breadth_in = fields.Float(string='B In', digits=(16, 4))
+    height_ft = fields.Float(string='H Ft', digits=(16, 4))
+    height_in = fields.Float(string='H In', digits=(16, 4))
+
+    deduction = fields.Float(string='Deduction', default=0.0, digits=(16, 2))
+
+    content = fields.Float(
+        string='Content',
+        compute='_compute_content', store=True, digits=(16, 2),
+    )
+
+    # TODO: cross-row dimension reuse (`source_measurement_id` self-ref) —
+    # deferred. Shape: M2o self-ref filtered to same estimate; when set, pull
+    # length_ft/in and breadth_ft/in from the source via stored compute; H and
+    # deduction stay independent. UI gated behind a per-row toggle so the form
+    # stays clean.
+
+    _sql_constraints = [
+        (
+            'length_in_lt_12',
+            'CHECK (length_in >= 0 AND length_in < 12)',
+            'Length inches must be in [0, 12).',
+        ),
+        (
+            'breadth_in_lt_12',
+            'CHECK (breadth_in >= 0 AND breadth_in < 12)',
+            'Breadth inches must be in [0, 12).',
+        ),
+        (
+            'height_in_lt_12',
+            'CHECK (height_in >= 0 AND height_in < 12)',
+            'Height inches must be in [0, 12).',
+        ),
+    ]
+
+    @api.depends('measurement_type')
+    def _compute_uom_label(self):
+        for r in self:
+            if r.measurement_type == 'cuft':
+                r.uom_label = 'Cft'
+            elif r.measurement_type == 'sqft':
+                r.uom_label = 'Sft'
+            else:
+                r.uom_label = ''
+
+    @api.depends(
+        'nos', 'multiplier',
+        'length_ft', 'length_in',
+        'breadth_ft', 'breadth_in',
+        'height_ft', 'height_in',
+        'deduction', 'measurement_type',
+    )
+    def _compute_content(self):
+        for r in self:
+            L = r.length_ft + r.length_in / 12.0
+            B = r.breadth_ft + r.breadth_in / 12.0
+            raw = (r.nos or 0) * (r.multiplier or 0) * L * B
+            if r.measurement_type == 'cuft':
+                H = r.height_ft + r.height_in / 12.0
+                raw *= H
+            r.content = round(raw - (r.deduction or 0.0), 2)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  Wizard: copy section/sub-element skeleton from another line
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+class EstimateLineCopyWizard(models.TransientModel):
+    _name = 'construction.estimate.line.copy.wizard'
+    _description = 'Copy Detailed-Measurement Structure From Another Line'
+
+    target_line_id = fields.Many2one(
+        'construction.estimate.line', required=True, ondelete='cascade',
+    )
+    target_estimate_id = fields.Many2one(
+        'construction.project.estimate',
+        related='target_line_id.estimate_id', readonly=True,
+    )
+    source_line_id = fields.Many2one(
+        'construction.estimate.line', string='Copy From',
+        required=True, ondelete='cascade',
+        domain="[('estimate_id', '=', target_estimate_id),"
+               " ('id', '!=', target_line_id),"
+               " ('use_detailed_measurement', '=', True)]",
+    )
+    replace_existing = fields.Boolean(
+        string='Replace Existing Sections',
+        default=True,
+        help='If on, the target line\'s current sections are wiped before '
+             'copying. If off, copied sections are appended.',
+    )
+
+    def action_copy(self):
+        self.ensure_one()
+        target = self.target_line_id
+        source = self.source_line_id
+        if not source.section_ids:
+            raise UserError(
+                "The selected source line has no sections to copy."
+            )
+        if self.replace_existing:
+            target.section_ids = [(5, 0, 0)]
+
+        section_cmds = []
+        for sec in source.section_ids:
+            sub_cmds = [
+                (0, 0, {
+                    'sequence': se.sequence,
+                    'name': se.name,
+                    # measurement_ids intentionally left empty — names only.
+                })
+                for se in sec.subelement_ids
+            ]
+            section_cmds.append((0, 0, {
+                'sequence': sec.sequence,
+                'name': sec.name,
+                'subelement_ids': sub_cmds,
+            }))
+        target.section_ids = section_cmds
+        if not target.use_detailed_measurement:
+            target.use_detailed_measurement = True
+        return {'type': 'ir.actions.act_window_close'}

@@ -1,6 +1,6 @@
 {
     'name': 'Construction Project Estimation',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.3.0',
     'category': 'Construction',
     'summary': 'BOQ-based construction project cost estimation',
     'author': 'Phoe Ku',
