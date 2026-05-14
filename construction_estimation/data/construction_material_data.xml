@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="material_jungle_wood" model="construction.material">
+        <field name="name">Jungle wood</field>
+        <field name="uom_id" ref="uom_ton"/>
+        <field name="default_rate">800000</field>
+    </record>
+    <record id="material_6_x9_stone" model="construction.material">
+        <field name="name">6"x9" Stone</field>
+        <field name="uom_id" ref="uom_suds"/>
+        <field name="default_rate">30000</field>
+    </record>
+    <record id="material_cement" model="construction.material">
+        <field name="name">Cement</field>
+        <field name="uom_id" ref="uom_bags"/>
+        <field name="default_rate">5900</field>
+    </record>
+    <record id="material_sand" model="construction.material">
+        <field name="name">Sand</field>
+        <field name="uom_id" ref="uom_suds"/>
+        <field name="default_rate">12000</field>
+    </record>
+    <record id="material_chipping" model="construction.material">
+        <field name="name">Chipping</field>
+        <field name="uom_id" ref="uom_suds"/>
+        <field name="default_rate">58000</field>
+    </record>
+    <record id="material_brick" model="construction.material">
+        <field name="name">Brick</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">100</field>
+    </record>
+    <record id="material_fuel" model="construction.material">
+        <field name="name">Fuel</field>
+        <field name="uom_id" ref="uom_gal"/>
+        <field name="default_rate">4500</field>
+    </record>
+    <record id="material_5_plywood" model="construction.material">
+        <field name="name">5 Plywood</field>
+        <field name="uom_id" ref="uom_sht"/>
+        <field name="default_rate">17500</field>
+    </record>
+    <record id="material_16mm_m_s_rod" model="construction.material">
+        <field name="name">16mmɸ M.S Rod</field>
+        <field name="uom_id" ref="uom_ton"/>
+        <field name="default_rate">870000</field>
+    </record>
+    <record id="material_10mm_m_s_rod" model="construction.material">
+        <field name="name">10mmɸ M.S Rod</field>
+        <field name="uom_id" ref="uom_ton"/>
+        <field name="default_rate">870000</field>
+    </record>
+    <record id="material_8mm_m_s_rod" model="construction.material">
+        <field name="name">8mmɸ M.S Rod</field>
+        <field name="uom_id" ref="uom_ton"/>
+        <field name="default_rate">1e+06</field>
+    </record>
+    <record id="material_binding_wire" model="construction.material">
+        <field name="name">Binding wire</field>
+        <field name="uom_id" ref="uom_cwt"/>
+        <field name="default_rate">80000</field>
+    </record>
+    <record id="material_1_4_lx1_4_thk_post_strut" model="construction.material">
+        <field name="name">1'-4" Lx1/4" thk post strut</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">3600</field>
+    </record>
+    <record id="material_1_5_l_5_8_bolt_nut" model="construction.material">
+        <field name="name">1.5" L 5/8ɸ  bolt&amp; nut</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">1500</field>
+    </record>
+    <record id="material_5_x2_u" model="construction.material">
+        <field name="name">5"x2" U</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">45000</field>
+    </record>
+    <record id="material_welding_rod" model="construction.material">
+        <field name="name">Welding rod</field>
+        <field name="uom_id" ref="uom_pck"/>
+        <field name="default_rate">8000</field>
+    </record>
+    <record id="material_4_x2_u" model="construction.material">
+        <field name="name">4"x2" U</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">23500</field>
+    </record>
+    <record id="material_3_x1_2_channel" model="construction.material">
+        <field name="name">3"x1⅟2" channel</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">13500</field>
+    </record>
+    <record id="material_2_x2_angle" model="construction.material">
+        <field name="name">2"x2" angle</field>
+        <field name="uom_id" ref="uom_rft"/>
+        <field name="default_rate">400</field>
+    </record>
+    <record id="material_four_angle_sheet" model="construction.material">
+        <field name="name">Four angle sheet</field>
+        <field name="uom_id" ref="uom_rft"/>
+        <field name="default_rate">1200</field>
+    </record>
+    <record id="material_roofing_nail" model="construction.material">
+        <field name="name">Roofing nail</field>
+        <field name="uom_id" ref="uom_viss"/>
+        <field name="default_rate">4500</field>
+    </record>
+    <record id="material_colour_plain_sheet" model="construction.material">
+        <field name="name">Colour plain sheet</field>
+        <field name="uom_id" ref="uom_rft"/>
+        <field name="default_rate">1200</field>
+    </record>
+    <record id="material_8_x1_plank" model="construction.material">
+        <field name="name">8"x1" Plank</field>
+        <field name="uom_id" ref="uom_ton"/>
+        <field name="default_rate">800000</field>
+    </record>
+    <record id="material_earth_oil" model="construction.material">
+        <field name="name">earth oil</field>
+        <field name="uom_id" ref="uom_sft"/>
+        <field name="default_rate">150</field>
+    </record>
+    <record id="material_x_met" model="construction.material">
+        <field name="name">X-met</field>
+        <field name="uom_id" ref="uom_rft"/>
+        <field name="default_rate">40</field>
+    </record>
+    <record id="material_5_x2_chowket" model="construction.material">
+        <field name="name">5"x2" Chowket</field>
+        <field name="uom_id" ref="uom_rft"/>
+        <field name="default_rate">2900</field>
+    </record>
+    <record id="material_chowket_m_s_bracket" model="construction.material">
+        <field name="name">Chowket M.S bracket</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">300</field>
+    </record>
+    <record id="material_ready_made_teak_door" model="construction.material">
+        <field name="name">Ready made teak door</field>
+        <field name="uom_id" ref="uom_sft"/>
+        <field name="default_rate">8000</field>
+    </record>
+    <record id="material_nails" model="construction.material">
+        <field name="name">Nails</field>
+        <field name="uom_id" ref="uom_viss"/>
+        <field name="default_rate">3000</field>
+    </record>
+    <record id="material_5_butt_hinge" model="construction.material">
+        <field name="name">5" butt hinge</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">700</field>
+    </record>
+    <record id="material_6_tower_bolt" model="construction.material">
+        <field name="name">6" tower bolt</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">900</field>
+    </record>
+    <record id="material_6_hook_eye" model="construction.material">
+        <field name="name">6" hook &amp; eye</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">800</field>
+    </record>
+    <record id="material_aluminium_slide_lock" model="construction.material">
+        <field name="name">Aluminium Slide lock</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">5500</field>
+    </record>
+    <record id="material_teak" model="construction.material">
+        <field name="name">Teak</field>
+        <field name="uom_id" ref="uom_ton"/>
+        <field name="default_rate">800000</field>
+    </record>
+    <record id="material_3mm_glass" model="construction.material">
+        <field name="name">3mm Glass</field>
+        <field name="uom_id" ref="uom_sft"/>
+        <field name="default_rate">1500</field>
+    </record>
+    <record id="material_putty" model="construction.material">
+        <field name="name">Putty</field>
+        <field name="uom_id" ref="uom_gal"/>
+        <field name="default_rate">10000</field>
+    </record>
+    <record id="material_sand_paper" model="construction.material">
+        <field name="name">Sand paper</field>
+        <field name="uom_id" ref="uom_doz"/>
+        <field name="default_rate">1600</field>
+    </record>
+    <record id="material_putty_trowel" model="construction.material">
+        <field name="name">Putty trowel</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">500</field>
+    </record>
+    <record id="material_emulsion_paint" model="construction.material">
+        <field name="name">Emulsion paint</field>
+        <field name="uom_id" ref="uom_gal"/>
+        <field name="default_rate">16000</field>
+    </record>
+    <record id="material_paint_roller" model="construction.material">
+        <field name="name">Paint roller</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">1600</field>
+    </record>
+    <record id="material_ready_mixed_oil_paint" model="construction.material">
+        <field name="name">Ready mixed oil paint</field>
+        <field name="uom_id" ref="uom_gal"/>
+        <field name="default_rate">21000</field>
+    </record>
+    <record id="material_putty_d" model="construction.material">
+        <field name="name">Putty(D)</field>
+        <field name="uom_id" ref="uom_lbs"/>
+        <field name="default_rate">600</field>
+    </record>
+    <record id="material_enamel_paint_gal" model="construction.material">
+        <field name="name">Enamel Paint (Gal)</field>
+        <field name="uom_id" ref="uom_gal"/>
+        <field name="default_rate">9000</field>
+    </record>
+    <record id="material_3_paint_brush" model="construction.material">
+        <field name="name">3" Paint Brush</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">500</field>
+    </record>
+    <record id="material_bamboo" model="construction.material">
+        <field name="name">Bamboo</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">550</field>
+    </record>
+    <record id="material_coil_yarn" model="construction.material">
+        <field name="name">Coil yarn</field>
+        <field name="uom_id" ref="uom_viss"/>
+        <field name="default_rate">4500</field>
+    </record>
+    <record id="material_blackboard" model="construction.material">
+        <field name="name">Blackboard</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">50000</field>
+    </record>
+    <record id="material_8_x8_concrete_block" model="construction.material">
+        <field name="name">8"x8" concrete block</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">800</field>
+    </record>
+    <record id="material_g_i_plain_sheet" model="construction.material">
+        <field name="name">G.I plain sheet</field>
+        <field name="uom_id" ref="uom_rft"/>
+        <field name="default_rate">900</field>
+    </record>
+    <record id="material_bracket" model="construction.material">
+        <field name="name">Bracket</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">350</field>
+    </record>
+    <record id="material_earthing_rod" model="construction.material">
+        <field name="name">Earthing Rod</field>
+        <field name="uom_id" ref="uom_set"/>
+        <field name="default_rate">800000</field>
+    </record>
+    <record id="material_drain_cover" model="construction.material">
+        <field name="name">Drain Cover</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">10000</field>
+    </record>
+    <record id="material_aluminium_w_m_l" model="construction.material">
+        <field name="name">Aluminium W (M+L)</field>
+        <field name="uom_id" ref="uom_sft"/>
+        <field name="default_rate">6500</field>
+    </record>
+    <record id="material_ceiling_with_c_channel_frame_m_l" model="construction.material">
+        <field name="name">Ceiling with C-channel frame(M+L)</field>
+        <field name="uom_id" ref="uom_sft"/>
+        <field name="default_rate">1100</field>
+    </record>
+    <record id="material_ceiling_with_hollow_frame_m_l" model="construction.material">
+        <field name="name">Ceiling with hollow frame(M+L)</field>
+        <field name="uom_id" ref="uom_sft"/>
+        <field name="default_rate">1300</field>
+    </record>
+    <record id="material_handrail_m_l" model="construction.material">
+        <field name="name">Handrail (M+L)</field>
+        <field name="uom_id" ref="uom_sft"/>
+        <field name="default_rate">4500</field>
+    </record>
+
+</odoo>

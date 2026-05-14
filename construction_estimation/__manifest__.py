@@ -8,6 +8,9 @@
     'data': [
         'security/ir.model.access.csv',
         'data/construction_uom_data.xml',
+        'data/construction_material_data.xml',
+        'data/construction_labour_data.xml',
+        'data/construction_ac_data.xml',
         'views/material_views.xml',
         'views/labour_views.xml',
         'views/abstract_of_cost_views.xml',

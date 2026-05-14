@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="labour_masons" model="construction.labour">
+        <field name="name">Masons</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">12000</field>
+    </record>
+    <record id="labour_carpenters" model="construction.labour">
+        <field name="name">Carpenters</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">12000</field>
+    </record>
+    <record id="labour_workers" model="construction.labour">
+        <field name="name">Workers</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">8000</field>
+    </record>
+    <record id="labour_painters" model="construction.labour">
+        <field name="name">Painters</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">12000</field>
+    </record>
+    <record id="labour_mixer_driver" model="construction.labour">
+        <field name="name">Mixer Driver</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">8000</field>
+    </record>
+    <record id="labour_steel_fixer" model="construction.labour">
+        <field name="name">Steel fixer</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">12000</field>
+    </record>
+    <record id="labour_surveyor" model="construction.labour">
+        <field name="name">Surveyor</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">12000</field>
+    </record>
+    <record id="labour_smith" model="construction.labour">
+        <field name="name">Smith</field>
+        <field name="uom_id" ref="uom_nos"/>
+        <field name="default_rate">12000</field>
+    </record>
+
+</odoo>
