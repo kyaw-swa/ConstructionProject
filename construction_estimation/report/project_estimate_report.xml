@@ -53,22 +53,18 @@
                                             <strong t-esc="idx"/>
                                         </td>
                                         <td>
-                                            <strong t-field="line.ac_id.name"/>
-                                            <t t-if="line.reference">
-                                                <span class="text-muted">
-                                                    (<t t-esc="line.reference"/>)
-                                                </span>
-                                            </t>
+                                            <strong t-esc="line.ac_id.name"/>
                                             <t t-if="line.ac_id.description">
                                                 <div class="small text-muted"
-                                                     t-field="line.ac_id.description"/>
+                                                     t-esc="line.ac_id.description"/>
                                             </t>
                                         </td>
                                         <td class="text-end">
                                             <span t-esc="'%.2f' % line.base_qty"/>
                                         </td>
-                                        <td class="text-center"
-                                            t-field="line.uom_id.name"/>
+                                        <td class="text-center">
+                                            <span t-esc="line.uom_id.name"/>
+                                        </td>
                                         <td/><td/><td/>
                                     </tr>
 
@@ -123,25 +119,25 @@
                                                                         <td class="text-center">×</td>
                                                                         <td class="text-end" t-esc="m.multiplier"/>
                                                                         <td class="text-end">
-                                                                            <span t-esc="'%g' % m.length_ft"/>
+                                                                            <span t-esc="'%.2f' % m.length_ft"/>
                                                                         </td>
                                                                         <td class="text-end">
-                                                                            <span t-esc="'%g' % m.length_in"/>
+                                                                            <span t-esc="'%.2f' % m.length_in"/>
                                                                         </td>
                                                                         <td class="text-end">
-                                                                            <span t-esc="'%g' % m.breadth_ft"/>
+                                                                            <span t-esc="'%.2f' % m.breadth_ft"/>
                                                                         </td>
                                                                         <td class="text-end">
-                                                                            <span t-esc="'%g' % m.breadth_in"/>
+                                                                            <span t-esc="'%.2f' % m.breadth_in"/>
                                                                         </td>
                                                                         <td class="text-end">
                                                                             <t t-if="line.measurement_type == 'cuft'">
-                                                                                <span t-esc="'%g' % m.height_ft"/>
+                                                                                <span t-esc="'%.2f' % m.height_ft"/>
                                                                             </t>
                                                                         </td>
                                                                         <td class="text-end">
                                                                             <t t-if="line.measurement_type == 'cuft'">
-                                                                                <span t-esc="'%g' % m.height_in"/>
+                                                                                <span t-esc="'%.2f' % m.height_in"/>
                                                                             </t>
                                                                         </td>
                                                                         <td class="text-end">
@@ -207,18 +203,14 @@
                                             <tr>
                                                 <td/>
                                                 <td class="ps-4">
-                                                    <span t-field="m.material_id.name"/>
-                                                    <t t-if="m.reference">
-                                                        <span class="text-muted">
-                                                            (<t t-esc="m.reference"/>)
-                                                        </span>
-                                                    </t>
+                                                    <span t-esc="m.material_id.name"/>
                                                 </td>
                                                 <td class="text-end">
-                                                    <span t-esc="'%.3f' % m.quantity"/>
+                                                    <span t-esc="'%.2f' % m.suggested_qty"/>
                                                 </td>
-                                                <td class="text-center"
-                                                    t-field="m.uom_id.name"/>
+                                                <td class="text-center">
+                                                    <span t-esc="m.uom_id.name"/>
+                                                </td>
                                                 <td class="text-end">
                                                     <span t-esc="'%.2f' % m.rate"/>
                                                 </td>
@@ -243,18 +235,14 @@
                                             <tr>
                                                 <td/>
                                                 <td class="ps-4">
-                                                    <span t-field="lab.labour_id.name"/>
-                                                    <t t-if="lab.reference">
-                                                        <span class="text-muted">
-                                                            (<t t-esc="lab.reference"/>)
-                                                        </span>
-                                                    </t>
+                                                    <span t-esc="lab.labour_id.name"/>
                                                 </td>
                                                 <td class="text-end">
-                                                    <span t-esc="'%.3f' % lab.quantity"/>
+                                                    <span t-esc="'%.2f' % lab.suggested_qty"/>
                                                 </td>
-                                                <td class="text-center"
-                                                    t-field="lab.uom_id.name"/>
+                                                <td class="text-center">
+                                                    <span t-esc="lab.uom_id.name"/>
+                                                </td>
                                                 <td class="text-end">
                                                     <span t-esc="'%.2f' % lab.rate"/>
                                                 </td>

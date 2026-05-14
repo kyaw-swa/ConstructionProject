@@ -42,6 +42,28 @@ class ProjectEstimate(models.Model):
             rec.total_labour_cost = sum(rec.line_ids.mapped('labour_total'))
             rec.total_cost = rec.total_material_cost + rec.total_labour_cost
 
+    @api.onchange('line_ids')
+    def _onchange_line_ids_renumber(self):
+        for i, line in enumerate(self.line_ids, 1):
+            line.reference = i
+
+    def _renumber_lines(self):
+        for rec in self:
+            for i, line in enumerate(rec.line_ids, 1):
+                line.reference = i
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        records._renumber_lines()
+        return records
+
+    def write(self, vals):
+        res = super().write(vals)
+        if 'line_ids' in vals:
+            self._renumber_lines()
+        return res
+
     def action_confirm(self):
         self.state = 'confirmed'
 
@@ -65,13 +87,10 @@ class EstimationLine(models.Model):
 
     # ── Work item (AC) and measurement context ────────────────────────────────
     ac_id = fields.Many2one(
-        'construction.ac', string='Work Item (A/C)',
+        'construction.ac', string='Particular',
         required=True, ondelete='restrict',
     )
-    reference = fields.Char(
-        string='Ref Code',
-        help='BOQ reference shown next to the work item, e.g. P1/Sr1(A).',
-    )
+    reference = fields.Integer(string='No.')
     measurement_type = fields.Selection(
         related='ac_id.measurement_type',
         string='Measurement Type',
@@ -82,17 +101,12 @@ class EstimationLine(models.Model):
     )
 
     # ── Dimension inputs (reference only — Ft/In to Decimal conversion) ───────
-    length_ft = fields.Float(string='L Ft', digits=(16, 4))
-    length_in = fields.Float(string='L In', digits=(16, 4))
-    breadth_ft = fields.Float(string='B Ft', digits=(16, 4))
-    breadth_in = fields.Float(string='B In', digits=(16, 4))
-    height_ft = fields.Float(string='H Ft', digits=(16, 4))
-    height_in = fields.Float(string='H In', digits=(16, 4))
-
-    manual_qty = fields.Float(
-        string='Manual Qty', digits=(16, 4),
-        help='If set, overrides the computed area/volume as the base quantity.',
-    )
+    length_ft = fields.Float(string='L Ft', digits=(16, 2))
+    length_in = fields.Float(string='L In', digits=(16, 2))
+    breadth_ft = fields.Float(string='B Ft', digits=(16, 2))
+    breadth_in = fields.Float(string='B In', digits=(16, 2))
+    height_ft = fields.Float(string='H Ft', digits=(16, 2))
+    height_in = fields.Float(string='H In', digits=(16, 2))
 
     # ── Detailed measurement (Detail of Measurement sheet) ────────────────────
     use_detailed_measurement = fields.Boolean(
@@ -108,7 +122,7 @@ class EstimationLine(models.Model):
     )
     detailed_total = fields.Float(
         string='Detailed Total',
-        compute='_compute_detailed_total', store=True, digits=(16, 4),
+        compute='_compute_detailed_total', store=True, digits=(16, 2),
         help='Sum of all Section subtotals (which roll up Sub-element and '
              'Measurement-row totals).',
     )
@@ -116,15 +130,15 @@ class EstimationLine(models.Model):
     # ── Calculated reference quantities (read-only) ───────────────────────────
     area = fields.Float(
         string='Area (Sqft)',
-        compute='_compute_dimensions', store=True, digits=(16, 4),
+        compute='_compute_dimensions', store=True, digits=(16, 2),
     )
     volume = fields.Float(
         string='Volume (Cuft)',
-        compute='_compute_dimensions', store=True, digits=(16, 4),
+        compute='_compute_dimensions', store=True, digits=(16, 2),
     )
     base_qty = fields.Float(
         string='Base Qty',
-        compute='_compute_dimensions', store=True, digits=(16, 4),
+        compute='_compute_dimensions', store=True, digits=(16, 2),
     )
 
     # ── Detail child rows (per-resource breakdown) ────────────────────────────
@@ -158,7 +172,6 @@ class EstimationLine(models.Model):
 
     @api.depends(
         'measurement_type',
-        'manual_qty',
         'length_ft', 'length_in',
         'breadth_ft', 'breadth_in',
         'height_ft', 'height_in',
@@ -181,11 +194,7 @@ class EstimationLine(models.Model):
                 line.volume = 0.0
 
             if line.use_detailed_measurement:
-                # Rollup from Sections → Sub-elements → Measurements wins;
-                # area/volume above are kept computed but informational.
                 line.base_qty = line.detailed_total
-            elif line.manual_qty:
-                line.base_qty = line.manual_qty
             elif line.measurement_type == 'cuft':
                 line.base_qty = line.volume
             elif line.measurement_type == 'sqft':
@@ -279,15 +288,12 @@ class EstimationLine(models.Model):
         self._populate_details_from_ac()
 
     @api.onchange('length_ft', 'length_in', 'breadth_ft', 'breadth_in',
-                  'height_ft', 'height_in', 'manual_qty',
+                  'height_ft', 'height_in',
                   'use_detailed_measurement', 'detailed_total')
     def _onchange_dimensions(self):
         for line in self:
             if line.use_detailed_measurement:
                 line.base_qty = line.detailed_total
-                continue
-            if line.manual_qty:
-                line.base_qty = line.manual_qty
                 continue
             l = line.length_ft + line.length_in / 12.0
             b = line.breadth_ft + line.breadth_in / 12.0
@@ -310,46 +316,34 @@ class EstimateLineMaterial(models.Model):
         ondelete='cascade', index=True,
     )
     sequence = fields.Integer(default=10)
-    reference = fields.Char(string='Ref Code')
     material_id = fields.Many2one(
         'construction.material', required=True, ondelete='restrict',
     )
 
     # ── Ratio inputs copied from the A/C template ────────────────────────────
     template_qty = fields.Float(
-        string='Std. Qty', digits=(16, 4),
+        string='Std. Qty', digits=(16, 2),
         help='Standard quantity from the A/C template (per Template Base Qty).',
     )
     template_base_qty = fields.Float(
-        string='Template Base', digits=(16, 4), default=1.0,
+        string='Template Base', digits=(16, 2), default=1.0,
         help='Base quantity the Std. Qty is expressed against (e.g. 1000 Sqft).',
     )
 
     # ── Ratio output ─────────────────────────────────────────────────────────
     suggested_qty = fields.Float(
-        string='Suggested Qty',
-        compute='_compute_suggested_qty', store=True, digits=(16, 4),
-        help='Auto-calculated as (Calculated Qty / Template Base) × Std. Qty.',
-    )
-    is_manual = fields.Boolean(
-        string='Manual Override',
-        help='When set, the Quantity below is locked and will not be '
-             'recalculated when the parent dimensions change.',
-    )
-    quantity = fields.Float(
-        string='Manual Qty',
-        compute='_compute_quantity', store=True, readonly=False, digits=(16, 4),
-        help='Quantity used in costing. Defaults to Suggested Qty; edit to '
-             'override (which sets Manual Override).',
+        string='Qty',
+        compute='_compute_suggested_qty', store=True, digits=(16, 2),
+        help='Auto-calculated as (Base Qty / Template Base) × Std. Qty.',
     )
 
     uom_id = fields.Many2one(
         'construction.uom', related='material_id.uom_id',
         string='UOM', store=True, readonly=True,
     )
-    rate = fields.Float(string='Rate', digits=(16, 4))
+    rate = fields.Float(string='Rate', digits=(16, 2))
     per = fields.Float(
-        string='Per', default=1.0, digits=(16, 4),
+        string='Per', default=1.0, digits=(16, 2),
         help='Rate is "per X" units (e.g. per 100 nos). Defaults to 1.',
     )
     amount = fields.Float(
@@ -364,34 +358,16 @@ class EstimateLineMaterial(models.Model):
             parent_qty = d.line_id.base_qty if d.line_id else 0.0
             d.suggested_qty = (parent_qty / base) * d.template_qty
 
-    @api.depends('suggested_qty', 'is_manual')
-    def _compute_quantity(self):
-        for d in self:
-            if not d.is_manual:
-                d.quantity = d.suggested_qty
-
-    @api.depends('quantity', 'rate', 'per')
+    @api.depends('suggested_qty', 'rate', 'per')
     def _compute_amount(self):
         for d in self:
             divisor = d.per or 1.0
-            d.amount = (d.quantity * d.rate) / divisor
-
-    @api.onchange('quantity')
-    def _onchange_quantity(self):
-        for d in self:
-            if d.quantity and abs(d.quantity - d.suggested_qty) > 1e-6:
-                d.is_manual = True
+            d.amount = (d.suggested_qty * d.rate) / divisor
 
     @api.onchange('material_id')
     def _onchange_material_id(self):
         if self.material_id and not self.rate:
             self.rate = self.material_id.default_rate
-
-    def action_reset_to_suggested(self):
-        for d in self:
-            d.is_manual = False
-            d.quantity = d.suggested_qty
-        return True
 
 
 class EstimateLineLabour(models.Model):
@@ -404,44 +380,32 @@ class EstimateLineLabour(models.Model):
         ondelete='cascade', index=True,
     )
     sequence = fields.Integer(default=10)
-    reference = fields.Char(string='Ref Code')
     labour_id = fields.Many2one(
         'construction.labour', required=True, ondelete='restrict',
     )
 
     template_qty = fields.Float(
-        string='Std. Qty', digits=(16, 4),
+        string='Std. Qty', digits=(16, 2),
         help='Standard quantity from the A/C template (per Template Base Qty).',
     )
     template_base_qty = fields.Float(
-        string='Template Base', digits=(16, 4), default=1.0,
+        string='Template Base', digits=(16, 2), default=1.0,
         help='Base quantity the Std. Qty is expressed against.',
     )
 
     suggested_qty = fields.Float(
-        string='Suggested Qty',
-        compute='_compute_suggested_qty', store=True, digits=(16, 4),
-        help='Auto-calculated as (Calculated Qty / Template Base) × Std. Qty.',
-    )
-    is_manual = fields.Boolean(
-        string='Manual Override',
-        help='When set, the Quantity below is locked and will not be '
-             'recalculated when the parent dimensions change.',
-    )
-    quantity = fields.Float(
-        string='Manual Qty',
-        compute='_compute_quantity', store=True, readonly=False, digits=(16, 4),
-        help='Quantity used in costing. Defaults to Suggested Qty; edit to '
-             'override (which sets Manual Override).',
+        string='Qty',
+        compute='_compute_suggested_qty', store=True, digits=(16, 2),
+        help='Auto-calculated as (Base Qty / Template Base) × Std. Qty.',
     )
 
     uom_id = fields.Many2one(
         'construction.uom', related='labour_id.uom_id',
         string='UOM', store=True, readonly=True,
     )
-    rate = fields.Float(string='Rate', digits=(16, 4))
+    rate = fields.Float(string='Rate', digits=(16, 2))
     per = fields.Float(
-        string='Per', default=1.0, digits=(16, 4),
+        string='Per', default=1.0, digits=(16, 2),
         help='Rate is "per X" units. Defaults to 1.',
     )
     amount = fields.Float(
@@ -456,34 +420,16 @@ class EstimateLineLabour(models.Model):
             parent_qty = d.line_id.base_qty if d.line_id else 0.0
             d.suggested_qty = (parent_qty / base) * d.template_qty
 
-    @api.depends('suggested_qty', 'is_manual')
-    def _compute_quantity(self):
-        for d in self:
-            if not d.is_manual:
-                d.quantity = d.suggested_qty
-
-    @api.depends('quantity', 'rate', 'per')
+    @api.depends('suggested_qty', 'rate', 'per')
     def _compute_amount(self):
         for d in self:
             divisor = d.per or 1.0
-            d.amount = (d.quantity * d.rate) / divisor
-
-    @api.onchange('quantity')
-    def _onchange_quantity(self):
-        for d in self:
-            if d.quantity and abs(d.quantity - d.suggested_qty) > 1e-6:
-                d.is_manual = True
+            d.amount = (d.suggested_qty * d.rate) / divisor
 
     @api.onchange('labour_id')
     def _onchange_labour_id(self):
         if self.labour_id and not self.rate:
             self.rate = self.labour_id.default_rate
-
-    def action_reset_to_suggested(self):
-        for d in self:
-            d.is_manual = False
-            d.quantity = d.suggested_qty
-        return True
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -589,12 +535,12 @@ class EstimateLineMeasurement(models.Model):
     nos = fields.Integer(string='Nos', default=1)
     multiplier = fields.Integer(string='×', default=1)
 
-    length_ft = fields.Float(string='L Ft', digits=(16, 4))
-    length_in = fields.Float(string='L In', digits=(16, 4))
-    breadth_ft = fields.Float(string='B Ft', digits=(16, 4))
-    breadth_in = fields.Float(string='B In', digits=(16, 4))
-    height_ft = fields.Float(string='H Ft', digits=(16, 4))
-    height_in = fields.Float(string='H In', digits=(16, 4))
+    length_ft = fields.Float(string='L Ft', digits=(16, 2))
+    length_in = fields.Float(string='L In', digits=(16, 2))
+    breadth_ft = fields.Float(string='B Ft', digits=(16, 2))
+    breadth_in = fields.Float(string='B In', digits=(16, 2))
+    height_ft = fields.Float(string='H Ft', digits=(16, 2))
+    height_in = fields.Float(string='H In', digits=(16, 2))
 
     deduction = fields.Float(string='Deduction', default=0.0, digits=(16, 2))
 
