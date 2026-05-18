@@ -3,586 +3,586 @@
 
     <record id="ac_001_site_clearing_leveling_and_dressing_the_constructional_site_" model="construction.ac">
         <field name="name">Site Clearing Leveling and dressing the constructional site to make suitable for the layout</field>
-        <field name="base_quantity">6000</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 15, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 0.25, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_002_staking_work_for_preparation_of_foundation" model="construction.ac">
         <field name="name">Staking work for preparation of foundation</field>
-        <field name="base_quantity">6000</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_jungle_wood'), 'quantity': 0.36, 'rate': 800000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_nails'), 'quantity': 1.25, 'rate': 3000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_jungle_wood'), 'quantity': 0.006, 'rate': 800000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_nails'), 'quantity': 0.020833, 'rate': 3000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 3, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 6, 'rate': 8000}),
-                (0, 0, {'sequence': 30, 'labour_id': ref('labour_surveyor'), 'quantity': 0.6, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 0.05, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 0.1, 'rate': 8000}),
+                (0, 0, {'sequence': 30, 'labour_id': ref('labour_surveyor'), 'quantity': 0.01, 'rate': 12000})
         ]"/>
     </record>
 
     <record id="ac_003_earth_work_in_excavation_for_foundation_in_medium_soil" model="construction.ac">
         <field name="name">Earth Work in Excavation for foundation in medium soil</field>
-        <field name="base_quantity">9591.57</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 191.83, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 1.999985, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_004_hard_core_filling_work" model="construction.ac">
         <field name="name">Hard Core Filling Work</field>
-        <field name="base_quantity">1349.6</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_6_x9_stone'), 'quantity': 13.5, 'rate': 30000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_6_x9_stone'), 'quantity': 1.000296, 'rate': 30000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 13.5, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 1.000296, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_005_1_3_6_lean_concrete_work" model="construction.ac">
         <field name="name">1:3:6 lean concrete work</field>
-        <field name="base_quantity">2011.1</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 258.57, 'rate': 5900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 9.65, 'rate': 12000}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 19.31, 'rate': 58000}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_fuel'), 'quantity': 40.22, 'rate': 4500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 12.857143, 'rate': 5900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.479837, 'rate': 12000}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 0.960171, 'rate': 58000}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_fuel'), 'quantity': 1.999901, 'rate': 4500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 20.11, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 120.67, 'rate': 8000}),
-                (0, 0, {'sequence': 30, 'labour_id': ref('labour_mixer_driver'), 'quantity': 10.06, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 0.99995, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 6.000199, 'rate': 8000}),
+                (0, 0, {'sequence': 30, 'labour_id': ref('labour_mixer_driver'), 'quantity': 0.500224, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_006_brick_work_in_1_3_cement_motor" model="construction.ac">
         <field name="name">Brick work in 1:3 Cement Motor</field>
-        <field name="base_quantity">1598.76</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_brick'), 'quantity': 21583.3, 'rate': 100}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_cement'), 'quantity': 111.34, 'rate': 5900}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_sand'), 'quantity': 4.16, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_brick'), 'quantity': 1350.002502, 'rate': 100}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_cement'), 'quantity': 6.964147, 'rate': 5900}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_sand'), 'quantity': 0.260202, 'rate': 12000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 63.95, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 95.93, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 3.999975, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 6.000275, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_007_1_2_4_r_c_concrete_work" model="construction.ac">
         <field name="name">1: 2: 4 R-C Concrete Work</field>
-        <field name="base_quantity">6771.58</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 1251.53, 'rate': 5900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 31.15, 'rate': 12000}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 62.3, 'rate': 58000}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_fuel'), 'quantity': 135.43, 'rate': 4500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 18.482097, 'rate': 5900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.460011, 'rate': 12000}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 0.920022, 'rate': 58000}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_fuel'), 'quantity': 1.999976, 'rate': 4500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 135.43, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 406.29, 'rate': 8000}),
-                (0, 0, {'sequence': 30, 'labour_id': ref('labour_mixer_driver'), 'quantity': 33.86, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 1.999976, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 5.999929, 'rate': 8000}),
+                (0, 0, {'sequence': 30, 'labour_id': ref('labour_mixer_driver'), 'quantity': 0.500031, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_008_formwork_with_jungne_wood_scantling_5_plywood" model="construction.ac">
         <field name="name">Formwork With Jungne Wood Scantling &amp; 5-Plywood</field>
-        <field name="base_quantity">16801.4</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_jungle_wood'), 'quantity': 33.6, 'rate': 800000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_5_plywood'), 'quantity': 301.9, 'rate': 17500}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_nails'), 'quantity': 140.01, 'rate': 3000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_jungle_wood'), 'quantity': 0.199983, 'rate': 800000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_5_plywood'), 'quantity': 1.796874, 'rate': 17500}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_nails'), 'quantity': 0.833323, 'rate': 3000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 1008.08, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 336.03, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 5.999976, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 2.000012, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_009_steel_reinforcement_cut_bend_fix" model="construction.ac">
         <field name="name">Steel Reinforcement Cut, Bend &amp; Fix</field>
-        <field name="base_quantity">32.82</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_ton"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_16mm_m_s_rod'), 'quantity': 22.23, 'rate': 870000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_10mm_m_s_rod'), 'quantity': 8.59, 'rate': 870000}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_8mm_m_s_rod'), 'quantity': 1.67, 'rate': 1e+06}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_binding_wire'), 'quantity': 5.58, 'rate': 80000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_16mm_m_s_rod'), 'quantity': 67.73309, 'rate': 870000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_10mm_m_s_rod'), 'quantity': 26.173065, 'rate': 870000}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_8mm_m_s_rod'), 'quantity': 5.088361, 'rate': 1e+06}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_binding_wire'), 'quantity': 17.001828, 'rate': 80000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_steel_fixer'), 'quantity': 468.77, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 468.77, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_steel_fixer'), 'quantity': 1428.305911, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 1428.305911, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_010_sanding_filling_including_watering_ramming_for_sub_flooring" model="construction.ac">
         <field name="name">Sanding filling including watering &amp; ramming for sub-flooring</field>
-        <field name="base_quantity">1923.17</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_sand'), 'quantity': 24.04, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_sand'), 'quantity': 1.250019, 'rate': 12000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 19.23, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 0.999912, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_011_earth_filling_including_watering_ramming_for_sub_flooring" model="construction.ac">
         <field name="name">Earth filling including watering &amp; ramming for sub-flooring</field>
-        <field name="base_quantity">3490.65</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 34.91, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 1.0001, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_012_post_strut_fitting_at_top_column" model="construction.ac">
         <field name="name">Post Strut fitting At top column</field>
-        <field name="base_quantity">52</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_nos"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_1_4_lx1_4_thk_post_strut'), 'quantity': 52, 'rate': 3600}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_1_5_l_5_8_bolt_nut'), 'quantity': 52, 'rate': 1500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_1_4_lx1_4_thk_post_strut'), 'quantity': 100, 'rate': 3600}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_1_5_l_5_8_bolt_nut'), 'quantity': 100, 'rate': 1500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_steel_fixer'), 'quantity': 13, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_steel_fixer'), 'quantity': 25, 'rate': 12000})
         ]"/>
     </record>
 
     <record id="ac_013_steel_truss_work" model="construction.ac">
         <field name="name">Steel Truss Work</field>
-        <field name="base_quantity">3.07067</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_ton"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_5_x2_u'), 'quantity': 20.45, 'rate': 45000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_4_x2_u'), 'quantity': 82.25, 'rate': 23500}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_3_x1_2_channel'), 'quantity': 123.99, 'rate': 13500}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_2_x2_angle'), 'quantity': 62.5, 'rate': 400}),
-                (0, 0, {'sequence': 50, 'material_id': ref('material_welding_rod'), 'quantity': 1.54, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_5_x2_u'), 'quantity': 665.978435, 'rate': 45000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_4_x2_u'), 'quantity': 2678.568521, 'rate': 23500}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_3_x1_2_channel'), 'quantity': 4037.880984, 'rate': 13500}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_2_x2_angle'), 'quantity': 2035.386414, 'rate': 400}),
+                (0, 0, {'sequence': 50, 'material_id': ref('material_welding_rod'), 'quantity': 50.151921, 'rate': 8000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_smith'), 'quantity': 153.53, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 122.83, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_smith'), 'quantity': 4999.886018, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 4000.104212, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_014_4_angle_sheet_roofing_work" model="construction.ac">
         <field name="name">4-Angle Sheet Roofing Work</field>
-        <field name="base_quantity">6613.16</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_four_angle_sheet'), 'quantity': 1541.53, 'rate': 1200}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_roofing_nail'), 'quantity': 27.55, 'rate': 4500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_four_angle_sheet'), 'quantity': 23.310036, 'rate': 1200}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_roofing_nail'), 'quantity': 0.416594, 'rate': 4500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 99.2, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 66.13, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 1.500039, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 0.999976, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_015_colour_sheet_ridging_work" model="construction.ac">
         <field name="name">Colour Sheet Ridging work</field>
-        <field name="base_quantity">197.44</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_rft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_colour_plain_sheet'), 'quantity': 221.13, 'rate': 1200}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_roofing_nail'), 'quantity': 2.96, 'rate': 4500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_colour_plain_sheet'), 'quantity': 111.998582, 'rate': 1200}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_roofing_nail'), 'quantity': 1.49919, 'rate': 4500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 6.57, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 3.327593, 'rate': 12000})
         ]"/>
     </record>
 
     <record id="ac_016_providing_and_fixing_of_8_x1_pyingado_eave_board_work" model="construction.ac">
         <field name="name">Providing and fixing of 8"x1" Pyingado Eave board work</field>
-        <field name="base_quantity">360</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_rft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_8_x1_plank'), 'quantity': 0.49968, 'rate': 800000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_nails'), 'quantity': 2, 'rate': 3000}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_earth_oil'), 'quantity': 540, 'rate': 150})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_8_x1_plank'), 'quantity': 0.1388, 'rate': 800000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_nails'), 'quantity': 0.555556, 'rate': 3000}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_earth_oil'), 'quantity': 150, 'rate': 150})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 10.8, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 3, 'rate': 12000})
         ]"/>
     </record>
 
     <record id="ac_017_4_2_thk_brick_wall_in_1_3_cement_mortar" model="construction.ac">
         <field name="name">4⅟2" thk:Brick Wall in (1:3) Cement Mortar</field>
-        <field name="base_quantity">6906.91</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_brick'), 'quantity': 37988, 'rate': 100}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_cement'), 'quantity': 183.16, 'rate': 5900}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_sand'), 'quantity': 6.91, 'rate': 12000}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_x_met'), 'quantity': 7942.95, 'rate': 40})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_brick'), 'quantity': 549.999928, 'rate': 100}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_cement'), 'quantity': 2.651837, 'rate': 5900}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_sand'), 'quantity': 0.100045, 'rate': 12000}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_x_met'), 'quantity': 115.000051, 'rate': 40})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 138.14, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 207.21, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 2.000026, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 3.000039, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_018_finishing_laying_smooth_2_thk_1_3_cement_mortor" model="construction.ac">
         <field name="name">Finishing &amp; Laying Smooth ⅟2" thk: (1:3) cement mortor</field>
-        <field name="base_quantity">14941.2</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 200.11, 'rate': 5900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 7.47, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 1.339317, 'rate': 5900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.049996, 'rate': 12000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 149.41, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 298.82, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 0.999987, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 1.999973, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_019_providing_fixing_of_wood_chowket" model="construction.ac">
         <field name="name">Providing &amp; fixing of  Wood Chowket</field>
-        <field name="base_quantity">410.56</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_rft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_5_x2_chowket'), 'quantity': 410.56, 'rate': 2900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_chowket_m_s_bracket'), 'quantity': 96, 'rate': 300}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_x_met'), 'quantity': 431.09, 'rate': 40}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_nails'), 'quantity': 2.28, 'rate': 3000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_5_x2_chowket'), 'quantity': 100, 'rate': 2900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_chowket_m_s_bracket'), 'quantity': 23.382697, 'rate': 300}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_x_met'), 'quantity': 105.000487, 'rate': 40}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_nails'), 'quantity': 0.555339, 'rate': 3000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 26.69, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 6.500877, 'rate': 12000})
         ]"/>
     </record>
 
     <record id="ac_020_supplying_and_installation_of_readymade_teak_panel" model="construction.ac">
         <field name="name">Supplying and Installation of Readymade Teak Panel</field>
-        <field name="base_quantity">448</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_ready_made_teak_door'), 'quantity': 448, 'rate': 8000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_5_butt_hinge'), 'quantity': 64, 'rate': 700}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_6_tower_bolt'), 'quantity': 16, 'rate': 900}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_6_hook_eye'), 'quantity': 16, 'rate': 800}),
-                (0, 0, {'sequence': 50, 'material_id': ref('material_aluminium_slide_lock'), 'quantity': 16, 'rate': 5500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_ready_made_teak_door'), 'quantity': 100, 'rate': 8000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_5_butt_hinge'), 'quantity': 14.285714, 'rate': 700}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_6_tower_bolt'), 'quantity': 3.571429, 'rate': 900}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_6_hook_eye'), 'quantity': 3.571429, 'rate': 800}),
+                (0, 0, {'sequence': 50, 'material_id': ref('material_aluminium_slide_lock'), 'quantity': 3.571429, 'rate': 5500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 85.33, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 19.046875, 'rate': 12000})
         ]"/>
     </record>
 
     <record id="ac_021_making_fixing_of_glazed_wall_complete_frame_by_chowket" model="construction.ac">
         <field name="name">Making &amp; Fixing of Glazed wall complete frame by Chowket</field>
-        <field name="base_quantity">250.22</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_teak'), 'quantity': 0.48, 'rate': 800000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_3mm_glass'), 'quantity': 145.96, 'rate': 1500}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_nails'), 'quantity': 1.45, 'rate': 3000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_teak'), 'quantity': 0.191831, 'rate': 800000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_3mm_glass'), 'quantity': 58.332667, 'rate': 1500}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_nails'), 'quantity': 0.57949, 'rate': 3000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 62.56, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 25.001998, 'rate': 12000})
         ]"/>
     </record>
 
     <record id="ac_022_making_fixing_of_window_by_aluminium_frame" model="construction.ac">
         <field name="name">Making &amp; Fixing of Window by Aluminium frame</field>
-        <field name="base_quantity">1085.33</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_aluminium_w_m_l'), 'quantity': 1085.33, 'rate': 6500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_aluminium_w_m_l'), 'quantity': 100, 'rate': 6500})
         ]"/>
     </record>
 
     <record id="ac_023_a_2_x2_cement_board_ceiling_with_2_x1_1_x1_c_channel_frame" model="construction.ac">
         <field name="name">(a)2'x2'Cement Board Ceiling with 2"x1" &amp;1"x1" C-channel frame</field>
-        <field name="base_quantity">2880</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_ceiling_with_c_channel_frame_m_l'), 'quantity': 2880, 'rate': 1100})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_ceiling_with_c_channel_frame_m_l'), 'quantity': 100, 'rate': 1100})
         ]"/>
     </record>
 
     <record id="ac_024_b_2_x2_cement_board_ceiling_with_1_x1_hollow_frame" model="construction.ac">
         <field name="name">(b)2'x2'Cement Board Ceiling with 1"x1" Hollow frame</field>
-        <field name="base_quantity">1520</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_ceiling_with_hollow_frame_m_l'), 'quantity': 1520, 'rate': 1300})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_ceiling_with_hollow_frame_m_l'), 'quantity': 100, 'rate': 1300})
         ]"/>
     </record>
 
     <record id="ac_025_1_5_thk_1_2_4_concrete_floor_topping" model="construction.ac">
         <field name="name">1.5 thk 1:2:4 concrete floor Topping</field>
-        <field name="base_quantity">8046.34</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 186.07, 'rate': 5900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 4.63, 'rate': 12000}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 9.25, 'rate': 58000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 2.31248, 'rate': 5900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.057542, 'rate': 12000}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 0.114959, 'rate': 58000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 60.35, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 120.695, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 0.75003, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 1.499999, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_026_surface_preparation_before_painting_with_putty_3_coats" model="construction.ac">
         <field name="name">Surface Preparation Before Painting with Putty (3-Coats)</field>
-        <field name="base_quantity">14941.2</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_putty'), 'quantity': 112.059, 'rate': 10000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_sand_paper'), 'quantity': 74.71, 'rate': 1600}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_putty_trowel'), 'quantity': 37.35, 'rate': 500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_putty'), 'quantity': 0.75, 'rate': 10000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_sand_paper'), 'quantity': 0.500027, 'rate': 1600}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_putty_trowel'), 'quantity': 0.24998, 'rate': 500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_painters'), 'quantity': 149.41, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 149.41, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_painters'), 'quantity': 0.999987, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 0.999987, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_027_painting_3_coats_with_plastic_emulsion_paint_of_any_approved" model="construction.ac">
         <field name="name">Painting 3 Coats with Plastic Emulsion Paint of Any Approved Colour</field>
-        <field name="base_quantity">14941.2</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_emulsion_paint'), 'quantity': 149.41, 'rate': 16000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_paint_roller'), 'quantity': 37.35, 'rate': 1600})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_emulsion_paint'), 'quantity': 0.999987, 'rate': 16000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_paint_roller'), 'quantity': 0.24998, 'rate': 1600})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_painters'), 'quantity': 149.41, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_painters'), 'quantity': 0.999987, 'rate': 12000})
         ]"/>
     </record>
 
     <record id="ac_028_painting_with_readymady_mixed_oil_paint_of_any_approves_colo" model="construction.ac">
         <field name="name">Painting with Readymady Mixed Oil Paint of Any Approves Colour on wooden structure</field>
-        <field name="base_quantity">1203.92</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_ready_mixed_oil_paint'), 'quantity': 8.85, 'rate': 21000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_putty_d'), 'quantity': 0.47, 'rate': 600})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_ready_mixed_oil_paint'), 'quantity': 0.735099, 'rate': 21000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_putty_d'), 'quantity': 0.039039, 'rate': 600})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_painters'), 'quantity': 15.05, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 12.04, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_painters'), 'quantity': 1.250083, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 1.000066, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_029_painting_work_ms_member" model="construction.ac">
         <field name="name">Painting Work MS Member</field>
-        <field name="base_quantity">4997.56</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_enamel_paint_gal'), 'quantity': 36.75, 'rate': 9000}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_3_paint_brush'), 'quantity': 14.99, 'rate': 500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_enamel_paint_gal'), 'quantity': 0.735359, 'rate': 9000}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_3_paint_brush'), 'quantity': 0.299946, 'rate': 500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_painters'), 'quantity': 62.47, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 49.98, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_painters'), 'quantity': 1.25001, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 1.000088, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_030_internal_external_bamboo_scaffolding_work_with_necessary_pla" model="construction.ac">
         <field name="name">Internal &amp;External Bamboo Scaffolding Work With Necessary Plastering &amp;Painting</field>
-        <field name="base_quantity">9180</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_bamboo'), 'quantity': 446.25, 'rate': 550}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_coil_yarn'), 'quantity': 31.875, 'rate': 4500}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_nails'), 'quantity': 13.28, 'rate': 3000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_bamboo'), 'quantity': 4.861111, 'rate': 550}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_coil_yarn'), 'quantity': 0.347222, 'rate': 4500}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_nails'), 'quantity': 0.144662, 'rate': 3000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 47.81, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 0.520806, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_031_making_and_fixing_of_stainless_steel_handrail" model="construction.ac">
         <field name="name">Making and fixing of Stainless steel handrail</field>
-        <field name="base_quantity">95.27</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_handrail_m_l'), 'quantity': 95.27, 'rate': 4500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_handrail_m_l'), 'quantity': 100, 'rate': 4500})
         ]"/>
     </record>
 
     <record id="ac_032_making_and_fixing_of_blackboard" model="construction.ac">
         <field name="name">Making and fixing of Blackboard</field>
-        <field name="base_quantity">8</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_nos"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_blackboard'), 'quantity': 8, 'rate': 50000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_blackboard'), 'quantity': 100, 'rate': 50000})
         ]"/>
     </record>
 
     <record id="ac_033_making_and_fixing_of_concrete_block" model="construction.ac">
         <field name="name">Making and fixing of concrete block</field>
-        <field name="base_quantity">117.333</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_8_x8_concrete_block'), 'quantity': 176, 'rate': 800}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_cement'), 'quantity': 0.21, 'rate': 5900})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_8_x8_concrete_block'), 'quantity': 150.000426, 'rate': 800}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_cement'), 'quantity': 0.178978, 'rate': 5900})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 4.69, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 7.04, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 3.99717, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 6.000017, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_034_providing_and_fixing_of_gutter_work" model="construction.ac">
         <field name="name">Providing and fixing of Gutter work</field>
-        <field name="base_quantity">360</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_rft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_g_i_plain_sheet'), 'quantity': 403.2, 'rate': 900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_roofing_nail'), 'quantity': 2.5, 'rate': 4500}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_bracket'), 'quantity': 121, 'rate': 350})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_g_i_plain_sheet'), 'quantity': 112, 'rate': 900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_roofing_nail'), 'quantity': 0.694444, 'rate': 4500}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_bracket'), 'quantity': 33.611111, 'rate': 350})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 18, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 5.4, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_carpenters'), 'quantity': 5, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 1.5, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_035_earth_excavation_for_drain" model="construction.ac">
         <field name="name">Earth excavation for drain</field>
-        <field name="base_quantity">1063.13</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 21.26, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 1.999755, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_036_1_3_6_cement_concrete_under_drain" model="construction.ac">
         <field name="name">1:3:6 cement concrete under drain</field>
-        <field name="base_quantity">212.63</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 27.34, 'rate': 5900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 1.02, 'rate': 12000}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 2.04, 'rate': 58000}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_fuel'), 'quantity': 4.25, 'rate': 4500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 12.858016, 'rate': 5900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.479707, 'rate': 12000}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 0.959413, 'rate': 58000}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_fuel'), 'quantity': 1.998777, 'rate': 4500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 2.13, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 12.76, 'rate': 8000}),
-                (0, 0, {'sequence': 30, 'labour_id': ref('labour_mixer_driver'), 'quantity': 1.06, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 1.00174, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 6.001035, 'rate': 8000}),
+                (0, 0, {'sequence': 30, 'labour_id': ref('labour_mixer_driver'), 'quantity': 0.498519, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_037_4_5thk_brick_work_with_1_3_cement_mortor_for_drain" model="construction.ac">
         <field name="name">4.5thk brick work with 1:3 cement mortor for drain</field>
-        <field name="base_quantity">937.35</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_brick'), 'quantity': 5155.43, 'rate': 100}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_cement'), 'quantity': 24.86, 'rate': 5900}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_sand'), 'quantity': 0.94, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_brick'), 'quantity': 550.000533, 'rate': 100}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_cement'), 'quantity': 2.652158, 'rate': 5900}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_sand'), 'quantity': 0.100283, 'rate': 12000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 18.75, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 28.12, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 2.00032, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 2.999947, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_038_1_2_thick_plastering_with_1_3_cement_mortor_for_drain" model="construction.ac">
         <field name="name">1/2" Thick plastering with 1:3 cement mortor for drain</field>
-        <field name="base_quantity">1315.64</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 17.62, 'rate': 5900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.66, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 1.339272, 'rate': 5900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.050166, 'rate': 12000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 13.16, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 26.31, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 1.000274, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 1.999787, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_039_sand_filling_under_apron" model="construction.ac">
         <field name="name">Sand filling under apron</field>
-        <field name="base_quantity">198.05</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_sand'), 'quantity': 2.48, 'rate': 12000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_sand'), 'quantity': 1.252209, 'rate': 12000})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 1.98, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_workers'), 'quantity': 0.999748, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_040_1_3_6_cement_concrete_work_for_apron" model="construction.ac">
         <field name="name">1:3:6 cement concrete work for apron</field>
-        <field name="base_quantity">132.03</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_cuft"/>
         <field name="measurement_type">cuft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 16.98, 'rate': 5900}),
-                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.63, 'rate': 12000}),
-                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 1.27, 'rate': 58000}),
-                (0, 0, {'sequence': 40, 'material_id': ref('material_fuel'), 'quantity': 2.64, 'rate': 4500})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_cement'), 'quantity': 12.860713, 'rate': 5900}),
+                (0, 0, {'sequence': 20, 'material_id': ref('material_sand'), 'quantity': 0.477164, 'rate': 12000}),
+                (0, 0, {'sequence': 30, 'material_id': ref('material_chipping'), 'quantity': 0.961903, 'rate': 58000}),
+                (0, 0, {'sequence': 40, 'material_id': ref('material_fuel'), 'quantity': 1.999546, 'rate': 4500})
         ]"/>
         <field name="labour_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 1.32, 'rate': 12000}),
-                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 7.92, 'rate': 8000}),
-                (0, 0, {'sequence': 30, 'labour_id': ref('labour_mixer_driver'), 'quantity': 0.66, 'rate': 8000})
+                (0, 0, {'sequence': 10, 'labour_id': ref('labour_masons'), 'quantity': 0.999773, 'rate': 12000}),
+                (0, 0, {'sequence': 20, 'labour_id': ref('labour_workers'), 'quantity': 5.998637, 'rate': 8000}),
+                (0, 0, {'sequence': 30, 'labour_id': ref('labour_mixer_driver'), 'quantity': 0.499886, 'rate': 8000})
         ]"/>
     </record>
 
     <record id="ac_041_drain_cover_work" model="construction.ac">
         <field name="name">Drain Cover Work</field>
-        <field name="base_quantity">9</field>
+        <field name="base_quantity">100</field>
         <field name="base_uom_id" ref="uom_sft"/>
         <field name="measurement_type">sqft</field>
         <field name="material_line_ids" eval="[
-                (0, 0, {'sequence': 10, 'material_id': ref('material_drain_cover'), 'quantity': 9, 'rate': 10000})
+                (0, 0, {'sequence': 10, 'material_id': ref('material_drain_cover'), 'quantity': 100, 'rate': 10000})
         ]"/>
     </record>
 

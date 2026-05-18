@@ -56,7 +56,7 @@ class AcMaterialLine(models.Model):
     )
     sequence = fields.Integer(default=10)
     quantity = fields.Float(
-        string='Std. Qty', digits=(16, 4), default=1.0,
+        string='Std. Qty', digits=(16, 6), default=1.0,
         help='Standard quantity required per the A/C Base Quantity '
              '(e.g. 4 units of this material per 1000 Sqft).',
     )
@@ -65,7 +65,7 @@ class AcMaterialLine(models.Model):
         string='UOM', store=True,
     )
     rate = fields.Float(
-        digits=(16, 4),
+        digits=(16, 0),
         help='Defaults from material; override per A/C if needed.',
     )
     line_cost = fields.Float(compute='_compute_line_cost', store=True, digits=(16, 4))
@@ -102,14 +102,14 @@ class AcLabourLine(models.Model):
     )
     sequence = fields.Integer(default=10)
     quantity = fields.Float(
-        string='Std. Qty', digits=(16, 4), default=1.0,
+        string='Std. Qty', digits=(16, 6), default=1.0,
         help='Standard labour quantity required per the A/C Base Quantity.',
     )
     uom_id = fields.Many2one(
         'construction.uom', related='labour_id.uom_id',
         string='UOM', store=True,
     )
-    rate = fields.Float(digits=(16, 4))
+    rate = fields.Float(digits=(16, 0))
     line_cost = fields.Float(compute='_compute_line_cost', store=True, digits=(16, 4))
 
     @api.depends('quantity', 'rate')

@@ -322,18 +322,18 @@ class EstimateLineMaterial(models.Model):
 
     # ── Ratio inputs copied from the A/C template ────────────────────────────
     template_qty = fields.Float(
-        string='Std. Qty', digits=(16, 2),
+        string='Std. Qty', digits=(16, 6),
         help='Standard quantity from the A/C template (per Template Base Qty).',
     )
     template_base_qty = fields.Float(
-        string='Template Base', digits=(16, 2), default=1.0,
+        string='Template Base', digits=(16, 6), default=1.0,
         help='Base quantity the Std. Qty is expressed against (e.g. 1000 Sqft).',
     )
 
     # ── Ratio output ─────────────────────────────────────────────────────────
     suggested_qty = fields.Float(
         string='Qty',
-        compute='_compute_suggested_qty', store=True, digits=(16, 2),
+        compute='_compute_suggested_qty', store=True, digits=(16, 6),
         help='Auto-calculated as (Base Qty / Template Base) × Std. Qty.',
     )
 
@@ -385,17 +385,17 @@ class EstimateLineLabour(models.Model):
     )
 
     template_qty = fields.Float(
-        string='Std. Qty', digits=(16, 2),
+        string='Std. Qty', digits=(16, 6),
         help='Standard quantity from the A/C template (per Template Base Qty).',
     )
     template_base_qty = fields.Float(
-        string='Template Base', digits=(16, 2), default=1.0,
+        string='Template Base', digits=(16, 6), default=1.0,
         help='Base quantity the Std. Qty is expressed against.',
     )
 
     suggested_qty = fields.Float(
         string='Qty',
-        compute='_compute_suggested_qty', store=True, digits=(16, 2),
+        compute='_compute_suggested_qty', store=True, digits=(16, 6),
         help='Auto-calculated as (Base Qty / Template Base) × Std. Qty.',
     )
 
