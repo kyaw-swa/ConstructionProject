@@ -64,6 +64,59 @@ class ProjectEstimate(models.Model):
             self._renumber_lines()
         return res
 
+    def get_bq_summary(self):
+        """Aggregate material and labour detail rows across all estimation
+        lines, grouped by material_id / labour_id.
+
+        Returns a dict with `materials` and `labours` lists (each row carries
+        name, uom, rate, per, total_qty, total_amount) plus subtotals and the
+        grand total. Used by the BQ summary report.
+        """
+        self.ensure_one()
+        materials = {}
+        for line in self.line_ids:
+            for m in line.material_detail_ids:
+                key = m.material_id.id
+                row = materials.setdefault(key, {
+                    'material': m.material_id,
+                    'name': m.material_id.name,
+                    'uom': m.uom_id.name or '',
+                    'rate': m.rate,
+                    'per': m.per or 1.0,
+                    'total_qty': 0.0,
+                    'total_amount': 0.0,
+                })
+                row['total_qty'] += m.suggested_qty
+                row['total_amount'] += m.amount
+
+        labours = {}
+        for line in self.line_ids:
+            for lab in line.labour_detail_ids:
+                key = lab.labour_id.id
+                row = labours.setdefault(key, {
+                    'labour': lab.labour_id,
+                    'name': lab.labour_id.name,
+                    'uom': lab.uom_id.name or '',
+                    'rate': lab.rate,
+                    'per': lab.per or 1.0,
+                    'total_qty': 0.0,
+                    'total_amount': 0.0,
+                })
+                row['total_qty'] += lab.suggested_qty
+                row['total_amount'] += lab.amount
+
+        material_rows = sorted(materials.values(), key=lambda r: r['name'])
+        labour_rows = sorted(labours.values(), key=lambda r: r['name'])
+        material_subtotal = sum(r['total_amount'] for r in material_rows)
+        labour_subtotal = sum(r['total_amount'] for r in labour_rows)
+        return {
+            'materials': material_rows,
+            'labours': labour_rows,
+            'material_subtotal': material_subtotal,
+            'labour_subtotal': labour_subtotal,
+            'grand_total': material_subtotal + labour_subtotal,
+        }
+
     def action_confirm(self):
         self.state = 'confirmed'
 

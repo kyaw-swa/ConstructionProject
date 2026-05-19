@@ -3,4 +3,5 @@ from . import material
 from . import labour
 from . import abstract_of_cost
 from . import project_estimate
+from . import project_estimate_xlsx
 from . import ir_asset_windows_fix

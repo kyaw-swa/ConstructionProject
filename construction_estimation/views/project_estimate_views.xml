@@ -247,6 +247,14 @@
                     <button name="action_reset_draft" string="Reset to Draft"
                             type="object"
                             invisible="state != 'cancelled'"/>
+                    <button name="%(action_report_project_estimate_bq)d"
+                            string="Print BQ Summary"
+                            type="action" class="btn-secondary"
+                            help="Aggregated Bill of Quantities — materials and labours grouped across all estimation lines."/>
+                    <button name="action_print_bq_xlsx"
+                            string="Export BQ to Excel"
+                            type="object" class="btn-secondary"
+                            help="Download the aggregated BQ as an .xlsx file."/>
                     <field name="state" widget="statusbar"
                            statusbar_visible="draft,confirmed,cancelled"/>
                 </header>
