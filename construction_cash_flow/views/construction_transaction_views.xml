@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- LIST VIEW -->
+    <record id="view_construction_transaction_list" model="ir.ui.view">
+        <field name="name">construction.transaction.list</field>
+        <field name="model">construction.transaction</field>
+        <field name="arch" type="xml">
+            <list string="Transactions"
+                  decoration-info="status == 'approved'"
+                  decoration-success="status == 'paid'"
+                  decoration-muted="status == 'draft'"
+                  decoration-danger="category_warning == True">
+                <field name="voucher_no"/>
+                <field name="date"/>
+                <field name="project_id"/>
+                <field name="txn_type"/>
+                <field name="name"/>
+                <field name="cost_category_id"/>
+                <field name="payee_id"/>
+                <field name="paid_by_id"/>
+                <field name="amount" widget="monetary"/>
+                <field name="category_warning" widget="boolean_toggle" optional="show"/>
+                <field name="status" widget="badge"
+                       decoration-info="status == 'approved'"
+                       decoration-success="status == 'paid'"
+                       decoration-muted="status == 'draft'"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_construction_transaction_form" model="ir.ui.view">
+        <field name="name">construction.transaction.form</field>
+        <field name="model">construction.transaction</field>
+        <field name="arch" type="xml">
+            <form string="Transaction">
+                <header>
+                    <button name="action_approve" type="object" string="Approve"
+                            class="oe_highlight" invisible="status != 'draft'"/>
+                    <button name="action_mark_paid" type="object" string="Mark Paid"
+                            class="oe_highlight" invisible="status not in ('draft', 'approved')"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft"/>
+                    <field name="status" widget="statusbar"
+                           statusbar_visible="draft,approved,paid"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="voucher_no" placeholder="Voucher No."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Details">
+                            <field name="project_id"/>
+                            <field name="date"/>
+                            <field name="txn_type"/>
+                            <field name="cost_category_id"/>
+                            <field name="payee_id"/>
+                            <field name="paid_by_id"/>
+                        </group>
+                        <group string="Amounts">
+                            <field name="name"/>
+                            <field name="qty"/>
+                            <field name="unit_price" widget="monetary"/>
+                            <field name="amount" widget="monetary"/>
+                            <field name="running_balance" widget="monetary"/>
+                            <field name="entered_by"/>
+                            <field name="status"/>
+                            <field name="category_warning"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Attachments">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record id="view_construction_transaction_search" model="ir.ui.view">
+        <field name="name">construction.transaction.search</field>
+        <field name="model">construction.transaction</field>
+        <field name="arch" type="xml">
+            <search string="Transactions">
+                <field name="voucher_no"/>
+                <field name="name"/>
+                <field name="payee_id"/>
+                <field name="project_id"/>
+                <field name="cost_category_id"/>
+                <filter name="filter_income" string="Income"
+                        domain="[('txn_type', '=', 'income')]"/>
+                <filter name="filter_expense" string="Expense"
+                        domain="[('txn_type', '=', 'expense')]"/>
+                <separator/>
+                <filter name="filter_draft" string="Draft"
+                        domain="[('status', '=', 'draft')]"/>
+                <filter name="filter_approved" string="Approved"
+                        domain="[('status', '=', 'approved')]"/>
+                <filter name="filter_paid" string="Paid"
+                        domain="[('status', '=', 'paid')]"/>
+                <separator/>
+                <filter name="filter_category_issue" string="Category Issue"
+                        domain="[('category_warning', '=', True)]"/>
+                <group>
+                    <filter name="group_project" string="Project"
+                            context="{'group_by': 'project_id'}"/>
+                    <filter name="group_category" string="Cost Category"
+                            context="{'group_by': 'cost_category_id'}"/>
+                    <filter name="group_paid_by" string="Paid By"
+                            context="{'group_by': 'paid_by_id'}"/>
+                    <filter name="group_status" string="Status"
+                            context="{'group_by': 'status'}"/>
+                    <filter name="group_date" string="Date"
+                            context="{'group_by': 'date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- PIVOT VIEW -->
+    <record id="view_construction_transaction_pivot" model="ir.ui.view">
+        <field name="name">construction.transaction.pivot</field>
+        <field name="model">construction.transaction</field>
+        <field name="arch" type="xml">
+            <pivot string="Transactions">
+                <field name="cost_category_id" type="row"/>
+                <field name="txn_type" type="col"/>
+                <field name="amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- GRAPH VIEW (bar) -->
+    <record id="view_construction_transaction_graph" model="ir.ui.view">
+        <field name="name">construction.transaction.graph</field>
+        <field name="model">construction.transaction</field>
+        <field name="arch" type="xml">
+            <graph string="Transactions" type="bar">
+                <field name="cost_category_id"/>
+                <field name="amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- GRAPH VIEW (line / S-curve over date) -->
+    <record id="view_construction_transaction_scurve_graph" model="ir.ui.view">
+        <field name="name">construction.transaction.scurve.graph</field>
+        <field name="model">construction.transaction</field>
+        <field name="arch" type="xml">
+            <graph string="Budget Burn (S-Curve)" type="line" cumulated="1">
+                <field name="date" interval="month"/>
+                <field name="amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ACTION: main transactions -->
+    <record id="action_construction_transaction" model="ir.actions.act_window">
+        <field name="name">Transactions</field>
+        <field name="res_model">construction.transaction</field>
+        <field name="view_mode">list,form,pivot,graph</field>
+        <field name="search_view_id" ref="view_construction_transaction_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first transaction
+            </p>
+        </field>
+    </record>
+
+    <!-- ACTION: spend by category -->
+    <record id="action_construction_spend_category" model="ir.actions.act_window">
+        <field name="name">Spend by Category</field>
+        <field name="res_model">construction.transaction</field>
+        <field name="view_mode">graph,pivot</field>
+        <field name="domain">[('txn_type', '=', 'expense')]</field>
+        <field name="context">{'group_by': ['cost_category_id']}</field>
+        <field name="search_view_id" ref="view_construction_transaction_search"/>
+    </record>
+
+    <!-- ACTION: budget burn / S-curve -->
+    <record id="action_construction_scurve" model="ir.actions.act_window">
+        <field name="name">Budget Burn (S-Curve)</field>
+        <field name="res_model">construction.transaction</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_construction_transaction_scurve_graph"/>
+        <field name="context">{'group_by': ['date:month']}</field>
+        <field name="search_view_id" ref="view_construction_transaction_search"/>
+    </record>
+
+</odoo>

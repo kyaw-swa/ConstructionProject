@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_construction_project_user,construction.project.user,model_construction_project,base.group_user,1,1,1,1
+access_construction_transaction_user,construction.transaction.user,model_construction_transaction,base.group_user,1,1,1,1
+access_construction_cost_category_user,construction.cost.category.user,model_construction_cost_category,base.group_user,1,1,1,1
+access_construction_cash_holder_user,construction.cash.holder.user,model_construction_cash_holder,base.group_user,1,1,1,1
+access_construction_cash_advance_user,construction.cash.advance.user,model_construction_cash_advance,base.group_user,1,1,1,1
+access_construction_budget_line_user,construction.budget.line.user,model_construction_budget_line,base.group_user,1,1,1,1
+access_construction_petty_cash_user,construction.petty.cash.user,model_construction_petty_cash,base.group_user,1,0,0,0

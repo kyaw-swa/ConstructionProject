@@ -1,0 +1,353 @@
+id,project_id/id,date,txn_type,name,qty,unit_price,amount,cost_category_id/id,paid_by_id/id,status,voucher_no
+imp_Sheet1_3,construction_cash_flow.project_uzg,2026-01-13,income,U Zaw Gyi,1,5000000.0,5000000.0,,,paid,IMP/00001
+imp_Sheet1_4,construction_cash_flow.project_uzg,2026-01-15,income,U Zaw Gyi,1,5000000.0,5000000.0,,,paid,IMP/00002
+imp_Sheet1_5,construction_cash_flow.project_uzg,2026-01-17,income,U Zaw Gyi,1,30000000.0,30000000.0,,,paid,IMP/00003
+imp_Sheet1_6,construction_cash_flow.project_uzg,2026-01-20,income,U Zaw Gyi,1,1000000.0,1000000.0,,,paid,IMP/00004
+imp_Sheet1_7,construction_cash_flow.project_uzg,2026-01-27,income,U Zaw Gyi,1,9000000.0,9000000.0,,,paid,IMP/00005
+imp_Sheet1_11,construction_cash_flow.project_uzg,2025-12-28,expense,Taxi Fees,1,3600.0,3600.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00006
+imp_Sheet1_12,construction_cash_flow.project_uzg,2026-01-07,expense,Carpenter 2 nos,1,60000.0,60000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_k,paid,IMP/00007
+imp_Sheet1_13,construction_cash_flow.project_uzg,2026-01-07,expense,Taxi Fees,1,10300.0,10300.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00008
+imp_Sheet1_14,construction_cash_flow.project_uzg,2026-01-12,expense,အထပ်သား,1,140000.0,140000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00009
+imp_Sheet1_15,construction_cash_flow.project_uzg,2026-01-12,expense,coir rope,1,15000.0,15000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00010
+imp_Sheet1_16,construction_cash_flow.project_uzg,2026-01-12,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00011
+imp_Sheet1_17,construction_cash_flow.project_uzg,2026-01-13,expense,"တိုင်, ကဒ် 6*3, ဆိုက်",1,338000.0,338000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00012
+imp_Sheet1_18,construction_cash_flow.project_uzg,2026-01-13,expense,"တိုင်, ကဒ် ပစ္စည်းသယ်ခ",1,40000.0,40000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00013
+imp_Sheet1_19,construction_cash_flow.project_uzg,2026-01-13,expense,Excavator transportation,1,500000.0,500000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_k,paid,IMP/00014
+imp_Sheet1_20,construction_cash_flow.project_uzg,2026-01-13,expense,Excavation,1,570000.0,570000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_k,paid,IMP/00015
+imp_Sheet1_21,construction_cash_flow.project_uzg,2026-01-13,expense,Labour,1,135000.0,135000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00016
+imp_Sheet1_22,construction_cash_flow.project_uzg,2026-01-13,expense,Brick Nail,1,2400.0,2400.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00017
+imp_Sheet1_23,construction_cash_flow.project_uzg,2026-01-13,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00018
+imp_Sheet1_24,construction_cash_flow.project_uzg,2026-01-13,expense,Taxi Fees,1,3600.0,3600.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00019
+imp_Sheet1_25,construction_cash_flow.project_uzg,2026-01-14,expense,"10 mm DF, 16 mm HRB, 8mm",1,4919814.0,4919814.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00020
+imp_Sheet1_26,construction_cash_flow.project_uzg,2026-01-14,expense,4*6 2 Kyine,1,550000.0,550000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00021
+imp_Sheet1_27,construction_cash_flow.project_uzg,2026-01-14,expense,"Sand, Chipping, Alpha",1,525500.0,525500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00022
+imp_Sheet1_28,construction_cash_flow.project_uzg,2026-01-14,expense,Bamboo,1,149000.0,149000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00023
+imp_Sheet1_29,construction_cash_flow.project_uzg,2026-01-14,expense,car transport,1,80000.0,80000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00024
+imp_Sheet1_30,construction_cash_flow.project_uzg,2026-01-14,expense,Alpha,1,2070000.0,2070000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00025
+imp_Sheet1_31,construction_cash_flow.project_uzg,2026-01-14,expense,Wood,1,1319500.0,1319500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00026
+imp_Sheet1_32,construction_cash_flow.project_uzg,2026-01-14,expense,"ပေါက်ပြား, ဂေါ်ချွန်",1,38600.0,38600.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00027
+imp_Sheet1_33,construction_cash_flow.project_uzg,2026-01-14,expense,"16"" ငန်းပြား",1,11000.0,11000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00028
+imp_Sheet1_34,construction_cash_flow.project_uzg,2026-01-14,expense,"ဝါးကပ်, မျှော",1,344500.0,344500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00029
+imp_Sheet1_35,construction_cash_flow.project_uzg,2026-01-14,expense,ဘိလပ်မြေတင်ရန်ကော်ခုံ,1,5000.0,5000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00030
+imp_Sheet1_36,construction_cash_flow.project_uzg,2026-01-14,expense,Ko Aung Theik,1,120000.0,120000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00031
+imp_Sheet1_37,construction_cash_flow.project_uzg,2026-01-14,expense,Taxi Fees,1,7600.0,7600.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00032
+imp_Sheet1_38,construction_cash_flow.project_uzg,2026-01-15,expense,Brick,1,1550000.0,1550000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00033
+imp_Sheet1_39,construction_cash_flow.project_uzg,2026-01-15,expense,Plywood,1,80000.0,80000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00034
+imp_Sheet1_40,construction_cash_flow.project_uzg,2026-01-15,expense,Ko Aung Theik,1,125000.0,125000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00035
+imp_Sheet1_41,construction_cash_flow.project_uzg,2026-01-15,expense,Labour Taxi,1,10000.0,10000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00036
+imp_Sheet1_42,construction_cash_flow.project_uzg,2026-01-15,expense,Ko Thu Carpenter လက်သမား ,1,300000.0,300000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00037
+imp_Sheet1_43,construction_cash_flow.project_uzg,2026-01-15,expense,Earth Work Labour,1,50000.0,50000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00038
+imp_Sheet1_44,construction_cash_flow.project_uzg,2026-01-16,expense,"Sand, Stone",1,295000.0,295000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00039
+imp_Sheet1_45,construction_cash_flow.project_uzg,2026-01-16,expense,"ဒံပဒက်, ကော်ခွက်, ကြိုး, pipe",1,84000.0,84000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00040
+imp_Sheet1_46,construction_cash_flow.project_uzg,2026-01-16,expense,Mixer Maintainence,1,90000.0,90000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00041
+imp_Sheet1_47,construction_cash_flow.project_uzg,2026-01-16,expense,Ko Aung Theik,1,140000.0,140000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00042
+imp_Sheet1_48,construction_cash_flow.project_uzg,2026-01-16,expense,Labour Transportation,1,10000.0,10000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00043
+imp_Sheet1_49,construction_cash_flow.project_uzg,2026-01-16,expense,"Sand, Chipping",1,295000.0,295000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00044
+imp_Sheet1_50,construction_cash_flow.project_uzg,2026-01-16,expense,Min Thu Naing Aung,1,300000.0,300000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00045
+imp_Sheet1_51,construction_cash_flow.project_uzg,2026-01-16,expense,Earth work Labour,1,50000.0,50000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00046
+imp_Sheet1_52,construction_cash_flow.project_uzg,2026-01-16,expense,"အထပ်သား, သံ brush",1,35000.0,35000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00047
+imp_Sheet1_53,construction_cash_flow.project_uzg,2026-01-16,expense,အထပ်သား,1,33000.0,33000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00048
+imp_Sheet1_54,construction_cash_flow.project_uzg,2026-01-16,expense,mixer bolt & nut,1,1700.0,1700.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00049
+imp_Sheet1_55,construction_cash_flow.project_uzg,2026-01-17,expense,"Sand, Chipping",1,295000.0,295000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00050
+imp_Sheet1_56,construction_cash_flow.project_uzg,2026-01-17,expense,သွပ်ကြိုး,1,30000.0,30000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00051
+imp_Sheet1_57,construction_cash_flow.project_uzg,2026-01-17,expense,Ko Aung Theik,1,170000.0,170000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00052
+imp_Sheet1_58,construction_cash_flow.project_uzg,2026-01-17,expense,Ko Thu Carpenter လက်သမား ,1,400000.0,400000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00053
+imp_Sheet1_59,construction_cash_flow.project_uzg,2026-01-17,expense,ပစ္စည်းသယ် transportation 2 ways tarpaulin Vibrator,1,10000.0,10000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_k,paid,IMP/00054
+imp_Sheet1_60,construction_cash_flow.project_uzg,2026-01-17,expense,ဧည့်စာရင်း ,1,5000.0,5000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00055
+imp_Sheet1_61,construction_cash_flow.project_uzg,2026-01-17,expense,"Contract (2), L file",1,23500.0,23500.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00056
+imp_Sheet1_62,construction_cash_flow.project_uzg,2026-01-17,expense,Engine oil,1,11500.0,11500.0,construction_cash_flow.cat_fuel,construction_cash_flow.holder_y,paid,IMP/00057
+imp_Sheet1_63,construction_cash_flow.project_uzg,2026-01-17,expense,အထပ်သား,1,113000.0,113000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00058
+imp_Sheet1_64,construction_cash_flow.project_uzg,2026-01-17,expense,"Sand, Stone",1,345000.0,345000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00059
+imp_Sheet1_65,construction_cash_flow.project_uzg,2026-01-17,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00060
+imp_Sheet1_66,construction_cash_flow.project_uzg,2026-01-18,expense,Ko Thu Carpenter လက်သမား ,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00061
+imp_Sheet1_67,construction_cash_flow.project_uzg,2026-01-18,expense,Earth work Labour,1,75000.0,75000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00062
+imp_Sheet1_68,construction_cash_flow.project_uzg,2026-01-18,expense,Labour carry,1,5000.0,5000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_k,paid,IMP/00063
+imp_Sheet1_69,construction_cash_flow.project_uzg,2026-01-19,expense,Earth work Labour,1,115000.0,115000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00064
+imp_Sheet1_70,construction_cash_flow.project_uzg,2026-01-19,expense,Earth work Labour transportation,1,12000.0,12000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00065
+imp_Sheet1_71,construction_cash_flow.project_uzg,2026-01-19,expense,Fuel,1,50000.0,50000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_k,paid,IMP/00066
+imp_Sheet1_72,construction_cash_flow.project_uzg,2026-01-19,expense,"Excavator transportation 400,000",1,400000.0,400000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_k,paid,IMP/00067
+imp_Sheet1_73,construction_cash_flow.project_uzg,2026-01-19,expense,"Excavator 1 duty 600,000",1,600000.0,600000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_k,paid,IMP/00068
+imp_Sheet1_74,construction_cash_flow.project_uzg,2026-01-19,expense,Taxi Fees,1,3800.0,3800.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00069
+imp_Sheet1_75,construction_cash_flow.project_uzg,2026-01-19,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00070
+imp_Sheet1_76,construction_cash_flow.project_uzg,2026-01-20,expense,"Hardcore, Sand",1,895000.0,895000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00071
+imp_Sheet1_77,construction_cash_flow.project_uzg,2026-01-20,expense,"Carpenter Ko Thu payment 300,000",1,300000.0,300000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_k,paid,IMP/00072
+imp_Sheet1_78,construction_cash_flow.project_uzg,2026-01-20,expense,"Office labour 140,000",1,140000.0,140000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00073
+imp_Sheet1_79,construction_cash_flow.project_uzg,2026-01-20,expense,"Labour Taxi 10,000",1,10000.0,10000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_k,paid,IMP/00074
+imp_Sheet1_80,construction_cash_flow.project_uzg,2026-01-20,expense,"Excavator overtime 150,000",1,150000.0,150000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_k,paid,IMP/00075
+imp_Sheet1_81,construction_cash_flow.project_uzg,2026-01-20,expense,"Excavator operator overtime 20,000",1,20000.0,20000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_k,paid,IMP/00076
+imp_Sheet1_82,construction_cash_flow.project_uzg,2026-01-20,expense,"Dump 9 ခေါက် 360,000",1,360000.0,360000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_k,paid,IMP/00077
+imp_Sheet1_83,construction_cash_flow.project_uzg,2026-01-20,expense,Taxi Fees,1,4700.0,4700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00078
+imp_Sheet1_84,construction_cash_flow.project_uzg,2026-01-21,expense,"Cover block 12,500",1,12500.0,12500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00079
+imp_Sheet1_85,construction_cash_flow.project_uzg,2026-01-21,expense,"မိုးကာစ 12,000",1,12000.0,12000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00080
+imp_Sheet1_86,construction_cash_flow.project_uzg,2026-01-21,expense,"သံဆရာ Ko Aung Thike payment 120,000",1,120000.0,120000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00081
+imp_Sheet1_87,construction_cash_flow.project_uzg,2026-01-21,expense,ကျောက်ကားပိုးပြား,1,220000.0,220000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00082
+imp_Sheet1_88,construction_cash_flow.project_uzg,2026-01-21,expense,"သွပ်ကြိုး, ကျောက်ကားပိုးပြား",1,211000.0,211000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00083
+imp_Sheet1_89,construction_cash_flow.project_uzg,2026-01-21,expense,Ko Thu လက်သမား 300000,1,300000.0,300000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00084
+imp_Sheet1_90,construction_cash_flow.project_uzg,2026-01-21,expense,Earth labor 100000,1,100000.0,100000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00085
+imp_Sheet1_91,construction_cash_flow.project_uzg,2026-01-21,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00086
+imp_Sheet1_92,construction_cash_flow.project_uzg,2026-01-22,expense,Cement,1,2120000.0,2120000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00087
+imp_Sheet1_93,construction_cash_flow.project_uzg,2026-01-22,expense,"သဲကားပိုးပြား,ကျောက်ကားပိုးပြား",1,275000.0,275000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00088
+imp_Sheet1_94,construction_cash_flow.project_uzg,2026-01-22,expense,Ko Thu ,1,900000.0,900000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00089
+imp_Sheet1_95,construction_cash_flow.project_uzg,2026-01-22,expense,Earth Labor ,1,100000.0,100000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00090
+imp_Sheet1_96,construction_cash_flow.project_uzg,2026-01-22,expense,Smith Labour,1,80000.0,80000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00091
+imp_Sheet1_97,construction_cash_flow.project_uzg,2026-01-22,expense,Taxi Fees,1,4800.0,4800.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00092
+imp_Sheet1_98,construction_cash_flow.project_uzg,2026-01-22,expense,Taxi Fees,1,4800.0,4800.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00093
+imp_Sheet1_99,construction_cash_flow.project_uzg,2026-01-23,expense,Ko Thu ,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00094
+imp_Sheet1_100,construction_cash_flow.project_uzg,2026-01-23,expense,Earth Labor ,1,130000.0,130000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00095
+imp_Sheet1_101,construction_cash_flow.project_uzg,2026-01-23,expense,Smith Labour,1,130000.0,130000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00096
+imp_Sheet1_102,construction_cash_flow.project_uzg,2026-01-23,expense,သဲကားပိုးပြား,1,60000.0,60000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00097
+imp_Sheet1_103,construction_cash_flow.project_uzg,2026-01-23,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00098
+imp_Sheet1_104,construction_cash_flow.project_uzg,2026-01-23,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00099
+imp_Sheet1_105,construction_cash_flow.project_uzg,2026-01-24,expense,"16mm, 8mm, 12mm",1,3954037.0,3954037.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00100
+imp_Sheet1_106,construction_cash_flow.project_uzg,2026-01-24,expense,Brick,1,1875000.0,1875000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_y,paid,IMP/00101
+imp_Sheet1_107,construction_cash_flow.project_uzg,2026-01-24,expense,လက်သမား ကိုသူ - 300000,1,300000.0,300000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00102
+imp_Sheet1_108,construction_cash_flow.project_uzg,2026-01-24,expense,သံသမား ကိုအောင်သိုက် - 200000,1,200000.0,200000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00103
+imp_Sheet1_109,construction_cash_flow.project_uzg,2026-01-24,expense,Earth work - 500000,1,500000.0,500000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00104
+imp_Sheet1_110,construction_cash_flow.project_uzg,2026-01-24,expense,Earth labor - 50000,1,50000.0,50000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00105
+imp_Sheet1_111,construction_cash_flow.project_uzg,2026-01-24,expense,Taxi Fees,1,3600.0,3600.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00106
+imp_Sheet1_112,construction_cash_flow.project_uzg,2026-01-24,expense,Taxi Fees,1,3600.0,3600.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00107
+imp_Sheet1_113,construction_cash_flow.project_uzg,2026-01-25,expense,Ko Aung Theik,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00108
+imp_Sheet1_114,construction_cash_flow.project_uzg,2026-01-25,expense,Ko Thu,1,700000.0,700000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00109
+imp_Sheet1_115,construction_cash_flow.project_uzg,2026-01-25,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00110
+imp_Sheet1_116,construction_cash_flow.project_uzg,2026-01-25,expense,"သဲကားပိုးပြား, ကျောက်ကားပိုးပြား",1,285000.0,285000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00111
+imp_Sheet1_117,construction_cash_flow.project_uzg,2026-01-25,expense,vibator rental,1,25000.0,25000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00112
+imp_Sheet1_118,construction_cash_flow.project_uzg,2026-01-26,expense,18 G Binding wire,1,128000.0,128000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00113
+imp_Sheet1_119,construction_cash_flow.project_uzg,2026-01-26,expense,သံသမားကိုအောင်သိုက် 200000,1,200000.0,200000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00114
+imp_Sheet1_120,construction_cash_flow.project_uzg,2026-01-26,expense,လက်သမား ကိုသူ 1000000,1,1000000.0,1000000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00115
+imp_Sheet1_121,construction_cash_flow.project_uzg,2026-01-26,expense,Earth labor 50000,1,50000.0,50000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00116
+imp_Sheet1_122,construction_cash_flow.project_uzg,2026-01-26,expense,Transportation payment ,1,4000.0,4000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00117
+imp_Sheet1_123,construction_cash_flow.project_uzg,2026-01-27,expense,Cover block ,1,95000.0,95000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00118
+imp_Sheet1_124,construction_cash_flow.project_uzg,2026-01-27,expense,ပစ္စည်းသယ် ကားခ ,1,90000.0,90000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00119
+imp_Sheet1_125,construction_cash_flow.project_uzg,2026-01-27,expense,သံသမားကိုအောင်သိုက် Final  ,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00120
+imp_Sheet1_126,construction_cash_flow.project_uzg,2026-01-27,expense,ရေလုံဆေး,1,32500.0,32500.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00121
+imp_Sheet1_127,construction_cash_flow.project_uzg,2026-01-27,expense,ရိုက်သံ + Binding wire,1,491800.0,491800.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00122
+imp_Sheet1_128,construction_cash_flow.project_uzg,2026-01-28,expense,လက်သမား ကိုသူ,1,1500000.0,1500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00123
+imp_Sheet1_129,construction_cash_flow.project_uzg,2026-01-28,expense,8 mm family,1,531000.0,531000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00124
+imp_Sheet1_130,construction_cash_flow.project_uzg,2026-01-28,expense,အမဲဆီ,1,15000.0,15000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00125
+imp_Sheet1_131,construction_cash_flow.project_uzg,2026-01-29,expense,"Iron 10m, သဲကားပိုးပြား, ကျောက်ကားပိုးပြား",1,653000.0,653000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00126
+imp_Sheet1_132,construction_cash_flow.project_uzg,2026-01-29,expense,"16mm, 10mm,8mm",1,4695000.0,4695000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00127
+imp_Sheet1_133,construction_cash_flow.project_uzg,2026-01-30,expense,ကိုသူ Foundation + Ground Tank လုပ်ငန်း Final Payment,1,1200000.0,1200000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00128
+imp_Sheet1_134,construction_cash_flow.project_uzg,2026-01-31,expense,Earth labour,1,160000.0,160000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00129
+imp_Sheet1_135,construction_cash_flow.project_uzg,2026-01-31,expense,မြေကြီးကား 17000,1,170000.0,170000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00130
+imp_Sheet1_136,construction_cash_flow.project_uzg,2026-02-01,expense,Earth Labour,1,220000.0,220000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00131
+imp_Sheet1_137,construction_cash_flow.project_uzg,2026-02-02,expense,Cement,1,1050000.0,1050000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00132
+imp_Sheet1_138,construction_cash_flow.project_uzg,2026-02-02,expense,"သဲကားပိုးပြား, ",1,65000.0,65000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00133
+imp_Sheet1_139,construction_cash_flow.project_uzg,2026-02-02,expense,Earth labour,1,250000.0,250000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_y,paid,IMP/00134
+imp_Sheet1_140,construction_cash_flow.project_uzg,2026-02-02,expense,Compactor Transport,1,18000.0,18000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00135
+imp_Sheet1_141,construction_cash_flow.project_uzg,2026-02-02,expense,Fuel,1,30000.0,30000.0,construction_cash_flow.cat_fuel,construction_cash_flow.holder_y,paid,IMP/00136
+imp_Sheet1_142,construction_cash_flow.project_uzg,2026-02-03,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00137
+imp_Sheet1_143,construction_cash_flow.project_uzg,2026-02-03,expense,Taxi Fees,1,14800.0,14800.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00138
+imp_Sheet1_144,construction_cash_flow.project_uzg,2026-02-03,expense,Taxi Fees,1,3600.0,3600.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00139
+imp_Sheet1_145,construction_cash_flow.project_uzg,2026-02-03,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00140
+imp_Sheet1_146,construction_cash_flow.project_uzg,2026-02-03,expense,Taxi Fees,1,3600.0,3600.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00141
+imp_Sheet1_147,construction_cash_flow.project_uzg,2026-02-03,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00142
+imp_Sheet1_148,construction_cash_flow.project_uzg,2026-02-03,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00143
+imp_Sheet1_149,construction_cash_flow.project_uzg,2026-02-03,expense,Taxi Fees,1,3700.0,3700.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00144
+imp_Sheet1_150,construction_cash_flow.project_uzg,2026-02-03,expense,သံသမားကိုအောင်သိုက် ,1,130000.0,130000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00145
+imp_Sheet1_151,construction_cash_flow.project_uzg,2026-02-03,expense,မြေကြီးကား 17000,1,430000.0,430000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00146
+imp_Sheet1_152,construction_cash_flow.project_uzg,2026-02-04,expense,သံသမားကိုအောင်သိုက် ,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00147
+imp_Sheet1_153,construction_cash_flow.project_uzg,2026-02-05,expense,Compactor Rental Fee,1,140000.0,140000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00148
+imp_Sheet1_154,construction_cash_flow.project_uzg,2026-02-05,expense,လက်သမား ကိုသူ,1,200000.0,200000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_k,paid,IMP/00149
+imp_Sheet1_155,construction_cash_flow.project_uzg,2026-02-05,expense,Office labour ,1,60000.0,60000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00150
+imp_Sheet1_156,construction_cash_flow.project_uzg,2026-02-05,expense,Office labour ,1,25000.0,25000.0,construction_cash_flow.cat_earthwork,construction_cash_flow.holder_k,paid,IMP/00151
+imp_Sheet1_157,construction_cash_flow.project_uzg,2026-02-05,expense,သံသမားကိုအောင်သိုက် ,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00152
+imp_Sheet1_158,construction_cash_flow.project_uzg,2026-02-06,expense,Transportation payment ,1,8000.0,8000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00153
+imp_Sheet1_159,construction_cash_flow.project_uzg,2026-02-06,expense,လက်သမား ကိုသူ,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_k,paid,IMP/00154
+imp_Sheet1_160,construction_cash_flow.project_uzg,2026-02-07,expense,မြေကြီးကား ,1,200000.0,200000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00155
+imp_Sheet1_161,construction_cash_flow.project_uzg,2026-02-07,expense,Formwork Transport,1,90000.0,90000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00156
+imp_Sheet1_162,construction_cash_flow.project_uzg,2026-02-07,expense,သံသမားကိုအောင်သိုက် ,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00157
+imp_Sheet1_163,construction_cash_flow.project_uzg,2026-02-07,expense,Concrete Casting - Column & Stair,1,500000.0,500000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00158
+imp_Sheet1_164,construction_cash_flow.project_uzg,2026-02-08,expense,Plastic & တံမြက်စည်း,1,35000.0,35000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00159
+imp_Sheet1_165,construction_cash_flow.project_uzg,2026-02-08,expense,သံသမားကိုအောင်သိုက် ,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00160
+imp_Sheet1_166,construction_cash_flow.project_uzg,2026-02-08,expense,လက်သမား ကိုသူ,1,100000.0,100000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00161
+imp_Sheet1_167,construction_cash_flow.project_uzg,2026-02-08,expense,Rebar,1,1136000.0,1136000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00162
+imp_Sheet1_168,construction_cash_flow.project_uzg,2026-02-09,expense,လက်သမား ကိုသူ,1,350000.0,350000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_k,paid,IMP/00163
+imp_Sheet1_169,construction_cash_flow.project_uzg,2026-02-10,expense,သဲကျောက်,1,738000.0,738000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00164
+imp_Sheet1_170,construction_cash_flow.project_uzg,2026-02-10,expense,လက်သမား ကိုသူ,1,700000.0,700000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00165
+imp_Sheet1_171,construction_cash_flow.project_uzg,2026-02-10,expense,မျဉ်းတံ,1,13000.0,13000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00166
+imp_Sheet1_172,construction_cash_flow.project_uzg,2026-02-10,expense,သံသမားကိုအောင်သိုက် ,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00167
+imp_Sheet1_173,construction_cash_flow.project_uzg,2026-02-11,expense,Plastic Sheet + Disel,1,20000.0,20000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00168
+imp_Sheet1_174,construction_cash_flow.project_uzg,2026-02-11,expense,T Post Deposit Fee,1,1050000.0,1050000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00169
+imp_Sheet1_175,construction_cash_flow.project_uzg,2026-02-12,expense,Water Pipe ,1,6200.0,6200.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00170
+imp_Sheet1_176,construction_cash_flow.project_uzg,2026-02-12,expense,လက်သမား ကိုသူ,1,300000.0,300000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00171
+imp_Sheet1_177,construction_cash_flow.project_uzg,2026-02-13,expense,လက်သမား ကိုသူ,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00172
+imp_Sheet1_178,construction_cash_flow.project_uzg,2026-02-14,expense,လက်သမား ကိုသူ,1,200000.0,200000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00173
+imp_Sheet1_179,construction_cash_flow.project_uzg,2026-02-13,expense,သံသမားကိုအောင်သိုက် ,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00174
+imp_Sheet1_180,construction_cash_flow.project_uzg,2026-02-12,expense,Office labour ,1,80000.0,80000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00175
+imp_Sheet1_181,construction_cash_flow.project_uzg,2026-02-14,expense,Plywood,1,1200000.0,1200000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00176
+imp_Sheet1_182,construction_cash_flow.project_uzg,2026-02-14,expense,သဲကျောက်,1,220000.0,220000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00177
+imp_Sheet1_183,construction_cash_flow.project_uzg,2026-02-16,expense,လက်သမား ကိုသူ,1,220000.0,220000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00178
+imp_Sheet1_184,construction_cash_flow.project_uzg,2026-02-14,expense,Office labour ,1,50000.0,50000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00179
+imp_Sheet1_185,construction_cash_flow.project_uzg,2026-02-17,expense,ဝါးယား,1,221000.0,221000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00180
+imp_Sheet1_186,construction_cash_flow.project_uzg,2026-02-15,expense,Plywood,1,423500.0,423500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00181
+imp_Sheet1_187,construction_cash_flow.project_uzg,2026-02-15,expense,Transportation payment ,1,25000.0,25000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00182
+imp_Sheet1_191,construction_cash_flow.project_uzg,2026-02-21,expense,Concreting Labor,1,240000.0,240000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00183
+imp_Sheet1_192,construction_cash_flow.project_uzg,2026-02-21,expense,Rubber Shoe,1,60000.0,60000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00184
+imp_Sheet1_193,construction_cash_flow.project_uzg,2026-02-22,expense,Rebar,1,2444000.0,2444000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00185
+imp_Sheet1_194,construction_cash_flow.project_uzg,2026-02-22,expense,Ko Aung Thike,1,200000.0,200000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00186
+imp_Sheet1_195,construction_cash_flow.project_uzg,2026-02-22,expense,Office labour,1,50000.0,50000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00187
+imp_Sheet1_196,construction_cash_flow.project_uzg,2026-02-23,expense,Office labour ,1,100000.0,100000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00188
+imp_Sheet1_197,construction_cash_flow.project_uzg,2026-02-23,expense,Ko Aung Thike,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00189
+imp_Sheet1_198,construction_cash_flow.project_uzg,2026-02-23,expense,Concrete Casting - Column,1,100000.0,100000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00190
+imp_Sheet1_199,construction_cash_flow.project_uzg,2026-02-24,expense,Binding Wire,1,36000.0,36000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00191
+imp_Sheet1_200,construction_cash_flow.project_uzg,2026-02-17,expense,Plywood,1,160000.0,160000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00192
+imp_Sheet1_201,construction_cash_flow.project_uzg,2026-02-16,expense,အုန်းဆံကြိုး,1,37600.0,37600.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00193
+imp_Sheet1_202,construction_cash_flow.project_uzg,2026-02-17,expense,Ko Thu,1,100000.0,100000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_k,paid,IMP/00194
+imp_Sheet1_203,construction_cash_flow.project_uzg,2026-02-17,expense,Ko Aung Theik,1,250000.0,250000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00195
+imp_Sheet1_204,construction_cash_flow.project_uzg,2026-02-17,expense,Plywood,1,121000.0,121000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00196
+imp_Sheet1_205,construction_cash_flow.project_uzg,2026-02-17,expense,အုန်းဆံကြိုး,1,69000.0,69000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00197
+imp_Sheet1_206,construction_cash_flow.project_uzg,2026-02-17,expense,Tarpulin Sheet,1,444600.0,444600.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00198
+imp_Sheet1_207,construction_cash_flow.project_uzg,2026-02-17,expense,Rebar,1,38000.0,38000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00199
+imp_Sheet1_208,construction_cash_flow.project_uzg,2026-02-17,expense,Rebar,1,1235500.0,1235500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00200
+imp_Sheet1_209,construction_cash_flow.project_uzg,2026-02-18,expense,Office Labour,1,160000.0,160000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00201
+imp_Sheet1_210,construction_cash_flow.project_uzg,2026-02-18,expense,Ko AUng Theik,1,220000.0,220000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00202
+imp_Sheet1_211,construction_cash_flow.project_uzg,2026-02-19,expense,Ko AUng Theik,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00203
+imp_Sheet1_212,construction_cash_flow.project_uzg,2026-02-19,expense,Ko Thu,1,200000.0,200000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_k,paid,IMP/00204
+imp_Sheet1_213,construction_cash_flow.project_uzg,2026-02-24,expense,Rebar,1,467850.0,467850.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00205
+imp_Sheet1_214,construction_cash_flow.project_uzg,2026-02-23,expense,Rebar,1,155000.0,155000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00206
+imp_Sheet1_215,construction_cash_flow.project_uzg,2026-02-24,expense,သဲကျောက် ဘိလပ်မြေ,1,545000.0,545000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00207
+imp_Sheet1_216,construction_cash_flow.project_uzg,2026-02-25,expense,ကာဗိုက်ပြား,1,14000.0,14000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00208
+imp_Sheet1_217,construction_cash_flow.project_uzg,2026-02-25,expense,Concrete casting - column ,1,500000.0,500000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00209
+imp_Sheet1_218,construction_cash_flow.project_uzg,2026-02-21,expense,G-25 AG ,1,4162500.0,4162500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00210
+imp_Sheet1_219,construction_cash_flow.project_uzg,2026-02-27,expense,Binding Wire,1,24000.0,24000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00211
+imp_Sheet1_220,construction_cash_flow.project_uzg,2026-02-27,expense,သံသမားကိုအောင်သိုက်,1,50000.0,50000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00212
+imp_Sheet1_221,construction_cash_flow.project_uzg,2026-02-27,expense,Ko Thu,1,100000.0,100000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_k,paid,IMP/00213
+imp_Sheet1_222,construction_cash_flow.project_uzg,2026-02-27,expense,Timber Payment,1,3000000.0,3000000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00214
+imp_Sheet1_223,construction_cash_flow.project_uzg,2026-02-27,expense,Cement,1,110000.0,110000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00215
+imp_Sheet1_224,construction_cash_flow.project_uzg,2026-03-03,expense,Plywood,1,104000.0,104000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00216
+imp_Sheet1_225,construction_cash_flow.project_uzg,2026-03-01,expense,Rebar,1,7090400.0,7090400.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00217
+imp_Sheet1_226,construction_cash_flow.project_uzg,2026-03-01,expense,Rebar labor,1,21000.0,21000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00218
+imp_Sheet1_227,construction_cash_flow.project_uzg,2026-03-03,expense,Office labour,1,30000.0,30000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00219
+imp_Sheet1_228,construction_cash_flow.project_uzg,2026-03-04,expense,office labour,1,30000.0,30000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00220
+imp_Sheet1_229,construction_cash_flow.project_uzg,2026-03-04,expense,လက်သမား ကိုသူ,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00221
+imp_Sheet1_230,construction_cash_flow.project_uzg,2026-03-04,expense,Cement,1,215000.0,215000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00222
+imp_Sheet1_231,construction_cash_flow.project_uzg,2026-03-04,expense,ကာဗိုက်ပြား,1,18000.0,18000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00223
+imp_Sheet1_232,construction_cash_flow.project_uzg,2026-03-05,expense,လက်သမား ကိုသူ,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00224
+imp_Sheet1_233,construction_cash_flow.project_uzg,2026-03-05,expense,သံသမားကိုအောင်သိုက်,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00225
+imp_Sheet1_234,construction_cash_flow.project_uzg,2026-03-06,expense,Brick,1,1850000.0,1850000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00226
+imp_Sheet1_235,construction_cash_flow.project_uzg,2026-03-06,expense,"သဲကားပိုးပြား,",1,75000.0,75000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00227
+imp_Sheet1_236,construction_cash_flow.project_uzg,2026-03-06,expense,ဂျာလီ Bracket,1,59700.0,59700.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00228
+imp_Sheet1_237,construction_cash_flow.project_uzg,2026-03-04,expense,ကာဗိုက်ပြား,1,12000.0,12000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00229
+imp_Sheet1_238,construction_cash_flow.project_uzg,2026-03-05,expense,Cement,1,650000.0,650000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00230
+imp_Sheet1_239,construction_cash_flow.project_uzg,2026-03-05,expense,Timber,1,2000000.0,2000000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00231
+imp_Sheet1_240,construction_cash_flow.project_uzg,2026-03-06,expense,Nail,1,20400.0,20400.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00232
+imp_Sheet1_241,construction_cash_flow.project_uzg,2026-03-05,expense,ကိုအောင်,1,111000.0,111000.0,construction_cash_flow.cat_mason,construction_cash_flow.holder_y,paid,IMP/00233
+imp_Sheet1_242,construction_cash_flow.project_uzg,2026-03-06,expense,ကိုအောင်,1,131000.0,131000.0,construction_cash_flow.cat_mason,construction_cash_flow.holder_y,paid,IMP/00234
+imp_Sheet1_243,construction_cash_flow.project_uzg,2026-03-06,expense,Office labour ,1,10000.0,10000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00235
+imp_Sheet1_244,construction_cash_flow.project_uzg,2026-03-07,expense,Timber,1,626800.0,626800.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00236
+imp_Sheet1_245,construction_cash_flow.project_uzg,2026-03-07,expense,Car Octane,1,40000.0,40000.0,construction_cash_flow.cat_fuel,construction_cash_flow.holder_k,paid,IMP/00237
+imp_Sheet1_246,construction_cash_flow.project_uzg,2026-03-07,expense,Ko Aung,1,150000.0,150000.0,construction_cash_flow.cat_mason,construction_cash_flow.holder_k,paid,IMP/00238
+imp_Sheet1_247,construction_cash_flow.project_uzg,2026-03-06,expense,Rebar,1,979550.0,979550.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00239
+imp_Sheet1_248,construction_cash_flow.project_uzg,2026-03-06,expense,သံသမားကိုအောင်သိုက်,1,200000.0,200000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00240
+imp_Sheet1_249,construction_cash_flow.project_uzg,2026-03-06,expense,လက်သမား ကိုသူ,1,200000.0,200000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00241
+imp_Sheet1_250,construction_cash_flow.project_uzg,2026-03-06,expense,Office labour ,1,90000.0,90000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00242
+imp_Sheet1_251,construction_cash_flow.project_uzg,2026-03-06,expense,Cement,1,2420000.0,2420000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00243
+imp_Sheet1_252,construction_cash_flow.project_uzg,2026-03-06,expense,Cement,1,1185000.0,1185000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00244
+imp_Sheet1_253,construction_cash_flow.project_uzg,2026-03-06,expense,Transportation,1,25000.0,25000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00245
+imp_Sheet1_254,construction_cash_flow.project_uzg,2026-03-08,expense,Plywood,1,190000.0,190000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00246
+imp_Sheet1_255,construction_cash_flow.project_uzg,2026-03-09,expense,ကိုအောင်,1,150000.0,150000.0,construction_cash_flow.cat_mason,construction_cash_flow.holder_y,paid,IMP/00247
+imp_Sheet1_256,construction_cash_flow.project_uzg,2026-03-09,expense,သံသမားကိုအောင်သိုက်,1,500000.0,500000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00248
+imp_Sheet1_257,construction_cash_flow.project_uzg,2026-03-09,expense,Office labour ,1,25000.0,25000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00249
+imp_Sheet1_258,construction_cash_flow.project_uzg,2026-03-09,expense,K pay,1,15000.0,15000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00250
+imp_Sheet1_259,construction_cash_flow.project_uzg,2026-03-09,expense,Transportation,1,15000.0,15000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00251
+imp_Sheet1_260,construction_cash_flow.project_uzg,2026-03-09,expense,Office labour ,1,60000.0,60000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00252
+imp_Sheet1_261,construction_cash_flow.project_uzg,2026-03-09,expense,Scaffolding labor,1,270000.0,270000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00253
+imp_Sheet1_262,construction_cash_flow.project_uzg,2026-03-09,expense,Cover Block,1,64500.0,64500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00254
+imp_Sheet1_263,construction_cash_flow.project_uzg,2026-03-10,expense,Brick,1,1800000.0,1800000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00255
+imp_Sheet1_264,construction_cash_flow.project_uzg,2026-03-10,expense,Ko Aung Thike,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00256
+imp_Sheet1_265,construction_cash_flow.project_uzg,2026-03-10,expense,Water Pipe ass,1,16000.0,16000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00257
+imp_Sheet1_266,construction_cash_flow.project_uzg,2026-03-10,expense,U Ka Lar,1,20000.0,20000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_k,paid,IMP/00258
+imp_Sheet1_267,construction_cash_flow.project_uzg,2026-03-10,expense,Tarpulin,1,394000.0,394000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00259
+imp_Sheet1_268,construction_cash_flow.project_uzg,2026-03-11,expense,ကိုအောင်,1,150000.0,150000.0,construction_cash_flow.cat_mason,construction_cash_flow.holder_y,paid,IMP/00260
+imp_Sheet1_269,construction_cash_flow.project_uzg,2026-03-11,expense,Car Octane,1,20000.0,20000.0,construction_cash_flow.cat_fuel,construction_cash_flow.holder_k,paid,IMP/00261
+imp_Sheet1_270,construction_cash_flow.project_uzg,2026-03-11,expense,Car Maintain,1,6000.0,6000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00262
+imp_Sheet1_271,construction_cash_flow.project_uzg,2026-03-11,expense,Ko Aung Thike,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00263
+imp_Sheet1_272,construction_cash_flow.project_uzg,2026-03-11,expense,Vibrator Rod,1,15000.0,15000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00264
+imp_Sheet1_273,construction_cash_flow.project_uzg,2026-03-11,expense,ဧည့်စာရင်း,1,10000.0,10000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00265
+imp_Sheet1_274,construction_cash_flow.project_uzg,2026-03-11,expense,ကျောက်လောင်းလေဘာ,1,200000.0,200000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00266
+imp_Sheet1_275,construction_cash_flow.project_uzg,2026-03-11,expense,လက်သမား ကိုသူ,1,1000000.0,1000000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00267
+imp_Sheet1_276,construction_cash_flow.project_uzg,2026-03-12,expense,Vibrator Rod (Refund),1,85000.0,85000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00268
+imp_Sheet1_277,construction_cash_flow.project_uzg,2026-03-12,expense,AG,1,5070000.0,5070000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00269
+imp_Sheet1_278,construction_cash_flow.project_uzg,2026-03-12,expense,Ko Aung,1,150000.0,150000.0,construction_cash_flow.cat_mason,construction_cash_flow.holder_y,paid,IMP/00270
+imp_Sheet1_279,construction_cash_flow.project_uzg,2026-03-12,expense,Ko Aung Thike,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00271
+imp_Sheet1_280,construction_cash_flow.project_uzg,2026-03-12,expense,U Aung Soe,1,30000.0,30000.0,construction_cash_flow.cat_gl,construction_cash_flow.holder_y,paid,IMP/00272
+imp_Sheet1_281,construction_cash_flow.project_uzg,2026-03-13,expense,Ko Aung,1,100000.0,100000.0,construction_cash_flow.cat_mason,construction_cash_flow.holder_y,paid,IMP/00273
+imp_Sheet1_282,construction_cash_flow.project_uzg,2026-03-13,expense,လက်သမား ကိုသူ,1,40000.0,40000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00274
+imp_Sheet1_283,construction_cash_flow.project_uzg,2026-03-13,expense,K pay,1,2000.0,2000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00275
+imp_Sheet1_284,construction_cash_flow.project_uzg,2026-03-14,expense,Ko Aung,1,160000.0,160000.0,construction_cash_flow.cat_mason,construction_cash_flow.holder_y,paid,IMP/00276
+imp_Sheet1_285,construction_cash_flow.project_uzg,2026-03-14,expense,လက်သမား ကိုသူ,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00277
+imp_ADPT_9_11,construction_cash_flow.project_adpt9,2026-04-21,expense,"Kan Htoo - 16mm,10mm Rebar ",1,4030000.0,4030000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00278
+imp_ADPT_9_12,construction_cash_flow.project_adpt9,2026-04-21,expense,Phyu Phway - General Materials,1,38500.0,38500.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00279
+imp_ADPT_9_13,construction_cash_flow.project_adpt9,2026-04-21,expense,"Kan Ma - Bamboo Sheets, Bamboo",1,145000.0,145000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00280
+imp_ADPT_9_14,construction_cash_flow.project_adpt9,2026-04-21,expense,"Transportation - Timbers, Mixer, Rebar",1,160000.0,160000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00281
+imp_ADPT_9_15,construction_cash_flow.project_adpt9,2026-04-21,expense,Office Labours - 3nos,1,90000.0,90000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00282
+imp_ADPT_9_16,construction_cash_flow.project_adpt9,2026-04-21,expense,Office Labours - Drinks,1,10000.0,10000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00283
+imp_ADPT_9_17,construction_cash_flow.project_adpt9,2026-04-21,expense,Office Labours - Carpenter,1,90000.0,90000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00284
+imp_ADPT_9_18,construction_cash_flow.project_adpt9,2026-04-21,expense,"Kan Ma - Bamboo Sheets, Timbers",1,550000.0,550000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00285
+imp_ADPT_9_19,construction_cash_flow.project_adpt9,2026-04-21,expense,Transportation - Excavator 5.5tons (2ways),1,500000.0,500000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00286
+imp_ADPT_9_20,construction_cash_flow.project_adpt9,2026-04-21,expense,Nilar Win - Nails,1,337900.0,337900.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00287
+imp_ADPT_9_21,construction_cash_flow.project_adpt9,2026-04-21,expense,Smith - Ko Aung Thike (20/21),1,300000.0,300000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00288
+imp_ADPT_9_22,construction_cash_flow.project_adpt9,2026-04-22,expense,Smith - Ko Aung Thike,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00289
+imp_ADPT_9_23,construction_cash_flow.project_adpt9,2026-04-22,expense,Octane - water pump ,1,44000.0,44000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_k,paid,IMP/00290
+imp_ADPT_9_24,construction_cash_flow.project_adpt9,2026-04-23,expense,Smith - Ko Aung Thike,1,150000.0,150000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00291
+imp_ADPT_9_25,construction_cash_flow.project_adpt9,2026-04-23,expense,Cement 5nos,1,132500.0,132500.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00292
+imp_ADPT_9_26,construction_cash_flow.project_adpt9,2026-04-23,expense,Brick 5000nos,1,2400000.0,2400000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00293
+imp_ADPT_9_27,construction_cash_flow.project_adpt9,2026-04-23,expense,Lunch,1,35000.0,35000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00294
+imp_ADPT_9_28,construction_cash_flow.project_adpt9,2026-04-23,expense,Timber,1,362000.0,362000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00295
+imp_ADPT_9_29,construction_cash_flow.project_adpt9,2026-04-23,expense,Timber,1,315000.0,315000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00296
+imp_ADPT_9_30,construction_cash_flow.project_adpt9,2026-04-23,expense,Polywoods,1,280000.0,280000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00297
+imp_ADPT_9_31,construction_cash_flow.project_adpt9,2026-04-23,expense,Polywoods,1,1400000.0,1400000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00298
+imp_ADPT_9_32,construction_cash_flow.project_adpt9,2026-04-23,expense,Operator Lunch (22/23),1,40000.0,40000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00299
+imp_ADPT_9_33,construction_cash_flow.project_adpt9,2026-04-23,expense,Site Store Registration,1,10000.0,10000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00300
+imp_ADPT_9_34,construction_cash_flow.project_adpt9,2026-04-23,expense,Excavator 2duties,1,2000000.0,2000000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_y,paid,IMP/00301
+imp_ADPT_9_35,construction_cash_flow.project_adpt9,2026-04-24,expense,Diesel 1gallon,1,50000.0,50000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00302
+imp_ADPT_9_36,construction_cash_flow.project_adpt9,2026-04-24,expense,Rode 2tons,1,30000.0,30000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00303
+imp_ADPT_9_37,construction_cash_flow.project_adpt9,2026-04-24,expense,Smith - Ko Aung Thike,1,50000.0,50000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00304
+imp_ADPT_9_38,construction_cash_flow.project_adpt9,2026-04-25,expense,Cover Block,1,28000.0,28000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00305
+imp_ADPT_9_39,construction_cash_flow.project_adpt9,2026-04-25,expense,Drinking water,1,17000.0,17000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00306
+imp_ADPT_9_40,construction_cash_flow.project_adpt9,2026-04-25,expense,Lunch,1,17500.0,17500.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00307
+imp_ADPT_9_41,construction_cash_flow.project_adpt9,2026-04-27,expense,Office Labour,1,92000.0,92000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00308
+imp_ADPT_9_42,construction_cash_flow.project_adpt9,2026-04-27,expense,Smith - Ko Aung Thike,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00309
+imp_ADPT_9_43,construction_cash_flow.project_adpt9,2026-04-27,expense,Excavator,1,200000.0,200000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_y,paid,IMP/00310
+imp_ADPT_9_44,construction_cash_flow.project_adpt9,2026-04-27,expense,Excavator - Operator lunch 2 days,1,40000.0,40000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_y,paid,IMP/00311
+imp_ADPT_9_45,construction_cash_flow.project_adpt9,2026-04-28,expense,Office Labour,1,60000.0,60000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00312
+imp_ADPT_9_46,construction_cash_flow.project_adpt9,2026-04-28,expense,Lunch,1,30000.0,30000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00313
+imp_ADPT_9_47,construction_cash_flow.project_adpt9,2026-04-29,expense,Smith - Ko Aung Thike,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00314
+imp_ADPT_9_48,construction_cash_flow.project_adpt9,2026-04-30,expense,Carpenter - Ko Thu,1,1000000.0,1000000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00315
+imp_ADPT_9_49,construction_cash_flow.project_adpt9,2026-04-30,expense,Office Labour,1,60000.0,60000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00316
+imp_ADPT_9_50,construction_cash_flow.project_adpt9,2026-05-02,expense,carpenter - Ko Thu,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00317
+imp_ADPT_9_51,construction_cash_flow.project_adpt9,2026-05-02,expense,Office Labour,1,60000.0,60000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00318
+imp_ADPT_9_52,construction_cash_flow.project_adpt9,2026-05-03,expense,Smith - Ko Aung Thike,1,120000.0,120000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00319
+imp_ADPT_9_53,construction_cash_flow.project_adpt9,2026-05-03,expense,Office Labour 3 nos,1,90000.0,90000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_k,paid,IMP/00320
+imp_ADPT_9_54,construction_cash_flow.project_adpt9,2026-05-04,expense,Smith - Ko Aung Thike,1,100000.0,100000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00321
+imp_ADPT_9_55,construction_cash_flow.project_adpt9,2026-05-05,expense,"Aggregate, Sand",1,2370000.0,2370000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00322
+imp_ADPT_9_56,construction_cash_flow.project_adpt9,2026-05-05,expense,Cement,1,2550000.0,2550000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00323
+imp_ADPT_9_57,construction_cash_flow.project_adpt9,2026-05-05,expense,carpenter - Ko Thu,1,1000000.0,1000000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00324
+imp_ADPT_9_58,construction_cash_flow.project_adpt9,2026-05-05,expense,Office Labour,1,150000.0,150000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00325
+imp_ADPT_9_59,construction_cash_flow.project_adpt9,2026-05-05,expense,Octane,1,50000.0,50000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00326
+imp_ADPT_9_60,construction_cash_flow.project_adpt9,2026-05-05,expense,Excavator - 2 dutys,1,2240000.0,2240000.0,construction_cash_flow.cat_backhoe,construction_cash_flow.holder_y,paid,IMP/00327
+imp_ADPT_9_61,construction_cash_flow.project_adpt9,2026-05-06,expense,16mm - 1 ton - RKS,1,2290000.0,2290000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00328
+imp_ADPT_9_62,construction_cash_flow.project_adpt9,2026-05-06,expense,Office Labour,1,70000.0,70000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00329
+imp_ADPT_9_63,construction_cash_flow.project_adpt9,2026-05-06,expense,Smith - Ko Aung Thike,1,80000.0,80000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00330
+imp_ADPT_9_64,construction_cash_flow.project_adpt9,2026-05-06,expense,Timber 0.5tons,1,1500000.0,1500000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_k,paid,IMP/00331
+imp_ADPT_9_65,construction_cash_flow.project_adpt9,2026-05-07,expense,carpenter - Ko Thu,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00332
+imp_ADPT_9_66,construction_cash_flow.project_adpt9,2026-05-07,expense,Office Labour,1,90000.0,90000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00333
+imp_ADPT_9_67,construction_cash_flow.project_adpt9,2026-05-08,expense,Office Labour - Earthwork,1,230000.0,230000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00334
+imp_ADPT_9_68,construction_cash_flow.project_adpt9,2026-05-08,expense,Smith - Ko Aung Thike,1,50000.0,50000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_y,paid,IMP/00335
+imp_ADPT_9_69,construction_cash_flow.project_adpt9,2026-05-08,expense,Chain ,1,10000.0,10000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_y,paid,IMP/00336
+imp_ADPT_9_70,construction_cash_flow.project_adpt9,2026-05-09,expense,Office Labour - Earthwork,1,135000.0,135000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00337
+imp_ADPT_9_71,construction_cash_flow.project_adpt9,2026-05-09,expense,Transportation - Bricks ,1,150000.0,150000.0,construction_cash_flow.cat_transportation,construction_cash_flow.holder_y,paid,IMP/00338
+imp_ADPT_9_72,construction_cash_flow.project_adpt9,2026-05-10,expense,carpenter - Ko Thu,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00339
+imp_ADPT_9_73,construction_cash_flow.project_adpt9,2026-05-11,expense,"Sand, Aggregate, Cement",1,3100000.0,3100000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00340
+imp_ADPT_9_74,construction_cash_flow.project_adpt9,2026-05-12,expense,carpenter - Ko Thu,1,500000.0,500000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00341
+imp_ADPT_9_75,construction_cash_flow.project_adpt9,2026-05-12,expense,Office Labour ,1,270000.0,270000.0,construction_cash_flow.cat_ol,construction_cash_flow.holder_y,paid,IMP/00342
+imp_ADPT_9_76,construction_cash_flow.project_adpt9,2026-05-12,expense,"Octane, Drinking water",1,20000.0,20000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00343
+imp_ADPT_9_77,construction_cash_flow.project_adpt9,2026-05-14,expense,Car Octane,1,50000.0,50000.0,construction_cash_flow.cat_fuel,construction_cash_flow.holder_y,paid,IMP/00344
+imp_ADPT_9_78,construction_cash_flow.project_adpt9,2026-05-14,expense,Torch,1,30000.0,30000.0,construction_cash_flow.cat_general_material,,paid,IMP/00345
+imp_ADPT_9_79,construction_cash_flow.project_adpt9,2026-05-15,expense,"Rebar - 16mm, 12mm",1,2605000.0,2605000.0,construction_cash_flow.cat_main_material,construction_cash_flow.holder_y,paid,IMP/00346
+imp_ADPT_9_80,construction_cash_flow.project_adpt9,2026-05-15,expense,carpenter - Ko Thu,1,1000000.0,1000000.0,construction_cash_flow.cat_carpenter,construction_cash_flow.holder_y,paid,IMP/00347
+imp_ADPT_9_81,construction_cash_flow.project_adpt9,2026-05-15,expense,Food ,1,17000.0,17000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_y,paid,IMP/00348
+imp_ADPT_9_82,construction_cash_flow.project_adpt9,2026-05-15,expense,Cover Block,1,35000.0,35000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00349
+imp_ADPT_9_83,construction_cash_flow.project_adpt9,2026-05-16,expense,Tarpaulin 8' 1 roll,1,540000.0,540000.0,construction_cash_flow.cat_general_material,construction_cash_flow.holder_k,paid,IMP/00350
+imp_ADPT_9_84,construction_cash_flow.project_adpt9,2026-05-16,expense,Smith - Ko Aung Thike,1,200000.0,200000.0,construction_cash_flow.cat_smith,construction_cash_flow.holder_k,paid,IMP/00351
+imp_ADPT_9_85,construction_cash_flow.project_adpt9,2026-05-16,expense,Labour transportation 2 nos - for night ,1,200000.0,200000.0,construction_cash_flow.cat_general_expenses,construction_cash_flow.holder_k,paid,IMP/00352

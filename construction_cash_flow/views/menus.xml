@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Root menu -->
+    <menuitem id="menu_construction_cashflow_root"
+              name="Cash Flow"
+              sequence="10"/>
+
+    <!-- Top-level menus -->
+    <menuitem id="menu_construction_projects"
+              name="Projects"
+              parent="menu_construction_cashflow_root"
+              action="action_construction_project"
+              sequence="10"/>
+
+    <menuitem id="menu_construction_transactions"
+              name="Transactions"
+              parent="menu_construction_cashflow_root"
+              action="action_construction_transaction"
+              sequence="20"/>
+
+    <!-- Reporting -->
+    <menuitem id="menu_construction_reporting"
+              name="Reporting"
+              parent="menu_construction_cashflow_root"
+              sequence="30"/>
+
+    <menuitem id="menu_construction_budget_line"
+              name="Budget vs Actual"
+              parent="menu_construction_reporting"
+              action="action_construction_budget_line"
+              sequence="10"/>
+
+    <menuitem id="menu_construction_petty_cash"
+              name="Petty Cash"
+              parent="menu_construction_reporting"
+              action="action_construction_petty_cash"
+              sequence="20"/>
+
+    <menuitem id="menu_construction_spend_category"
+              name="Spend by Category"
+              parent="menu_construction_reporting"
+              action="action_construction_spend_category"
+              sequence="30"/>
+
+    <menuitem id="menu_construction_scurve"
+              name="Budget Burn (S-Curve)"
+              parent="menu_construction_reporting"
+              action="action_construction_scurve"
+              sequence="40"/>
+
+    <!-- Configuration -->
+    <menuitem id="menu_construction_configuration"
+              name="Configuration"
+              parent="menu_construction_cashflow_root"
+              sequence="40"/>
+
+    <menuitem id="menu_construction_cost_category"
+              name="Cost Categories"
+              parent="menu_construction_configuration"
+              action="action_construction_cost_category"
+              sequence="10"/>
+
+    <menuitem id="menu_construction_cash_holder"
+              name="Cash Holders"
+              parent="menu_construction_configuration"
+              action="action_construction_cash_holder"
+              sequence="20"/>
+
+    <menuitem id="menu_construction_cash_advance"
+              name="Cash Advances"
+              parent="menu_construction_configuration"
+              action="action_construction_cash_advance"
+              sequence="30"/>
+
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="project_uzg" model="construction.project">
+        <field name="name">U Zaw Gyi Project</field>
+        <field name="code">UZG</field>
+        <field name="state">in_progress</field>
+        <field name="start_date">2025-12-28</field>
+    </record>
+    <record id="project_adpt9" model="construction.project">
+        <field name="name">U Zaw Gyi Project (ADPT 9)</field>
+        <field name="code">ADPT9</field>
+        <field name="state">in_progress</field>
+        <field name="start_date">2026-04-01</field>
+    </record>
+</odoo>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- construction.cash.holder                                     -->
+    <!-- ============================================================ -->
+
+    <record id="view_construction_cash_holder_list" model="ir.ui.view">
+        <field name="name">construction.cash.holder.list</field>
+        <field name="model">construction.cash.holder</field>
+        <field name="arch" type="xml">
+            <list string="Cash Holders">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="user_id"/>
+                <field name="partner_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_cash_holder_form" model="ir.ui.view">
+        <field name="name">construction.cash.holder.form</field>
+        <field name="model">construction.cash.holder</field>
+        <field name="arch" type="xml">
+            <form string="Cash Holder">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="partner_id"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_construction_cash_holder_search" model="ir.ui.view">
+        <field name="name">construction.cash.holder.search</field>
+        <field name="model">construction.cash.holder</field>
+        <field name="arch" type="xml">
+            <search string="Cash Holders">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="user_id"/>
+                <field name="partner_id"/>
+                <filter name="active" string="Active" domain="[('active', '=', True)]"/>
+                <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_user" string="User" context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_construction_cash_holder" model="ir.actions.act_window">
+        <field name="name">Cash Holders</field>
+        <field name="res_model">construction.cash.holder</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_construction_cash_holder_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a cash holder
+            </p>
+            <p>
+                Cash holders are the people responsible for managing cash on a project.
+            </p>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- construction.cash.advance                                    -->
+    <!-- ============================================================ -->
+
+    <record id="view_construction_cash_advance_list" model="ir.ui.view">
+        <field name="name">construction.cash.advance.list</field>
+        <field name="model">construction.cash.advance</field>
+        <field name="arch" type="xml">
+            <list string="Cash Advances">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="project_id"/>
+                <field name="cash_holder_id"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="amount_advanced" widget="monetary"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_cash_advance_form" model="ir.ui.view">
+        <field name="name">construction.cash.advance.form</field>
+        <field name="model">construction.cash.advance</field>
+        <field name="arch" type="xml">
+            <form string="Cash Advance">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="project_id"/>
+                        </group>
+                        <group>
+                            <field name="cash_holder_id"/>
+                            <field name="currency_id"/>
+                            <field name="amount_advanced" widget="monetary"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_construction_cash_advance_search" model="ir.ui.view">
+        <field name="name">construction.cash.advance.search</field>
+        <field name="model">construction.cash.advance</field>
+        <field name="arch" type="xml">
+            <search string="Cash Advances">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="cash_holder_id"/>
+                <field name="date"/>
+                <filter name="group_project" string="Project" context="{'group_by': 'project_id'}"/>
+                <filter name="group_cash_holder" string="Cash Holder" context="{'group_by': 'cash_holder_id'}"/>
+                <group>
+                    <filter name="groupby_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="groupby_cash_holder" string="Cash Holder" context="{'group_by': 'cash_holder_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_construction_cash_advance" model="ir.actions.act_window">
+        <field name="name">Cash Advances</field>
+        <field name="res_model">construction.cash.advance</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_construction_cash_advance_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Record a cash advance
+            </p>
+            <p>
+                Cash advances track money handed to a cash holder for a project.
+            </p>
+        </field>
+    </record>
+
+</odoo>

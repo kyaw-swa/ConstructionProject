@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Voucher sequence -->
+    <record id="seq_construction_transaction" model="ir.sequence">
+        <field name="name">Construction Transaction Voucher</field>
+        <field name="code">construction.transaction</field>
+        <field name="prefix">CV/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <!-- Ensure MMK currency is available (locale requirement) -->
+    <record id="base.MMK" model="res.currency">
+        <field name="active">True</field>
+    </record>
+
+    <!-- ============ WBS cost-category hierarchy (parents) ============ -->
+    <record id="cat_labour" model="construction.cost.category">
+        <field name="code">LAB</field>
+        <field name="name">Labour</field>
+        <field name="sequence">10</field>
+    </record>
+    <record id="cat_materials" model="construction.cost.category">
+        <field name="code">MAT</field>
+        <field name="name">Materials</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="cat_equipment" model="construction.cost.category">
+        <field name="code">EQP</field>
+        <field name="name">Equipment &amp; Works</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="cat_other" model="construction.cost.category">
+        <field name="code">OTH</field>
+        <field name="name">Other / Overheads</field>
+        <field name="sequence">40</field>
+    </record>
+
+    <!-- ============ Leaf categories (from the spreadsheet codes) ====== -->
+    <record id="cat_gl" model="construction.cost.category">
+        <field name="code">GL</field><field name="name">General Labor</field>
+        <field name="parent_id" ref="cat_labour"/>
+    </record>
+    <record id="cat_ol" model="construction.cost.category">
+        <field name="code">OL</field><field name="name">Office Labour</field>
+        <field name="parent_id" ref="cat_labour"/>
+    </record>
+    <record id="cat_mason" model="construction.cost.category">
+        <field name="code">M</field><field name="name">Mason</field>
+        <field name="parent_id" ref="cat_labour"/>
+    </record>
+    <record id="cat_carpenter" model="construction.cost.category">
+        <field name="code">C</field><field name="name">Carpenter</field>
+        <field name="parent_id" ref="cat_labour"/>
+    </record>
+    <record id="cat_smith" model="construction.cost.category">
+        <field name="code">S</field><field name="name">Smith</field>
+        <field name="parent_id" ref="cat_labour"/>
+    </record>
+    <record id="cat_earthwork" model="construction.cost.category">
+        <field name="code">E</field><field name="name">Earthwork</field>
+        <field name="parent_id" ref="cat_equipment"/>
+    </record>
+    <record id="cat_backhoe" model="construction.cost.category">
+        <field name="code">B</field><field name="name">Backhoe</field>
+        <field name="parent_id" ref="cat_equipment"/>
+    </record>
+    <record id="cat_main_material" model="construction.cost.category">
+        <field name="code">MM</field><field name="name">Main Material</field>
+        <field name="parent_id" ref="cat_materials"/>
+    </record>
+    <record id="cat_general_material" model="construction.cost.category">
+        <field name="code">GM</field><field name="name">General Material</field>
+        <field name="parent_id" ref="cat_materials"/>
+    </record>
+    <record id="cat_transportation" model="construction.cost.category">
+        <field name="code">T</field><field name="name">Transportation</field>
+        <field name="parent_id" ref="cat_other"/>
+    </record>
+    <record id="cat_fuel" model="construction.cost.category">
+        <field name="code">F</field><field name="name">Fuel</field>
+        <field name="parent_id" ref="cat_other"/>
+    </record>
+    <record id="cat_general_expenses" model="construction.cost.category">
+        <field name="code">GE</field><field name="name">General Expenses</field>
+        <field name="parent_id" ref="cat_other"/>
+    </record>
+
+    <!-- ============ Cash holders (replace hardcoded Y / K columns) ==== -->
+    <record id="holder_y" model="construction.cash.holder">
+        <field name="code">Y</field><field name="name">Yee Mon Htet</field>
+    </record>
+    <record id="holder_k" model="construction.cash.holder">
+        <field name="code">K</field><field name="name">Khant Si Hein</field>
+    </record>
+</odoo>

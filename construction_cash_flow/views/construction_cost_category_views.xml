@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_construction_cost_category_list" model="ir.ui.view">
+        <field name="name">construction.cost.category.list</field>
+        <field name="model">construction.cost.category</field>
+        <field name="arch" type="xml">
+            <list string="Cost Categories">
+                <field name="sequence" widget="handle"/>
+                <field name="code"/>
+                <field name="complete_name"/>
+                <field name="parent_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_cost_category_form" model="ir.ui.view">
+        <field name="name">construction.cost.category.form</field>
+        <field name="model">construction.cost.category</field>
+        <field name="arch" type="xml">
+            <form string="Cost Category">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="parent_id"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="active" widget="boolean_toggle"/>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_construction_cost_category_search" model="ir.ui.view">
+        <field name="name">construction.cost.category.search</field>
+        <field name="model">construction.cost.category</field>
+        <field name="arch" type="xml">
+            <search string="Cost Categories">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="parent_id"/>
+                <group>
+                    <filter name="group_parent" string="Parent Category" context="{'group_by': 'parent_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_construction_cost_category" model="ir.actions.act_window">
+        <field name="name">Cost Categories</field>
+        <field name="res_model">construction.cost.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_construction_cost_category_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new cost category
+            </p>
+        </field>
+    </record>
+
+</odoo>

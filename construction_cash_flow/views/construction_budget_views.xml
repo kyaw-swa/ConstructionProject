@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============ construction.budget.line ============ -->
+
+    <record id="view_construction_budget_line_list" model="ir.ui.view">
+        <field name="name">construction.budget.line.list</field>
+        <field name="model">construction.budget.line</field>
+        <field name="arch" type="xml">
+            <list editable="top" decoration-danger="variance &lt; 0">
+                <field name="project_id"/>
+                <field name="cost_category_id"/>
+                <field name="budget_amount" widget="monetary"/>
+                <field name="committed_amount" widget="monetary"/>
+                <field name="actual_amount" widget="monetary"/>
+                <field name="variance" widget="monetary"/>
+                <field name="variance_pct" widget="percentage"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_budget_line_form" model="ir.ui.view">
+        <field name="name">construction.budget.line.form</field>
+        <field name="model">construction.budget.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="cost_category_id"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="budget_amount" widget="monetary"/>
+                            <field name="committed_amount" widget="monetary"/>
+                            <field name="actual_amount" widget="monetary"/>
+                            <field name="variance" widget="monetary"/>
+                            <field name="variance_pct" widget="percentage"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_construction_budget_line_search" model="ir.ui.view">
+        <field name="name">construction.budget.line.search</field>
+        <field name="model">construction.budget.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="project_id"/>
+                <field name="cost_category_id"/>
+                <group>
+                    <filter name="group_project" string="Project" context="{'group_by': 'project_id'}"/>
+                    <filter name="group_category" string="Cost Category" context="{'group_by': 'cost_category_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_construction_budget_line_pivot" model="ir.ui.view">
+        <field name="name">construction.budget.line.pivot</field>
+        <field name="model">construction.budget.line</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="cost_category_id" type="row"/>
+                <field name="budget_amount" type="measure"/>
+                <field name="committed_amount" type="measure"/>
+                <field name="actual_amount" type="measure"/>
+                <field name="variance" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_construction_budget_line_graph" model="ir.ui.view">
+        <field name="name">construction.budget.line.graph</field>
+        <field name="model">construction.budget.line</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="cost_category_id" type="row"/>
+                <field name="budget_amount" type="measure"/>
+                <field name="actual_amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_construction_budget_line" model="ir.actions.act_window">
+        <field name="name">Budget Lines</field>
+        <field name="res_model">construction.budget.line</field>
+        <field name="view_mode">list,pivot,graph</field>
+    </record>
+
+    <!-- ============ construction.petty.cash (read-only) ============ -->
+
+    <record id="view_construction_petty_cash_list" model="ir.ui.view">
+        <field name="name">construction.petty.cash.list</field>
+        <field name="model">construction.petty.cash</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" decoration-danger="balance &lt; 0">
+                <field name="project_id"/>
+                <field name="cash_holder_id"/>
+                <field name="advanced" widget="monetary"/>
+                <field name="spent" widget="monetary"/>
+                <field name="returned" widget="monetary"/>
+                <field name="balance" widget="monetary"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_construction_petty_cash_pivot" model="ir.ui.view">
+        <field name="name">construction.petty.cash.pivot</field>
+        <field name="model">construction.petty.cash</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="cash_holder_id" type="row"/>
+                <field name="project_id" type="col"/>
+                <field name="advanced" type="measure"/>
+                <field name="spent" type="measure"/>
+                <field name="balance" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_construction_petty_cash" model="ir.actions.act_window">
+        <field name="name">Petty Cash</field>
+        <field name="res_model">construction.petty.cash</field>
+        <field name="view_mode">list,pivot</field>
+    </record>
+
+</odoo>
