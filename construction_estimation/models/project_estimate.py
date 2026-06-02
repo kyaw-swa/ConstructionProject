@@ -18,22 +18,32 @@ class ProjectEstimate(models.Model):
     line_ids = fields.One2many(
         'construction.estimate.line', 'estimate_id', string='Estimation Lines',
     )
-    total_material_cost = fields.Float(
-        compute='_compute_total_cost', store=True, digits=(16, 2),
+    currency_id = fields.Many2one(
+        'res.currency', string='Currency', required=True,
+        default=lambda self: self._default_currency(),
+    )
+    total_material_cost = fields.Monetary(
+        compute='_compute_total_cost', store=True, currency_field='currency_id',
         string='Total Material Cost',
     )
-    total_labour_cost = fields.Float(
-        compute='_compute_total_cost', store=True, digits=(16, 2),
+    total_labour_cost = fields.Monetary(
+        compute='_compute_total_cost', store=True, currency_field='currency_id',
         string='Total Labour Cost',
     )
-    total_cost = fields.Float(
-        compute='_compute_total_cost', store=True, digits=(16, 2),
+    total_cost = fields.Monetary(
+        compute='_compute_total_cost', store=True, currency_field='currency_id',
         string='Grand Total',
     )
     notes = fields.Text()
     company_id = fields.Many2one(
         'res.company', default=lambda self: self.env.company,
     )
+
+    @api.model
+    def _default_currency(self):
+        """Default to Myanmar Kyat (MMK); fall back to the company currency."""
+        mmk = self.env.ref('base.MMK', raise_if_not_found=False)
+        return mmk or self.env.company.currency_id
 
     @api.depends('line_ids.material_total', 'line_ids.labour_total')
     def _compute_total_cost(self):
@@ -204,18 +214,24 @@ class EstimationLine(models.Model):
         string='Labours',
     )
 
+    # ── Currency (MMK), inherited from the estimate ──────────────────────────
+    currency_id = fields.Many2one(
+        related='estimate_id.currency_id', store=True, readonly=True,
+        string='Currency',
+    )
+
     # ── Totals (rolled up from children) ─────────────────────────────────────
-    material_total = fields.Float(
+    material_total = fields.Monetary(
         string='Mat. Total',
-        compute='_compute_totals', store=True, digits=(16, 2),
+        compute='_compute_totals', store=True, currency_field='currency_id',
     )
-    labour_total = fields.Float(
+    labour_total = fields.Monetary(
         string='Lab. Total',
-        compute='_compute_totals', store=True, digits=(16, 2),
+        compute='_compute_totals', store=True, currency_field='currency_id',
     )
-    total_cost = fields.Float(
+    total_cost = fields.Monetary(
         string='Line Total',
-        compute='_compute_totals', store=True, digits=(16, 2),
+        compute='_compute_totals', store=True, currency_field='currency_id',
     )
 
     @api.depends('section_ids.subtotal')
@@ -273,6 +289,11 @@ class EstimationLine(models.Model):
         Suggested Qty can be recomputed live as the line's dimensions change:
 
             Suggested Qty = (line.base_qty / template_base_qty) * template_qty
+
+        The A/C supplies *which* materials/labours and their standard
+        quantities only. The **rate is intentionally NOT copied** — it is
+        entered manually on each estimation line (see requirement: no
+        auto-populated/default rates).
         """
         for line in self:
             line.material_detail_ids = [(5, 0, 0)]
@@ -286,7 +307,6 @@ class EstimationLine(models.Model):
                     'material_id': ac_mat.material_id.id,
                     'template_qty': ac_mat.quantity,
                     'template_base_qty': template_base,
-                    'rate': ac_mat.rate,
                     'per': 1.0,
                 })
                 for ac_mat in line.ac_id.material_line_ids
@@ -297,7 +317,6 @@ class EstimationLine(models.Model):
                     'labour_id': ac_lab.labour_id.id,
                     'template_qty': ac_lab.quantity,
                     'template_base_qty': template_base,
-                    'rate': ac_lab.rate,
                     'per': 1.0,
                 })
                 for ac_lab in line.ac_id.labour_line_ids
@@ -394,14 +413,21 @@ class EstimateLineMaterial(models.Model):
         'construction.uom', related='material_id.uom_id',
         string='UOM', store=True, readonly=True,
     )
-    rate = fields.Float(string='Rate', digits=(16, 2))
+    currency_id = fields.Many2one(
+        related='line_id.currency_id', store=True, readonly=True,
+        string='Currency',
+    )
+    rate = fields.Monetary(
+        string='Rate', currency_field='currency_id',
+        help='Unit rate, entered manually (no default/auto-fill).',
+    )
     per = fields.Float(
         string='Per', default=1.0, digits=(16, 2),
         help='Rate is "per X" units (e.g. per 100 nos). Defaults to 1.',
     )
-    amount = fields.Float(
-        string='Amount',
-        compute='_compute_amount', store=True, digits=(16, 2),
+    amount = fields.Monetary(
+        string='Subtotal', currency_field='currency_id',
+        compute='_compute_amount', store=True,
     )
 
     @api.depends('line_id.base_qty', 'template_qty', 'template_base_qty')
@@ -413,14 +439,10 @@ class EstimateLineMaterial(models.Model):
 
     @api.depends('suggested_qty', 'rate', 'per')
     def _compute_amount(self):
+        # Subtotal lives on the line: qty * rate (with optional "per" divisor).
         for d in self:
             divisor = d.per or 1.0
             d.amount = (d.suggested_qty * d.rate) / divisor
-
-    @api.onchange('material_id')
-    def _onchange_material_id(self):
-        if self.material_id and not self.rate:
-            self.rate = self.material_id.default_rate
 
 
 class EstimateLineLabour(models.Model):
@@ -456,14 +478,21 @@ class EstimateLineLabour(models.Model):
         'construction.uom', related='labour_id.uom_id',
         string='UOM', store=True, readonly=True,
     )
-    rate = fields.Float(string='Rate', digits=(16, 2))
+    currency_id = fields.Many2one(
+        related='line_id.currency_id', store=True, readonly=True,
+        string='Currency',
+    )
+    rate = fields.Monetary(
+        string='Rate', currency_field='currency_id',
+        help='Unit rate, entered manually (no default/auto-fill).',
+    )
     per = fields.Float(
         string='Per', default=1.0, digits=(16, 2),
         help='Rate is "per X" units. Defaults to 1.',
     )
-    amount = fields.Float(
-        string='Amount',
-        compute='_compute_amount', store=True, digits=(16, 2),
+    amount = fields.Monetary(
+        string='Subtotal', currency_field='currency_id',
+        compute='_compute_amount', store=True,
     )
 
     @api.depends('line_id.base_qty', 'template_qty', 'template_base_qty')
@@ -475,14 +504,10 @@ class EstimateLineLabour(models.Model):
 
     @api.depends('suggested_qty', 'rate', 'per')
     def _compute_amount(self):
+        # Subtotal lives on the line: qty * rate (with optional "per" divisor).
         for d in self:
             divisor = d.per or 1.0
             d.amount = (d.suggested_qty * d.rate) / divisor
-
-    @api.onchange('labour_id')
-    def _onchange_labour_id(self):
-        if self.labour_id and not self.rate:
-            self.rate = self.labour_id.default_rate
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -608,23 +633,18 @@ class EstimateLineMeasurement(models.Model):
     # deduction stay independent. UI gated behind a per-row toggle so the form
     # stays clean.
 
-    _sql_constraints = [
-        (
-            'length_in_lt_12',
-            'CHECK (length_in >= 0 AND length_in < 12)',
-            'Length inches must be in [0, 12).',
-        ),
-        (
-            'breadth_in_lt_12',
-            'CHECK (breadth_in >= 0 AND breadth_in < 12)',
-            'Breadth inches must be in [0, 12).',
-        ),
-        (
-            'height_in_lt_12',
-            'CHECK (height_in >= 0 AND height_in < 12)',
-            'Height inches must be in [0, 12).',
-        ),
-    ]
+    _length_in_lt_12 = models.Constraint(
+        'CHECK (length_in >= 0 AND length_in < 12)',
+        'Length inches must be in [0, 12).',
+    )
+    _breadth_in_lt_12 = models.Constraint(
+        'CHECK (breadth_in >= 0 AND breadth_in < 12)',
+        'Breadth inches must be in [0, 12).',
+    )
+    _height_in_lt_12 = models.Constraint(
+        'CHECK (height_in >= 0 AND height_in < 12)',
+        'Height inches must be in [0, 12).',
+    )
 
     @api.depends('measurement_type')
     def _compute_uom_label(self):

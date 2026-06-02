@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Locale: enable Myanmar Kyat (MMK) so it is selectable as the
+         estimate/A-of-C currency. Monetary fields default to it. -->
+    <record id="base.MMK" model="res.currency">
+        <field name="active">True</field>
+    </record>
+</odoo>

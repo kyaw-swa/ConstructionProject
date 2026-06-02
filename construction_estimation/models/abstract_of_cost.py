@@ -25,6 +25,16 @@ class AbstractOfCost(models.Model):
         [('sqft', 'Sqft (Area)'), ('cuft', 'Cuft (Volume)')],
         string='Measurement Type', default='sqft', required=True,
     )
+    currency_id = fields.Many2one(
+        'res.currency', string='Currency', required=True,
+        default=lambda self: self._default_currency(),
+    )
+
+    @api.model
+    def _default_currency(self):
+        """Default to Myanmar Kyat (MMK); fall back to the company currency."""
+        mmk = self.env.ref('base.MMK', raise_if_not_found=False)
+        return mmk or self.env.company.currency_id
 
     material_line_ids = fields.One2many(
         'construction.ac.material', 'ac_id', string='Material Lines',
@@ -64,29 +74,27 @@ class AcMaterialLine(models.Model):
         'construction.uom', related='material_id.uom_id',
         string='UOM', store=True,
     )
-    rate = fields.Float(
-        digits=(16, 0),
-        help='Defaults from material; override per A/C if needed.',
+    currency_id = fields.Many2one(
+        related='ac_id.currency_id', store=True, readonly=True,
+        string='Currency',
     )
-    line_cost = fields.Float(compute='_compute_line_cost', store=True, digits=(16, 4))
+    rate = fields.Monetary(
+        currency_field='currency_id',
+        help='Standard rate, entered manually (no default/auto-fill).',
+    )
+    line_cost = fields.Monetary(
+        compute='_compute_line_cost', store=True, currency_field='currency_id',
+    )
 
     @api.depends('quantity', 'rate')
     def _compute_line_cost(self):
         for line in self:
             line.line_cost = line.quantity * line.rate
 
-    @api.onchange('material_id')
-    def _onchange_material_id(self):
-        if self.material_id:
-            self.rate = self.material_id.default_rate
-
-    _sql_constraints = [
-        (
-            'ac_material_unique',
-            'unique(ac_id, material_id)',
-            'The material already exists on this A/C.',
-        ),
-    ]
+    _ac_material_unique = models.Constraint(
+        'unique(ac_id, material_id)',
+        'The material already exists on this A/C.',
+    )
 
 
 class AcLabourLine(models.Model):
@@ -109,23 +117,24 @@ class AcLabourLine(models.Model):
         'construction.uom', related='labour_id.uom_id',
         string='UOM', store=True,
     )
-    rate = fields.Float(digits=(16, 0))
-    line_cost = fields.Float(compute='_compute_line_cost', store=True, digits=(16, 4))
+    currency_id = fields.Many2one(
+        related='ac_id.currency_id', store=True, readonly=True,
+        string='Currency',
+    )
+    rate = fields.Monetary(
+        currency_field='currency_id',
+        help='Standard rate, entered manually (no default/auto-fill).',
+    )
+    line_cost = fields.Monetary(
+        compute='_compute_line_cost', store=True, currency_field='currency_id',
+    )
 
     @api.depends('quantity', 'rate')
     def _compute_line_cost(self):
         for line in self:
             line.line_cost = line.quantity * line.rate
 
-    @api.onchange('labour_id')
-    def _onchange_labour_id(self):
-        if self.labour_id:
-            self.rate = self.labour_id.default_rate
-
-    _sql_constraints = [
-        (
-            'ac_labour_unique',
-            'unique(ac_id, labour_id)',
-            'The labour already exists on this A/C.',
-        ),
-    ]
+    _ac_labour_unique = models.Constraint(
+        'unique(ac_id, labour_id)',
+        'The labour already exists on this A/C.',
+    )

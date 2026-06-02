@@ -85,6 +85,8 @@
                             <field name="base_quantity"/>
                             <field name="base_uom_id"/>
                             <field name="measurement_type" widget="radio"/>
+                            <field name="currency_id"
+                                   options="{'no_create': True, 'no_open': True}"/>
                         </group>
                     </group>
                     <notebook>
@@ -94,12 +96,13 @@
                             </div>
                             <field name="material_line_ids">
                                 <list editable="bottom">
+                                    <field name="currency_id" column_invisible="1"/>
                                     <field name="sequence" widget="handle"/>
                                     <field name="material_id"/>
                                     <field name="uom_id" string="UOM" readonly="1"/>
                                     <field name="quantity" string="Std. Qty"/>
                                     <field name="rate"/>
-                                    <field name="line_cost" string="Cost" readonly="1"/>
+                                    <field name="line_cost" string="Cost" readonly="1" sum="Total"/>
                                 </list>
                             </field>
                         </page>
@@ -109,12 +112,13 @@
                             </div>
                             <field name="labour_line_ids">
                                 <list editable="bottom">
+                                    <field name="currency_id" column_invisible="1"/>
                                     <field name="sequence" widget="handle"/>
                                     <field name="labour_id"/>
                                     <field name="uom_id" string="UOM" readonly="1"/>
                                     <field name="quantity" string="Std. Qty"/>
                                     <field name="rate"/>
-                                    <field name="line_cost" string="Cost" readonly="1"/>
+                                    <field name="line_cost" string="Cost" readonly="1" sum="Total"/>
                                 </list>
                             </field>
                         </page>
@@ -124,10 +128,29 @@
         </field>
     </record>
 
+    <record id="view_construction_ac_search" model="ir.ui.view">
+        <field name="name">construction.ac.search</field>
+        <field name="model">construction.ac</field>
+        <field name="arch" type="xml">
+            <search string="Abstract of Cost">
+                <field name="name"/>
+                <separator/>
+                <filter name="type_sqft" string="Sqft (Area)" domain="[('measurement_type', '=', 'sqft')]"/>
+                <filter name="type_cuft" string="Cuft (Volume)" domain="[('measurement_type', '=', 'cuft')]"/>
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_type" string="Measurement Type" context="{'group_by': 'measurement_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="action_construction_ac" model="ir.actions.act_window">
         <field name="name">Abstract of Cost</field>
         <field name="res_model">construction.ac</field>
         <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_construction_ac_search"/>
     </record>
 
 </odoo>

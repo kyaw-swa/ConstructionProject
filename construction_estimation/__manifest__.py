@@ -1,12 +1,13 @@
 {
     'name': 'Construction Project Estimation',
-    'version': '19.0.1.3.0',
+    'version': '19.0.2.0.0',
     'category': 'Construction',
-    'summary': 'BOQ-based construction project cost estimation',
+    'summary': 'BOQ-based construction project cost estimation (MMK)',
     'author': 'Phoe Ku',
     'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
+        'data/construction_currency_data.xml',
         'data/construction_uom_data.xml',
         'data/construction_material_data.xml',
         'data/construction_labour_data.xml',

@@ -6,12 +6,13 @@
         <field name="model">construction.project.estimate</field>
         <field name="arch" type="xml">
             <list string="Project Estimates" decoration-muted="state=='cancelled'">
+                <field name="currency_id" column_invisible="1"/>
                 <field name="name"/>
                 <field name="customer_id"/>
                 <field name="date"/>
-                <field name="total_material_cost" string="Material Cost" sum="Total Mat."/>
-                <field name="total_labour_cost" string="Labour Cost" sum="Total Lab."/>
-                <field name="total_cost" string="Grand Total" sum="Grand Total"/>
+                <field name="total_material_cost" string="Material Cost" sum="Total Mat." widget="monetary"/>
+                <field name="total_labour_cost" string="Labour Cost" sum="Total Lab." widget="monetary"/>
+                <field name="total_cost" string="Grand Total" sum="Grand Total" widget="monetary"/>
                 <field name="state" widget="badge"
                        decoration-success="state=='confirmed'"
                        decoration-warning="state=='draft'"
@@ -28,6 +29,7 @@
                 <field name="name"/>
                 <field name="customer_id"/>
                 <field name="date"/>
+                <field name="currency_id"/>
                 <field name="total_material_cost"/>
                 <field name="total_labour_cost"/>
                 <field name="total_cost"/>
@@ -190,42 +192,48 @@
                         <page string="Materials">
                             <field name="material_detail_ids">
                                 <list editable="bottom">
+                                    <field name="currency_id" column_invisible="1"/>
                                     <field name="sequence" widget="handle"/>
                                     <field name="material_id"/>
                                     <field name="template_qty" string="Std. Qty" optional="show" readonly="1"/>
                                     <field name="template_base_qty" string="Tpl. Base" optional="hide" readonly="1"/>
                                     <field name="suggested_qty" string="Qty" readonly="1"/>
                                     <field name="uom_id" readonly="1"/>
-                                    <field name="rate"/>
+                                    <field name="rate" widget="monetary"/>
                                     <field name="per" optional="hide"/>
-                                    <field name="amount" readonly="1" sum="Total"/>
+                                    <field name="amount" string="Subtotal" widget="monetary" readonly="1" sum="Total"/>
                                 </list>
                             </field>
                             <group class="oe_subtotal_footer oe_right">
-                                <field name="material_total" readonly="1"/>
+                                <field name="material_total" readonly="1" widget="monetary"/>
                             </group>
                         </page>
                         <page string="Labours">
                             <field name="labour_detail_ids">
                                 <list editable="bottom">
+                                    <field name="currency_id" column_invisible="1"/>
                                     <field name="sequence" widget="handle"/>
                                     <field name="labour_id"/>
                                     <field name="template_qty" string="Std. Qty" optional="show" readonly="1"/>
                                     <field name="template_base_qty" string="Tpl. Base" optional="hide" readonly="1"/>
                                     <field name="suggested_qty" string="Qty" readonly="1"/>
                                     <field name="uom_id" readonly="1"/>
-                                    <field name="rate"/>
+                                    <field name="rate" widget="monetary"/>
                                     <field name="per" optional="hide"/>
-                                    <field name="amount" readonly="1" sum="Total"/>
+                                    <field name="amount" string="Subtotal" widget="monetary" readonly="1" sum="Total"/>
                                 </list>
                             </field>
                             <group class="oe_subtotal_footer oe_right">
-                                <field name="labour_total" readonly="1"/>
+                                <field name="labour_total" readonly="1" widget="monetary"/>
                             </group>
                         </page>
                     </notebook>
                     <group class="oe_subtotal_footer oe_right">
-                        <field name="total_cost" readonly="1"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="material_total" readonly="1" widget="monetary"/>
+                        <field name="labour_total" readonly="1" widget="monetary"/>
+                        <field name="total_cost" readonly="1" widget="monetary"
+                               class="oe_subtotal_footer_separator"/>
                     </group>
                 </sheet>
             </form>
@@ -263,21 +271,21 @@
                         <h1><field name="name" placeholder="Estimate Name"/></h1>
                     </div>
                     <group>
-                        <group>
+                        <group string="General Information">
                             <field name="customer_id"/>
                             <field name="date"/>
                         </group>
-                        <group>
+                        <group string="Settings">
+                            <field name="currency_id"
+                                   options="{'no_create': True, 'no_open': True}"/>
                             <field name="company_id" groups="base.group_multi_company"/>
-                            <field name="total_material_cost" readonly="1"/>
-                            <field name="total_labour_cost" readonly="1"/>
-                            <field name="total_cost" readonly="1"/>
                         </group>
                     </group>
                     <notebook>
                         <page string="Estimation Lines">
                             <field name="line_ids">
                                 <list>
+                                    <field name="currency_id" column_invisible="1"/>
                                     <field name="sequence" widget="handle"/>
                                     <field name="reference" string="No." readonly="1"/>
                                     <field name="ac_id" string="Particular"/>
@@ -287,9 +295,9 @@
                                            optional="show"/>
                                     <field name="base_qty" string="Qty"/>
                                     <field name="uom_id" string="Unit"/>
-                                    <field name="material_total" string="Mat. Total" sum="Mat."/>
-                                    <field name="labour_total" string="Lab. Total" sum="Lab."/>
-                                    <field name="total_cost" string="Line Total" sum="Grand Total"/>
+                                    <field name="material_total" string="Mat. Total" sum="Mat." widget="monetary"/>
+                                    <field name="labour_total" string="Lab. Total" sum="Lab." widget="monetary"/>
+                                    <field name="total_cost" string="Line Total" sum="Grand Total" widget="monetary"/>
                                 </list>
                             </field>
                         </page>
@@ -297,9 +305,43 @@
                             <field name="notes" placeholder="Internal notes…"/>
                         </page>
                     </notebook>
+                    <group class="oe_subtotal_footer oe_right">
+                        <field name="currency_id" invisible="1"/>
+                        <field name="total_material_cost" readonly="1" widget="monetary"/>
+                        <field name="total_labour_cost" readonly="1" widget="monetary"/>
+                        <field name="total_cost" readonly="1" widget="monetary"
+                               class="oe_subtotal_footer_separator"/>
+                    </group>
+                    <div class="oe_clear"/>
                 </sheet>
                 <chatter/>
             </form>
+        </field>
+    </record>
+
+    <record id="view_project_estimate_search" model="ir.ui.view">
+        <field name="name">construction.project.estimate.search</field>
+        <field name="model">construction.project.estimate</field>
+        <field name="arch" type="xml">
+            <search string="Project Estimates">
+                <field name="name" string="Estimate"
+                       filter_domain="['|', ('name', 'ilike', self), ('customer_id', 'ilike', self)]"/>
+                <field name="customer_id"/>
+                <field name="date"/>
+                <separator/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="confirmed" string="Confirmed" domain="[('state', '=', 'confirmed')]"/>
+                <filter name="cancelled" string="Cancelled" domain="[('state', '=', 'cancelled')]"/>
+                <separator/>
+                <filter name="this_year" string="This Year"
+                        domain="[('date', '&gt;=', (context_today().replace(month=1, day=1)).strftime('%Y-%m-%d'))]"/>
+                <group>
+                    <filter name="group_customer" string="Customer" context="{'group_by': 'customer_id'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_date" string="Date" context="{'group_by': 'date'}"/>
+                    <filter name="group_currency" string="Currency" context="{'group_by': 'currency_id'}"/>
+                </group>
+            </search>
         </field>
     </record>
 
@@ -307,6 +349,8 @@
         <field name="name">Project Estimates</field>
         <field name="res_model">construction.project.estimate</field>
         <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_project_estimate_search"/>
+        <field name="context">{'search_default_draft': 1, 'search_default_confirmed': 1}</field>
     </record>
 
     <record id="view_estimate_line_copy_wizard_form" model="ir.ui.view">
