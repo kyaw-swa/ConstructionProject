@@ -80,6 +80,6 @@ class ConstructionBudgetLine(models.Model):
             rec.committed_amount = committed
             rec.variance = (rec.budget_amount or 0.0) - (actual + committed)
             rec.variance_pct = (
-                ((actual + committed) / rec.budget_amount * 100.0)
+                ((actual + committed) / rec.budget_amount)
                 if rec.budget_amount else 0.0
             )

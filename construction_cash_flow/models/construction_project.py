@@ -111,7 +111,7 @@ class ConstructionProject(models.Model):
             rec.committed_expense = d['committed']
             rec.cash_position = d['income'] - d['expense']
             rec.budget_used_percent = (
-                (d['expense'] / rec.planned_budget * 100.0)
+                (d['expense'] / rec.planned_budget)
                 if rec.planned_budget else 0.0
             )
 
